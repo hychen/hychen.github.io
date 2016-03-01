@@ -1,0 +1,173 @@
+{
+  "basics": {
+    "name": "Chen Hsin-Yi",
+    "label": "Coder",
+    "picture": "https://avatars3.githubusercontent.com/u/38706?v=3&s=460",
+    "email": "ossug.hychen@gmail.com",
+    "summary": "I am a full stack web programmer who also have PC and emebdeed Linux system intergration experiences.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "New Taipei City",
+      "countryCode": "TW",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "Github",
+        "username": "hychen",
+        "url": "http://github.com/hychen"
+      },
+      {
+        "network": "Twitter",
+        "username": "hychen",
+        "url": "http://twitter/hychen"
+      },
+      {
+        "network": "Linkedin",
+        "username": "hychen",
+        "url": "http://linkedin.com/in/hychen"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Vectr Lab Inc.",
+      "position": "Sr. Software Engineer",
+      "website": "http://vectr.com",
+      "startDate": "2015-08-01",
+      "summary": "Vectr is a real time collaboration vector image editor, built on top of JavaScript & Node.js"
+    },
+    {
+      "company": "Self Employed",
+      "position": "Independent Professional",
+      "startDate": "2014-01-01",
+      "endDate": "2015-07-31",
+      "highlights": [
+        "Work closely with client to build cloud infrastructure of IOT pet camera hardware."
+      ]
+    },
+    {
+      "company": "Canonical Ltd",
+      "position": "Software Engineer",
+      "website": "http://canonical.com",
+      "startDate": "2010-04-01",
+      "endDate": "2013-12-31",
+      "summary": "Canonical is a UK-based privately held computer software company to market commercial support and related services for Ubuntu and related projects. ",
+      "highlights": [
+        "Ensure successful end-to-end technical integration with hardware OEM/ODM and chipset vendors to enable new platforms for running GNU/Linux Ubuntu .",
+        "Debug and customize a wide range of software components in Ubuntu.",
+        "Work closely with tier-one customers to develop factory state recover and mass production tools"
+      ]
+    },
+    {
+      "company": "Jorjin Technologies Inc",
+      "position": "Software Engineer",
+      "summary": "Jorjin Technologies Inc is the supplier of wireless system-in-package (SiP) modules.",
+      "website": "http://www.jorjin.com.tw",
+      "startDate": "2009-04",
+      "endDate": "2010-03-31",
+      "highlights": [
+        "Provid Android/Linux ARM wireless driver engineering support for OEM customers.",
+        "Implement propriatary SDIO host controller of Freescale iMx51 and TI OMAP3530 for TI 1271 Android/Linux wireless driver.",
+        "Port 0xdroid(Android BSP of BeagleBoard) to Devkit8000(BeagleBoard clone)."
+      ]
+    },
+    {
+      "company": "Hon Gu Inc.",
+      "position": "Web Developer",
+      "website": "http://www.ipeen.com.tw",
+      "startDate": "2008-03",
+      "endDate": "2009-03",
+      "summary": "Like Yelp."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Linux System Intergration",
+      "level": "Advanced",
+      "keywords": [
+        "Debian",
+        "Ubuntu",
+        "Kernel",
+        "ALSA",
+        "BlueZ",
+        "Gnome",
+        "ACPI"
+      ]
+    },
+    {
+      "name": "Web Frontend",
+      "level": "Advanced",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "LiveScript",
+        "CoffeeScript",
+        "AngularJS",
+        "React"
+      ]
+    },
+    {
+      "name": "Web Backend",
+      "level": "Advanced",
+      "keywords": [
+        "Python",
+        "PHP",
+        "Haskell",
+        "MongoDB",
+        "MySql",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "name": "Automation and DevOps",
+      "level": "Advanced",
+      "keywords": [
+        "Python",
+        "JavaScript",
+        "Chef",
+        "SaltStack",
+        "AWS",
+        "ShellScript"
+      ]
+    },
+    {
+      "name": "Graphical Editor",
+      "level": "Beginner",
+      "keywords": [
+        "SVG",
+        "Computational Geometry"
+      ]
+    },
+    {
+      "name": "Computer and Mathmatical Theory",
+      "level": "Beginner",
+      "keywords": [
+        "Lambda Calculus",
+        "Type Theory"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Chinese",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Work limitied"
+    }
+  ],
+  "education": [
+    {
+      "institution": "National Kaohsiung University of Applied Sciences",
+      "area": "Department of Electronic Engineering",
+      "studyType": "Bachelor",
+      "startDate": "2002",
+      "endDate": "2006"
+    }
+  ]
+}
