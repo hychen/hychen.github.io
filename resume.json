@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Chen Hsin-Yi",
-    "label": "Coder",
+    "label": "Programmer",
     "picture": "https://avatars3.githubusercontent.com/u/38706?v=3&s=460",
     "email": "ossug.hychen@gmail.com",
     "website": "http://hychen.me",
-    "summary": "I am a full stack web programmer who also have PC and emebdeed Linux system intergration experiences.",
+    "summary": "Chen Hsin-Yi, also named as 'hychen', is a full stack web programmer who also has PC and emebdeed Linux system intergration experiences. He has a strong background in participating with open source communities and projects in Taiwan, by hosting events and contributing software patchs to different communities.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -154,12 +154,29 @@
   ],
   "languages": [
     {
-      "language": "Chinese",
+      "language": "Mandarin Chinese",
       "fluency": "Native speaker"
     },
     {
       "language": "English",
       "fluency": "Work limitied"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Programming",
+      "keywords": [
+        "Open Source",
+        "Programming Theory"
+      ]
+    },
+    {
+      "name": "Play Video Games",
+      "keywords": [
+        "FPS",
+        "RPG",
+        "SLG"
+      ]
     }
   ],
   "education": [
