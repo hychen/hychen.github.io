@@ -71,7 +71,7 @@
       "position": "Software Engineer",
       "summary": "Jorjin Technologies Inc is the supplier of wireless system-in-package (SiP) modules.",
       "website": "http://www.jorjin.com.tw",
-      "startDate": "2009-04",
+      "startDate": "2009-04-01",
       "endDate": "2010-03-31",
       "highlights": [
         "Provid Android/Linux ARM wireless driver engineering support for OEM customers.",
@@ -83,8 +83,8 @@
       "company": "Hon Gu Inc.",
       "position": "Web Developer",
       "website": "http://www.ipeen.com.tw",
-      "startDate": "2008-03",
-      "endDate": "2009-03",
+      "startDate": "2008-03-01",
+      "endDate": "2009-03-01",
       "summary": "Like Yelp."
     }
   ],
@@ -189,8 +189,8 @@
       "institution": "National Kaohsiung University of Applied Sciences",
       "area": "Department of Electronic Engineering",
       "studyType": "Bachelor",
-      "startDate": "2002",
-      "endDate": "2006"
+      "startDate": "2002-09-01",
+      "endDate": "2006-06-31"
     }
   ]
 }

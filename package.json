@@ -1,0 +1,22 @@
+{
+  "name": "hychen.github.io",
+  "version": "1.0.0",
+  "description": "hychen's homepage",
+  "main": "index.js",
+  "scripts": {
+    "resume": "./node_modules/.bin/resume export -t elegant index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hychen/hychen.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hychen/hychen.github.io/issues"
+  },
+  "homepage": "https://github.com/hychen/hychen.github.io",
+  "dependencies": {
+    "resume-cli": "^0.4.11"
+  }
+}
