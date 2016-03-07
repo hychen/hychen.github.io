@@ -15,6 +15,11 @@
     },
     "profiles": [
       {
+        "network": "Blog",
+        "username": "hychen",
+        "url": "http://hychen.me/blog.html"
+      },
+      {
         "network": "Github",
         "username": "hychen",
         "url": "http://github.com/hychen"
