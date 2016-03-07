@@ -1,4 +1,4 @@
-#+TITLE: 不及學士後研究
+#+TITLE: 不及格學士後研究
 #+SETUPFILE: theme-readtheorg.setup
 
 #+STARTUP: overview
