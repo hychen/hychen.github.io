@@ -5,6 +5,10 @@
 
 #+OPTIONS: num:nil
 
+#+BEGIN_ABSTRACT
+一些不入流的學習筆記。
+#+END_ABSTRACT
+
 * 管理
 ** 如何建立客服團隊
 - 勞力密集
