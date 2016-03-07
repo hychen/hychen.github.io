@@ -9,8 +9,8 @@
 一些不入流的學習筆記。
 #+END_ABSTRACT
 
-* 資訊工程 
-** Assignment V.S. Binding
+* 資訊工程
+** Assignment V.S. Binding 
 
 所謂的 Functional Language 的變數不可改其實是不精確的。實際上它只是將變數分的更嚴謹，可修改，與不可修改。
 先來說說什麼是 Binding. Binding 指的是將一個符號綁定在一個值，綁定後就不可修改，這個符號稱之為變數。以自然語言來理解的話，其實就是代名詞。
@@ -53,7 +53,111 @@ val PI := 4 # assign
 值，反之則不行。
 但不管怎麼說，變數都不應該被當成是一個容器。
 
-* 管理
+** Flow-Based Programming 2ND Edition, J. Paul Morrison 
+:PROPERTIES:
+:Authoer: J. Paul Morrison
+:ISBN: 1451542321
+:PublishedDate: 2011
+:END:
+*** Terms
+- Configurable modularity :: a term coined by Raoul de Campo of IBM Research and later expanded on by Nate Edwards of the same organization, denoting the ability to reuse independent components by changing their interconnections, but not their internals.[1] In Edwards' view this characterizes all successful reuse systems, and indeed all systems which can be described as "engineered".
+*** Mentioned People
+
+| Name              | Page | Purpose                                                            |   |
+|-------------------+------+--------------------------------------------------------------------+---|
+| Wayne Stevens     |    5 | 強調FBP會成為典範轉移的重要因素                                    |   |
+| David Gelernter   |    7 | 指出FBP是 Coordination Language的一種例子                          |   |
+| Nicholas Carriero |    7 |                                                                    |   |
+| Raoul de Campo    |    7 | 介紹Raoul 研究的 "configurable modularity                          |   |
+| Nate Edwards      |    7 | 指出Nate Edwards 的 configurable modularity 研究篇硬體所以沒被重視 |   |
+| Jackson 1975      |   24 | 指出 Design 跟 Impleentartion 在FBP的概念                          |   |
+
+**** [[https://en.wikipedia.org/wiki/Wayne_Stevens][Wayne Stevens]] 
+
+- A software engineer, chief architect of application development methodology 
+  for IBM's consulting group.
+- Important works are 
+  - [[https://en.wikipedia.org/wiki/Structured_analysis][Structured Design]] 
+
+**** [[https://en.wikipedia.org/wiki/David_Gelernter][David Gelernter]]
+- Parallel Computation
+**** Nicholas Carriero
+
+*** Notes
+**** Chaoter 0: Prologue
+作者自介自己的成長背景，大學在 King's college 就讀人類學系，並且強調將人類行為轉換成符號邏輯是件很困難的事情
+在他的IBM生涯中，不斷碰觸到IBM電腦的瓶頸，這使得他開始專注在一個基本問題 - 為什麼在電腦上開發程式這麼困難，當要讓電腦做一些人類覺得很簡單的事情時。
+***** Reusable Code
+作者寫過 Compiler (BABEL), 也寫過 Interpreter (BLIS), 而在那個年代已經有 reusable subroutine library，只是幾乎都是一次性函數, 
+像是*binary function*, 他曾試圖撰寫通用的大量更新的*function*, 但卻失敗了(只支援少數的資料集合), 這些經驗讓他開始思考是否有另一種方式
+可以產生可再用的程式碼。
+***** Rapid Prototyping 
+作者相信不管做任何事，只要有懷疑的地方，就先做出一個 prototyping, 並認為好的 prototyping 是可以一直成長，直到成為完整的系統。
+並提到[David的書:1]也有說到數種結合互動式開發與Milestone的放式。
+
+[1]: Exploiting Chaos: Cashing in on the realities of Software Development, 1993, Dave Olson
+***** Focus Of This Book
+The approach mentioned hre is for bussiness applications, not mathematical applications.
+***** Thinking things visual term
+由於他媽媽使母親的關係，使他在成長過程中常使用圖像式思考，在這本書提到的很重要的一點是使用圖像是符號來開發程式，有個好處是能利用到人類的圖像思考能力。
+間或提到 [GPSS:2]對他的影響，使他在介紹資料處理時是從單一 Record，而非電腦邏輯。(作者沒有電腦科學訓練)
+
+[2]: General Purpose Simulation System
+***** Application Design is a creative activity  
+***** Fun
+- The word "amateur" comes from the idea of loving. One should be proud to be called an computing amateur.
+- If an activity isn't fun, humans probaly shouldn't be doing it. 
+- The guys who turn out the most code are the ones who are having fun! - P.R Ewing.
+- Play is not something we have to put away when we reach the state of adulthood
+**** Chpater 1: Introduction
+敘述FBP實作的應用程式很容易被修改以達成目標，並強調這是個存在四十年以上且被驗證的技術。
+讓開發者專注在data transformation的方式，而不是procedural code，讓開發者專注在快速開發，產生跟容易維護的系統。
+同時，FBP也很適合分散式運算。
+作者同時指出，FBP需要數天到數週的學習時間。因為FBP背後隱含的思考模型與傳統程式相當不同。
+要把sequencial program改成支援multiplethread很困難，而 Von Neumann Computer Model 是讓程式開發非常困難的原因之一
+***** FBP != Data Flow 
+- flow-based programming shares some basic concept with dataflow 
+  architectures in computer design, but they are still not the same.
+- 作者認為要使用FBP是因為dataflow archtecture 不包含control flow的部分，而FBP包含，
+  因此要使用另一個名稱以方便區隔。
+- 其他大多數 data flow programming 專注在數學運算，但FBP不僅僅是
+- 作者曾有過的模擬器經驗，讓他意識到若讓物件在這些運算中流動，會有更好的生產力。
+***** Entity flow throw the network
+- each entity reoresents an object with attributes.
+- the term *entity*, *object* is too often used in many aspects, to more be 
+  cliafied, the author defines a new term *Information Packets*.
+***** 打預防針
+- 避免讀者快速下結論說FBP就只是..., 而放棄了閱讀
+**** Chapter 2: High-Level Languages, 4GLs and Source Code Reuse
+**** Chapter 3: Basic Concepts
+**** Chapter 4: Reuse of components
+**** Chapter 5: Parametrization of Reusable Components
+**** Chapter 6: Composite Components
+**** Chapter 7: Building Components & Some More Simple Applications
+**** Chapter 8: Substreams and Control IPs
+- 大約有1/4 商業程式是在做 Update，用非FBP做會非常困難。
+**** Chapter 9: Some more components and Simple Applications
+**** Chapter 10: Data Descriptions and Descriptors
+**** Chapter 11: Tree Structure
+**** Chapter 12: Scheduling Rules
+**** Chapter 13: Loop-Type Networks
+**** Chapter 14: Implementation, Network Splitting and Client-Server
+**** Chapter 15: Deadlocks: Their Causes and Prevention
+**** Chapter 16: Problem-Oriented Mini Language
+**** Chapter 17: A Bussiness-Oriented Very High Level Language
+**** Chapter 18: Synchronization and Checkpoints
+**** Chapter 19: General Framwork for Interactive Applications
+**** Chapter 20: Performance Considerations
+**** Chapter 21: Defining Networks
+**** Chapter 22: Related Compiler Theory Concepts
+**** Chapter 23: Streams and Recursive Function Definitions
+**** Chapter 24: Comparison between FBP and Object-Oriented Porgramming
+**** Chapter 25: Related Concepts and Forerunners
+**** Chapter 26: The FBP Explosion
+**** Chapter 27: Ending and Beginnings
+**** Appendix: FBP Implementations and Diagramming Tool
+
+* 企業管理
 ** 如何建立客服團隊 
 - 勞力密集
 - Policy + SOP + System Agreement Management
