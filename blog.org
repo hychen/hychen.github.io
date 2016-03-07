@@ -5,9 +5,6 @@
 
 #+OPTIONS: num:nil
 
-#+BEGIN_ABSTRACT
-#+END_ABSTRACT
-
 * 管理
 ** 如何建立客服團隊
 - 勞力密集
