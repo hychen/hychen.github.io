@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-07 Mon 21:57 -->
+<!-- 2016-03-07 Mon 23:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>不及格學士後研究</title>
@@ -154,19 +154,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline11">管理</a>
+<li><a href="#orgheadline2">資訊工程</a>
 <ul>
-<li><a href="#orgheadline1">如何建立客服團隊</a>
+<li><a href="#orgheadline1">Assignment V.S. Binding</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline13">管理</a>
 <ul>
-<li><a href="#orgheadline2">常見問題</a></li>
-<li><a href="#orgheadline3">達成共同目標5大法則</a></li>
-<li><a href="#orgheadline4">CRM觀念與介紹</a></li>
-<li><a href="#orgheadline5">會員資料</a></li>
-<li><a href="#orgheadline6">CRM可做什麼?</a></li>
-<li><a href="#orgheadline7">客服成本與效益評估</a></li>
-<li><a href="#orgheadline8">團隊可能的角色</a></li>
-<li><a href="#orgheadline9">要不要外包?</a></li>
-<li><a href="#orgheadline10">客服能達到的效益</a></li>
+<li><a href="#orgheadline3">如何建立客服團隊</a>
+<ul>
+<li><a href="#orgheadline4">常見問題</a></li>
+<li><a href="#orgheadline5">達成共同目標5大法則</a></li>
+<li><a href="#orgheadline6">CRM觀念與介紹</a></li>
+<li><a href="#orgheadline7">會員資料</a></li>
+<li><a href="#orgheadline8">CRM可做什麼?</a></li>
+<li><a href="#orgheadline9">客服成本與效益評估</a></li>
+<li><a href="#orgheadline10">團隊可能的角色</a></li>
+<li><a href="#orgheadline11">要不要外包?</a></li>
+<li><a href="#orgheadline12">客服能達到的效益</a></li>
 </ul>
 </li>
 </ul>
@@ -181,30 +186,100 @@ for the JavaScript code in this tag.
 
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">管理</h2>
-<div class="outline-text-2" id="text-orgheadline11">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">資訊工程</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 </div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">如何建立客服團隊</h3>
+<h3 id="orgheadline1">Assignment V.S. Binding</h3>
 <div class="outline-text-3" id="text-orgheadline1">
+<p>
+所謂的 Functional Language 的變數不可改其實是不精確的。實際上它只是將變數分的更嚴謹，可修改，與不可修改。
+先來說說什麼是 Binding. Binding 指的是將一個符號綁定在一個值，綁定後就不可修改，這個符號稱之為變數。以自然語言來理解的話，其實就是代名詞。
+</p>
+
+<blockquote>
+<p>
+favonia: 一個變數沒有指到一個值。一個變數可以被一個值取代，但不會儲存什麼內容在裡面。
+</p>
+</blockquote>
+
+<p>
+所以說下面這個例子， 必須理解為3.14的另一個稱呼叫做 PI, 而不是 PI 這個容器的值是 3.14。而  1 + PI 這個式子的另一個稱呼是 result, 而不是 1 + PI 運算後，將值放到 result 這個容器裡。 不管是PI，還是 result 都只是個代稱，而不是容器。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">PI = <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">14</span>
+result = <span style="color: #a45bad;">1</span>.<span style="color: #a45bad;">0</span> + PI
+</pre>
+</div>
+
+<p>
+接下來搭配 SML 來解釋什麼是 Assignment。
+下面這段 code 是說 PI 是 3.14的binding, result 是 1 + PI 的binding。
+程式執行時(runtime) 會把 PI 這個變數代換成3.14。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">val PI = <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">14</span>
+val result = <span style="color: #a45bad;">1</span>.<span style="color: #a45bad;">0</span> + PI
+</pre>
+</div>
+
+<p>
+那如果需要可修改的變數怎麼辦，SML 可以讓變數綁在值的的指標上, ref 3.14
+指的是 3.14 這個值得指標指標。而因為指標指定的值是可以變的，所以現在
+PI 可以當成是可以修改的。 PI := 4 只是讓 PI 的值(也就是指標) 從 3.14
+指到 4，並不會產生新的binding。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">val PI = ref <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">14</span> # binding
+val result = <span style="color: #a45bad;">1</span>.<span style="color: #a45bad;">0</span> + PI # binding
+val PI := <span style="color: #a45bad;">4</span> # assign
+</pre>
+</div>
+
+<p>
+因此，在所有的 imperative language 裡，不管是Python, Ruby, C, Java, 
+變數其實都是被綁在指標上，這樣變數指到的值才能被修改。
+</p>
+
+<p>
+所以說，變數只是個值的代稱，如果值是指標，那麼就可以修改指標要指到哪個
+值，反之則不行。
+但不管怎麼說，變數都不應該被當成是一個容器。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">管理</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">如何建立客服團隊</h3>
+<div class="outline-text-3" id="text-orgheadline3">
 <ul class="org-ul">
 <li>勞力密集</li>
 <li>Policy + SOP + System Agreement Management</li>
 <li>要能參與重要決策，否則客服不知道如何回答及解決客戶問題。</li>
 </ul>
 </div>
-<div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2">常見問題</h4>
-<div class="outline-text-4" id="text-orgheadline2">
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">常見問題</h4>
+<div class="outline-text-4" id="text-orgheadline4">
 <ul class="org-ul">
 <li>一個流程，各自表述</li>
 <li>一個團隊，新人居多</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3">達成共同目標5大法則</h4>
-<div class="outline-text-4" id="text-orgheadline3">
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">達成共同目標5大法則</h4>
+<div class="outline-text-4" id="text-orgheadline5">
 <ul class="org-ul">
 <li>尊重人性的關鍵</li>
 <li>持續動力的泉源</li>
@@ -215,9 +290,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">CRM觀念與介紹</h4>
-<div class="outline-text-4" id="text-orgheadline4">
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">CRM觀念與介紹</h4>
+<div class="outline-text-4" id="text-orgheadline6">
 <ul class="org-ul">
 <li>Marketing</li>
 <li>Sales</li>
@@ -231,17 +306,17 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5">會員資料</h4>
-<div class="outline-text-4" id="text-orgheadline5">
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">會員資料</h4>
+<div class="outline-text-4" id="text-orgheadline7">
 <ul class="org-ul">
 <li>分析習慣跟產品的關聯性</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6">CRM可做什麼?</h4>
-<div class="outline-text-4" id="text-orgheadline6">
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8">CRM可做什麼?</h4>
+<div class="outline-text-4" id="text-orgheadline8">
 <ul class="org-ul">
 <li>如果能提供滿意快速服務, 舊顧客再高達70%</li>
 <li>獲得一位新顧客的成本是舊客戶再度光臨的5-8倍</li>
@@ -253,9 +328,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">客服成本與效益評估</h4>
-<div class="outline-text-4" id="text-orgheadline7">
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">客服成本與效益評估</h4>
+<div class="outline-text-4" id="text-orgheadline9">
 <ul class="org-ul">
 <li>平均處理時間(Average Handling Time) - 每人</li>
 <li>有效工時8 hour * 0.8</li>
@@ -265,9 +340,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8">團隊可能的角色</h4>
-<div class="outline-text-4" id="text-orgheadline8">
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">團隊可能的角色</h4>
+<div class="outline-text-4" id="text-orgheadline10">
 <ul class="org-ul">
 <li>一線客服</li>
 <li>二線客服</li>
@@ -277,9 +352,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9">要不要外包?</h4>
-<div class="outline-text-4" id="text-orgheadline9">
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">要不要外包?</h4>
+<div class="outline-text-4" id="text-orgheadline11">
 <ul class="org-ul">
 <li>先把SOP建立完畢</li>
 <li>30人以上的客服團隊外包才有優勢</li>
@@ -290,9 +365,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10">客服能達到的效益</h4>
-<div class="outline-text-4" id="text-orgheadline10">
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">客服能達到的效益</h4>
+<div class="outline-text-4" id="text-orgheadline12">
 <ul class="org-ul">
 <li>產品忠誠度</li>
 <li>企業形象</li>
@@ -304,7 +379,7 @@ for the JavaScript code in this tag.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: 陳信屹</p>
-<p class="date">Created: 2016-03-07 Mon 21:57</p>
+<p class="date">Created: 2016-03-07 Mon 23:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
