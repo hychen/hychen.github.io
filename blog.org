@@ -1,4 +1,4 @@
-#+TITLE: 不及格學士後研究
+#+TITLE: 不及格大學士後研究
 #+SETUPFILE: theme-readtheorg.setup
 
 #+STARTUP: overview
@@ -9,6 +9,103 @@
 
 -----
 
+* 垃圾話
+** 會議室裡遺失的東西
+#+BEGIN_QUOTE
+K: 「有同學在會議室裡遺失重要的東西嗎？」
+A: 「青春。」
+#+END_QUOTE
+source: bobchao's facebook.
+** 笑即是殘酷 
+#+BEGIN_QUOTE
+Mikimoto: 根據幸福守恆定律，有生物笑的時候，一定有生物倒楣，所以笑的人都很殘酷。
+#+END_QUOTE
+** 生存、質疑與事故
+#+BEGIN_QUOTE
+Mikimoto: 所有的事情都會分成三個階段：「生存、質疑與世故」，例如以吃飯來說，一剛開始，你會告訴自己要吃飯，之後你會問為什麼要吃飯，最後你會問自己還有什麼東西可以吃
+#+END_QUOTE
+** 四句話總結人的一生
+#+BEGIN_QUOTE
+喜歡上一個人，喜歡上一個人，喜歡上一個人，喜歡上一個人。
+#+END_QUOTE
+source: https://t.co/JQBvV4Hb2R
+** JavaScript 帶給人類的啟示
+javascript 告訴我們一件事，本身優不優秀不重要，重點是生對地方....
+** 為什麼幸福的家庭都一個樣? 不幸的家庭都不一樣？
+#+BEGIN_QUOTE
+幸福的家庭都一個樣，不幸的家庭則家家有本難念的經。為什麼呢？讓工程師來告訴你：幸福的判斷式是 &&，不幸的判斷式是 ||；同時滿足所有條件才能變成幸福家庭，任一條件不滿足都會變成不幸家庭。
+#+END_QUOTE
+** 空虛與複雜
+小孩的精神很豐富，所以他們的玩具很簡單。
+大人的玩具很複雜，所以他們的精神很空虛。
+** 矛盾何來
+矛盾何來，皆因製杖販劍
+** 一無所有
+#+BEGIN_QUOTE
+不要再說你一無所有了，你不是有病嗎？
+#+END_QUOTE
+** 跟工科大學生談生涯規劃
+友人問曰: 「要跟大學生講職場、生涯規劃，大家覺得應該講些什麼」？
+
+有鄉民答曰: 「工程師怎麼娶到好老婆的」
+
+再有鄉民答曰: 「30歲前討到好老婆不能不知道的30件事」
+
+友人妻奇道: 「所以取老婆比較重要？」
+
+另有鄉民回道 :「娶對，就是人生。 娶錯，就是殘生。」
+** 公司來了新人，姓蔡
+男的叫蔡比巴, 女的叫菜菜子
+** Duck Typing
+什麼叫做 duck typing, 只要這個女生化妝起來像正妹，修圖後像正妹，整形後像正妹，那她就是個正妹。
+** 熱情與初戀
+#+BEGIN_QUOTE
+Pingooo: 熱情就像初戀，一旦失去了，就很難追回來
+#+END_QUOTE
+** 阿宅都很忙
+#+BEGIN_QUOTE
+Jserv: 要說多少次，阿宅們都很忙碌的呀，不會因為居家就會很有空
+#+END_QUOTE
+** 要改的地方太多
+#+BEGIN_QUOTE
+Clkao: 要改的地方太多了，就改天
+#+END_QUOTE
+** 註定失敗
+#+BEGIN_QUOTE
+「從什麼時候開始決定你的人生注定失敗？」
+『呃，當精子的時候？』
+#+END_QUOTE
+** 那就改天
+改天就是永遠沒有那一天
+* 假裝有哲理的廢文
+** 網路人格
+語氣、詞彙、以及藏匿在句子中的思想，
+在1與0的空間中交織出一個網路人格。
+
+於是我確信我真的從一篇篇的文章，
+漸漸描繪出一個概略的輪廓，認識了妳。
+
+只是妳永遠是那樣的模糊不清析，
+
+妳終究只是個ID。
+
+而我也靠著一次又一次的貼文，
+雕塑出一個網路人格，讓別人認識部份的我，
+
+這也終究只是個ID。
+
+或許有天醒來，突然拋開上頭承載的人格、信譽、
+人際關係，從新註冊一個ID，從新開使。
+
+那，這算不算一個生命的死亡？
+
+是不是一個ID誕生的太容易，所以學會了說話不負責，
+久而久之也將這個惡習，從虛擬中帶進現實。
+
+我們處於一個尷尬的年代，徘徊在虛擬與真實之間。
+** 角色扮演
+我們都是被一個更大的群體包圍者。
+不管你愛或不愛，在恰如其分的年紀，你終究得扮演著別人希望你恰如其分扮演的角色。
 * 資訊工程
 ** Assignment V.S. Binding
 
@@ -285,7 +382,6 @@ The approach mentioned hre is for bussiness applications, not mathematical appli
 **** Chapter 26: The FBP Explosion
 **** Chapter 27: Ending and Beginnings
 **** Appendix: FBP Implementations and Diagramming Tool
-
 * 企業管理
 ** 如何建立客服團隊 
 - 勞力密集
@@ -343,3 +439,59 @@ The approach mentioned hre is for bussiness applications, not mathematical appli
 *** 客服能達到的效益
 - 產品忠誠度 
 - 企業形象
+* 自由軟體/開放源碼
+** 如何成為 Debian Deveoper 
+*** 10分鐘快速簡介
+- 影片: [[http://www.youtube.com/watch?v=9ClVlUXi0ZU&feature=player_embedded][成為DD你也行]]
+- 大綱
+  - 什麼是 Debian Developer
+  - 成為 Debian Developer 的好處
+  - 成為 Debian Developer 需要很強的技術能力嗎
+  - 成為 Debian Developer 有什麼義務
+  - Canonical 目前有幾位 Debian Developer
+*** 上半部
+- 影片: [[http://www.archive.org/download/Road2DD/SANY7730-computer_512kb.mp4][Road2DD-1]]
+- 大綱
+  - 什麼是Debian Developer
+  - 成為Debian Developer的好處
+  - 申請前需有的資格
+  - 申請流程
+  - PP1: 價值觀
+    - 解釋 Debian 社群契約
+    - 是否是自由軟體的三個測試
+    - 沙漠荒島: 是否宣稱修改過的source一定要送回upstream
+    - 秘密反抗軍: 是否宣稱修改過的source一定要公開, 即使別人沒拿到 Binary
+      - 邪惡的觸角:使否有撤銷條款
+      - 什麼是Source
+*** 下半部
+- 影片: [[http://www.archive.org/download/Road2DD2/SANY7741_512kb.mp4][Road2DD-2]]
+- 大綱:
+  - Debian 與 Ubuntu 的關係
+    - 套件同步流程
+    - patch 什麼時候送 Upstream, 什麼時候送 Debian, 甚時候送 Ubuntu
+    - 什麼樣的套件 Ubuntu 沒辦法送回 Debian
+  - PP2 Procedure
+    - Debian 的 Bug Tracker
+    - NMU - 非維護者上傳
+    - Debian 的 投票機制
+    - GPG 簽名機制
+    - 新套件上傳方式
+    - 翻譯的方式
+  - TS1 - Tasks - 完成 3個任務
+    - 修RC Bug
+    - QA
+    -  翻譯
+  - TS2 - Skills - 檢驗技術能力
+    - 申請之後
+    -  DM 與 DD的差別
+* 英文
+** 討論事情常用句
+- Definitely worth looking into :: 值得深入了解
+- it is just my speculation :: 只是我的猜測
+- We need to understand at least a decent estimate of how much time we’d be investing to do it this way from here onwards :: .....
+- Do you think I’m off base with these estimates? :: 你有覺得我有估太多久的時間嗎?
+- It is my gut feeling :: 這是我的直覺
+** 筆戰常用句
+- it’s a huge can of worms :: to create a situation that will cause trouble or be unpleasant
+- that’s a strawman :: 那是的稻草人謬誤
+- so again going in circles now. :: 我們又在繞圈子了。
