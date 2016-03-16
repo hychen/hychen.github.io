@@ -485,6 +485,8 @@ The approach mentioned hre is for bussiness applications, not mathematical appli
     - 申請之後
     -  DM 與 DD的差別
 * 英文
+** 垃圾話 
+- shoot the shit :: 閒聊
 ** 討論事情常用句
 - Definitely worth looking into :: 值得深入了解
 - it is just my speculation :: 只是我的猜測
