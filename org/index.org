@@ -3,13 +3,15 @@
 #+HTML_LINK_UP: ../index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
-* 關於我
-- 履歷: [[../index.html][HTML]] / [[../resume.json][JSON]]
+-----
+我是 [[../index.html][hychen]]。
+-----
+
+* 文章
+- [[file:notes/thought.org][隨筆]] :: 一些看法，隨便寫寫。
 * 筆記
-任何人生過程留下的吉光片羽。
 - [[./notes/language.org][語言學習]] :: 語言學習方法 / 文法 / 單字 / 片語。
 - [[file:./notes/cs.org][資訊工程]] :: 程式語言理論 / 演算法 。
 - [[file:notes/management.org][企業管理]] :: 團隊管理 / 公司經營。
 - [[./notes/productivity.org][生產力]]  :: 時間管理 / 常用軟體。
 - [[file:./notes/trash_talk.org][垃圾話]] :: 閒聊用的梗全集。
-- [[file:notes/thought.org][隨筆]] :: 一些想法。
