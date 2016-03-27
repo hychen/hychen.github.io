@@ -4,7 +4,7 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * 關於我
-- 履歷: [[../index.html][html]] / [[../resume.json][json]]
+- 履歷: [[../index.html][HTML]] / [[../resume.json][JSON]]
 * 筆記
 任何人生過程留下的吉光片羽。
 - [[./notes/language.org][語言學習]] :: 語言學習方法 / 文法 / 單字 / 片語。
