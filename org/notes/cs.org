@@ -1,5 +1,8 @@
 #+TITLE: 資訊工程
+#+HTML_LINK_HOME: ../index.html
+#+HTML_LINK_UP: ../index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
+
 * Assignment V.S. Binding
 
 所謂的 Functional Language 的變數不可改其實是不精確的。實際上它只是將變數分的更嚴謹，可修改，與不可修改。

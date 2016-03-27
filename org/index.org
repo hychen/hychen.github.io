@@ -1,4 +1,6 @@
 #+TITLE: 不及格大學士後研究
+#+HTML_LINK_HOME: ../index.html
+#+HTML_LINK_UP: ../index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * 關於我
