@@ -1,9 +1,10 @@
 #+TITLE: 不及格大學士後研究
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
-
+* 關於我
+- 履歷: [[../index.html][html]] / [[../resume.json][json]]
 * 筆記
-任何學習過程留下的吉光片羽。
+任何人生過程留下的吉光片羽。
 - [[./notes/language.org][語言學習]] :: 語言學習方法 / 文法 / 單字 / 片語。
 - [[file:./notes/cs.org][資訊工程]] :: 程式語言理論 / 演算法 。
 - [[file:notes/management.org][企業管理]] :: 團隊管理 / 公司經營。
