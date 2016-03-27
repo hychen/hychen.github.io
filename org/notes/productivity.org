@@ -1,0 +1,27 @@
+#+TITLE: 生產力
+#+OPTIONS: H:2
+#+HTML_LINK_HOME: ../index.html
+#+HTML_LINK_UP: ../index.html
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
+
+* Remapping Keyboard Keys On Mac
+** Gloal
+1. Remaps capslock to Ctrl.
+2. Remaps casplock to Escape.
+** Why
+1. I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
+   I'll use *Ctrl* and *Escape* very very often. 
+2. The default layout of Mac keyboard does not work very well to me.
+3. Capslock is useless, I never use it. Luckly, it seems a good place to put *Ctrl/Escape* there.
+** Remaps Capslock To Ctrl
+1. Go into the Keyboard preference pane. 
+2. Click "Modifier Keys…", and change Caps Lock to Control.
+3. Download the lastest version of [[https://pqrs.org/osx/karabiner/seil.html.en][Seli]].
+4. Open Seli and go *other keys* section to Change *Ctrl_L*
+** Remaps Capslock to Escape
+1. Download the lastest version of [[https://pqrs.org/osx/karabiner/][Karabiner]].
+2. go into Karabiner and search for this option:
+#+BEGIN_VERSE
+Control_L to Control_L
+      (+ when you type Control_L only, send Escape)
+#+END_VERSE

@@ -3,6 +3,7 @@
    + notes
      + [[file:notes/management.org][企業管理]]
      + [[file:notes/trash_talk.org][垃圾話]]
+     + [[file:notes/productivity.org][生產力]]
      + [[file:notes/floss.org][自由軟體與開放源碼]]
      + [[file:notes/language.org][語言學習]]
      + [[file:notes/cs.org][資訊工程]]
