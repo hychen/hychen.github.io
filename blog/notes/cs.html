@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-03-27 Sun 15:39 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>資訊工程</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Chen Hsin-Yi" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">資訊工程</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Assignment V.S. Binding</a></li>
+<li><a href="#orgheadline63">Study Of Coordination Language And Models</a>
+<ul>
+<li><a href="#orgheadline2">Patterns</a></li>
+<li><a href="#orgheadline16">Coordination Language And Models</a>
+<ul>
+<li><a href="#orgheadline15">Papers</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline20">Web Services Compositions</a>
+<ul>
+<li><a href="#orgheadline19">Papers</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline62">Data Flow</a>
+<ul>
+<li><a href="#orgheadline24">Books</a></li>
+<li><a href="#orgheadline61">Papers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline64">Flow-Based Programming 2ND Edition, J. Paul Morrison</a>
+<ul>
+<li><a href="#orgheadline65">Terms</a></li>
+<li><a href="#orgheadline66">Mentioned People</a>
+<ul>
+<li><a href="#orgheadline67">Wayne Stevens</a></li>
+<li><a href="#orgheadline68">David Gelernter</a></li>
+<li><a href="#orgheadline69">Nicholas Carriero</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline108">Notes</a>
+<ul>
+<li><a href="#orgheadline70">Chaoter 0: Prologue</a></li>
+<li><a href="#orgheadline77">Chpater 1: Introduction</a></li>
+<li><a href="#orgheadline81">Chapter 2: High-Level Languages, 4GLs and Source Code Reuse</a></li>
+<li><a href="#orgheadline82">Chapter 3: Basic Concepts</a></li>
+<li><a href="#orgheadline83">Chapter 4: Reuse of components</a></li>
+<li><a href="#orgheadline84">Chapter 5: Parametrization of Reusable Components</a></li>
+<li><a href="#orgheadline85">Chapter 6: Composite Components</a></li>
+<li><a href="#orgheadline86">Chapter 7: Building Components &amp; Some More Simple Applications</a></li>
+<li><a href="#orgheadline87">Chapter 8: Substreams and Control IPs</a></li>
+<li><a href="#orgheadline88">Chapter 9: Some more components and Simple Applications</a></li>
+<li><a href="#orgheadline89">Chapter 10: Data Descriptions and Descriptors</a></li>
+<li><a href="#orgheadline90">Chapter 11: Tree Structure</a></li>
+<li><a href="#orgheadline91">Chapter 12: Scheduling Rules</a></li>
+<li><a href="#orgheadline92">Chapter 13: Loop-Type Networks</a></li>
+<li><a href="#orgheadline93">Chapter 14: Implementation, Network Splitting and Client-Server</a></li>
+<li><a href="#orgheadline94">Chapter 15: Deadlocks: Their Causes and Prevention</a></li>
+<li><a href="#orgheadline95">Chapter 16: Problem-Oriented Mini Language</a></li>
+<li><a href="#orgheadline96">Chapter 17: A Bussiness-Oriented Very High Level Language</a></li>
+<li><a href="#orgheadline97">Chapter 18: Synchronization and Checkpoints</a></li>
+<li><a href="#orgheadline98">Chapter 19: General Framwork for Interactive Applications</a></li>
+<li><a href="#orgheadline99">Chapter 20: Performance Considerations</a></li>
+<li><a href="#orgheadline100">Chapter 21: Defining Networks</a></li>
+<li><a href="#orgheadline101">Chapter 22: Related Compiler Theory Concepts</a></li>
+<li><a href="#orgheadline102">Chapter 23: Streams and Recursive Function Definitions</a></li>
+<li><a href="#orgheadline103">Chapter 24: Comparison between FBP and Object-Oriented Porgramming</a></li>
+<li><a href="#orgheadline104">Chapter 25: Related Concepts and Forerunners</a></li>
+<li><a href="#orgheadline105">Chapter 26: The FBP Explosion</a></li>
+<li><a href="#orgheadline106">Chapter 27: Ending and Beginnings</a></li>
+<li><a href="#orgheadline107">Appendix: FBP Implementations and Diagramming Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Assignment V.S. Binding</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+所謂的 Functional Language 的變數不可改其實是不精確的。實際上它只是將變數分的更嚴謹，可修改，與不可修改。
+先來說說什麼是 Binding. Binding 指的是將一個符號綁定在一個值，綁定後就不可修改，這個符號稱之為變數。以自然語言來理解的話，其實就是代名詞。
+</p>
+
+<blockquote>
+<p>
+favonia: 一個變數沒有指到一個值。一個變數可以被一個值取代，但不會儲存什麼內容在裡面。
+</p>
+</blockquote>
+
+<p>
+所以說下面這個例子， 必須理解為3.14的另一個稱呼叫做 PI, 而不是 PI 這個容器的值是 3.14。而  1 + PI 這個式子的另一個稱呼是 result, 而不是 1 + PI 運算後，將值放到 result 這個容器裡。 不管是PI，還是 result 都只是個代稱，而不是容器。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">PI = <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">14</span>
+result = <span style="color: #a45bad;">1</span>.<span style="color: #a45bad;">0</span> + PI
+</pre>
+</div>
+
+<p>
+接下來搭配 SML 來解釋什麼是 Assignment。
+下面這段 code 是說 PI 是 3.14的binding, result 是 1 + PI 的binding。
+程式執行時(runtime) 會把 PI 這個變數代換成3.14。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">val PI = <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">14</span>
+val result = <span style="color: #a45bad;">1</span>.<span style="color: #a45bad;">0</span> + PI
+</pre>
+</div>
+
+<p>
+那如果需要可修改的變數怎麼辦，SML 可以讓變數綁在值的的指標上, ref 3.14
+指的是 3.14 這個值得指標指標。而因為指標指定的值是可以變的，所以現在
+PI 可以當成是可以修改的。 PI := 4 只是讓 PI 的值(也就是指標) 從 3.14
+指到 4，並不會產生新的binding。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">val PI = ref <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">14</span> # binding
+val result = <span style="color: #a45bad;">1</span>.<span style="color: #a45bad;">0</span> + PI # binding
+val PI := <span style="color: #a45bad;">4</span> # assign
+</pre>
+</div>
+
+<p>
+因此，在所有的 imperative language 裡，不管是Python, Ruby, C, Java, 
+變數其實都是被綁在指標上，這樣變數指到的值才能被修改。
+</p>
+
+<p>
+所以說，變數只是個值的代稱，如果值是指標，那麼就可以修改指標要指到哪個
+值，反之則不行。
+但不管怎麼說，變數都不應該被當成是一個容器。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline63" class="outline-2">
+<h2 id="orgheadline63">Study Of Coordination Language And Models</h2>
+<div class="outline-text-2" id="text-orgheadline63">
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Patterns</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<ul class="org-ul">
+<li><a href="http://workflowpatterns.com/">Workflow Patterns</a></li>
+<li><a href="http://communicationtheory.org/patterns-of-communication/">Communication Patters</a></li>
+<li>Dsitrubuted Computing Software Architecture Pattern
+<ul class="org-ul">
+<li><a href="http://www.cs.wustl.edu/~schmidt/POSA/POSA4/">Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing</a></li>
+</ul></li>
+<li>Enterprise Intergration Patterns
+<ul class="org-ul">
+<li><a href="http://www.enterpriseintegrationpatterns.com/toc.html">Messaging Patterns</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16">Coordination Language And Models</h3>
+<div class="outline-text-3" id="text-orgheadline16">
+</div><div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15">Papers</h4>
+<div class="outline-text-4" id="text-orgheadline15">
+</div><ul class="org-ul"><li><a id="orgheadline14"></a>Coordination models and languages, GA Papadopoulos, F Arbab, 1999<br  /><ul class="org-ul"><li><a id="orgheadline3"></a>The concept of coordination is by no means limited to Computer Science.<br  /><div class="outline-text-6" id="text-orgheadline3">
+<p>
+Malone and Crowston characterise coordination as an emerging research area with an interdisciplinary focus,
+playing a key issue in many diverse disciplines such as economics and operational  research,  organisation theory  and  biology.
+</p>
+</div></li>
+<li><a id="orgheadline4"></a>What is Coordination Model<br  /><div class="outline-text-6" id="text-orgheadline4">
+<ul class="org-ul">
+<li>the glue that binds separate activities into an ensemble.</li>
+<li>The need of Multilingual and Heterogeneous Systems</li>
+</ul>
+</div></li>
+<li><a id="orgheadline5"></a>Coordination works well  on distributed/parallel programming.<br  /><div class="outline-text-6" id="text-orgheadline5">
+<p>
+Programming a distributed or parallel system can be seen as the combination of two distinct activities: the actual
+computing part comprising a number of processes involved in manipulating data and a coordination part responsible for
+the communication and cooperation between the processes. Thus, coordination can be used to distinguish the computational
+concerns of some distributed or parallel application from the communication ones, allowing the separate development but also
+the eventual amalgamation of the these two major development phases.
+</p>
+</div></li>
+<li><a id="orgheadline6"></a>Data-Driven<br  /><div class="outline-text-6" id="text-orgheadline6">
+<ul class="org-ul">
+<li>The main characteristic of the data-driven coordination models and languages is the fact that the state of the computation at any moment
+in time is defined in terms of both the values of the data being received or sent and the actual configuration of the coordinated components.</li>
+<li>A data-driven coordination language typically offers some coordination primitives (coupled with a coordination metaphor) which are mixed within
+the purely computational part of  the  code.  These  primitives  do  encapsulate  in  a  useful  way  the  communication  and configurational
+aspects of some computation, but must be used in conjunction with the purely computational manipulation of data associated with some process.
+This means that processes cannot easily be distinguished as either coordination or computational processes.</li>
+</ul>
+</div>
+<ul class="org-ul"><li><a id="orgheadline7"></a>Data-Driven Model - Shared Data Space<br  /><div class="outline-text-7" id="text-orgheadline7">
+<ul class="org-ul">
+<li>Almost all coordination models belonging to this category have evolved around the notion of a <b>Shared Dataspace</b>.</li>
+<li>A <b>Shared  Dataspace</b> is a common, content-addressable  data structure. All processes involved in some computation can communicate among themselves only indirectly via this medium.
+this metaphor achieves decoupling of processes in both space and time.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline8"></a>Data-Driven Model - Message-passing<br  /></li>
+
+<li><a id="orgheadline9"></a>Data-Driven Model - Compositional Programming<br  /><div class="outline-text-7" id="text-orgheadline9">
+<ul class="org-ul">
+<li>A compositional programming system is one in which properties of program
+components are preserved when those components are composed in parallel
+with other program components.
+Thus, it is possible to define in a compositional way recurring patterns
+of parallel computation, whether configuration ones (such as mapping techniques)
+or communication ones (such as streamers  and  mergers),  as  building  blocks
+and  combine  them  together  to  form  bigger programs.</li>
+<li>2 approachs
+<ul class="org-ul">
+<li><b>concurrent logic programming</b></li>
+<li><b>functional programming</b></li>
+</ul></li>
+</ul>
+</div></li></ul></li>
+<li><a id="orgheadline10"></a>Control-Driven<br  /><div class="outline-text-6" id="text-orgheadline10">
+<ul class="org-ul">
+<li>the coordinated framework evolves by means of observing state changes in processes
+and, possibly, broadcast of events. Contrary to the case of the data-driven family
+where coordinators directly handle and examine data values, here processes
+(whether coordination or computational ones) are treated as black boxes; data handled
+within a  process is of no concern to the environment of the process.</li>
+<li>Processes communicate with their environment by means of clearly defined interfaces,
+usually referred to as input or output ports. Producer-consumer relationships are formed
+by means of setting up stream or channel connections between output ports of producers
+and input ports of consumers. By nature, these connections are point-to-point, although
+limited  broadcasting functionality  is  usually  allowed  by  forming  1-n
+relationships  between  a  producer  and  n consumers and vice versa.</li>
+<li>Most of the coordination languages to be described in this section realise in one way or
+another the above <b>CSP</b>- or <b>Occam-like</b> formalism.</li>
+<li><b>static reconfiguration</b> v.s. <b>dynamic reconfiguration</b></li>
+<li><a href="http://projects.cwi.nl/manifold/">MANIFOLD</a></li>
+</ul>
+</div></li>
+<li><a id="orgheadline11"></a>Comparision Between Data-Driven and Control-Driven<br  /><div class="outline-text-6" id="text-orgheadline11">
+<ul class="org-ul">
+<li>In the case of the data-driven category, the coordination component is usually a set of primitives with predefined functionality which is used in connection with
+some “host” computational language, in the control-driven category the coordination component is usually a fully-fledged language.</li>
+<li>The data-driven category tends to be used mostly for parallelising computational problems. The control-driven category tends to be used primarily for modelling systems.</li>
+<li>the data- vs. control-driven separation is by no means a clear cut one.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline12"></a>Major Dimensions Of Coordination Model<br  /><div class="outline-text-6" id="text-orgheadline12">
+<ul class="org-ul">
+<li>the entities being coordinated</li>
+<li>the mechanism of coordination</li>
+<li>the coordination medium or architecture</li>
+<li>the semantics, rules of protocols of coordination employed</li>
+<li>whether a model supports a different (from the computational component) coordination language or involves the use of “add-on” primitives</li>
+<li>whether a model supports and encourages the use of many computational languages</li>
+<li>what is the most relevant application domain for each  model</li>
+<li>what is the implementation status of the proposed framework.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline13"></a>Concerned Issues<br  /><div class="outline-text-6" id="text-orgheadline13">
+<ul class="org-ul">
+<li>flat unstructured communication medium v.s. hierarchical levels of their communication medium</li>
+<li>port-to-port connections via streams with static/dymaic reconfiguration support.</li>
+<li>channnled-based v.s. medium-based</li>
+</ul>
+</div></li></ul></li></ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20">Web Services Compositions</h3>
+<div class="outline-text-3" id="text-orgheadline20">
+</div><div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19">Papers</h4>
+<div class="outline-text-4" id="text-orgheadline19">
+</div><ul class="org-ul"><li><a id="orgheadline17"></a>van der Aalst, W.M.P, Dumas, M. ; ter Hofstede, A.H.M..  (2003). Web Service Composition Languages: Old Wine in New Bottles?. IEEE.<br  /></li>
+<li><a id="orgheadline18"></a>Luca Cardelli and Rowan Davies. . (1997). Service Combinators for Web Computing. IEEE.<br  /></li></ul>
+</div>
+</div>
+<div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62">Data Flow</h3>
+<div class="outline-text-3" id="text-orgheadline62">
+</div><div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24">Books</h4>
+<div class="outline-text-4" id="text-orgheadline24">
+</div><ul class="org-ul"><li><a id="orgheadline21"></a>Morrison, J. P. (1994). Flow-based programming. Van Nostrand Reinhold.<br  /></li>
+<li><a id="orgheadline22"></a>Van-Roy, P., &amp; Haridi, S. (2004). Concepts, techniques, and models of computer programming. MIT press.<br  /></li>
+<li><a id="orgheadline23"></a>Matt Carkci. (2014). Dataflow and Reactive Programming Systems. Leanpub.<br  /></li></ul>
+</div>
+<div id="outline-container-orgheadline61" class="outline-4">
+<h4 id="orgheadline61">Papers</h4>
+<div class="outline-text-4" id="text-orgheadline61">
+</div><ul class="org-ul"><li><a id="orgheadline25"></a>Kelly, J. L., Lochbaum, C., &amp; Vyssotsky, V. A. (1961). A block diagram compiler. Bell System Technical Journal, 40(3), 669-676.<br  /></li>
+<li><a id="orgheadline26"></a>Sutherland, W. R. (1966). ON-LINE GRAPHICAL SPECIFICATION OF COMPUTER PROCEDURES (No. TR-405). LINCOLN LAB MASS INST OF TECH LEXINGTON.<br  /></li>
+<li><a id="orgheadline27"></a>Rodrigues, J. E., &amp; Rodriguez Bezos, J. E. (1969). A Graph Model for Parallel Computations.<br  /></li>
+<li><a id="orgheadline28"></a>Dennis, J. B. (1972). On the design and specification of a common base language (No. MAC-TR-101). MASSACHUSETTS INST OF TECH CAMBRIDGE PROJECT MAC.<br  /></li>
+<li><a id="orgheadline29"></a>Dennis, J. B. (1974, January). First version of a data flow procedure language. In Programming Symposium (pp. 362-376). Springer Berlin Heidelberg.<br  /></li>
+<li><a id="orgheadline30"></a>Gilles, K. A. H. N. (1974). The semantics of a simple language for parallel programming. In In Information Processing’74: Proceedings of the IFIP Congress (Vol. 74, pp. 471-475).<br  /></li>
+<li><a id="orgheadline31"></a>Karp, R. M., &amp; Miller, R. E. (1966). Properties of a model for parallel computations: Determinacy, termination, queueing. SIAM Journal on Applied Mathematics, 14(6), 1390-1411.<br  /></li>
+<li><a id="orgheadline32"></a>Karp, R. M., &amp; Miller, R. E. (1966). Properties of a model for parallel computations: Determinacy, termination, queueing. SIAM Journal on Applied Mathematics, 14(6), 1390-1411.<br  /></li>
+<li><a id="orgheadline33"></a>Nikhil, R. S. (1989, April). Can dataflow subsume von Neumann computing?. In ACM SIGARCH Computer Architecture News (Vol. 17, No. 3, pp. 262-272). ACM.<br  /></li>
+<li><a id="orgheadline34"></a>Karp, R. M., &amp; Miller, R. E. (1966). Properties of a model for parallel computations: Determinacy, termination, queueing. SIAM Journal on Applied Mathematics, 14(6), 1390-1411.<br  /></li>
+<li><a id="orgheadline35"></a>Berry, G. (1989). Real time programming: Special purpose or general purpose languages.<br  /></li>
+<li><a id="orgheadline36"></a>Lee, E. (1991). Consistency in dataflow graphs. Parallel and Distributed Systems, IEEE Transactions on, 2(2), 223-235.<br  /></li>
+<li><a id="orgheadline37"></a>Buck, J., &amp; Lee, E. A. (1992, May). The token flow model. In Data Flow Workshop.<br  /></li>
+<li><a id="orgheadline38"></a>Hils, D. D. (1992). Visual languages and computing survey: Data flow visual programming languages. Journal of Visual Languages &amp; Computing, 3(1), 69-101.<br  /></li>
+<li><a id="orgheadline39"></a>Hurson, A. R., Hurson, A. R., Lee, B., &amp; Lee, B. (1993). Issues in dataflow computing. Adv. in Comput, 37(285-333), 38-39.<br  /></li>
+<li><a id="orgheadline40"></a>Buck, J. T., &amp; Lee, E. A. (1993, April). Scheduling dynamic dataflow graphs with bounded memory using the token flow model. In Acoustics, Speech, and Signal Processing, 1993. ICASSP-93., 1993 IEEE International Conference on (Vol. 1, pp. 429-432). IEEE.<br  /></li>
+<li><a id="orgheadline41"></a>Bhattacharyya, S. S., &amp; Lee, E. A. (1994). Looped schedules for dataflow descriptions of multirate signal processing algorithms. Formal Methods in System Design, 5(3), 183-205.<br  /></li>
+<li><a id="orgheadline42"></a>Bhattacharyya, S. S., Buck, J. T., Ha, S., &amp; Lee, E. A. (1995). Generating compact code from dataflow specifications of multirate signal processing algorithms. Circuits and Systems I: Fundamental Theory and Applications, IEEE Transactions on, 42(3), 138-150.<br  /></li>
+<li><a id="orgheadline43"></a>Parks, T. M. (1995). Bounded scheduling of process networks (Doctoral dissertation, University of California). Chicago<br  /></li>
+<li><a id="orgheadline44"></a>Parks, T. M., Pino, J. L., &amp; Lee, E. A. (1995, October). A comparison of synchronous and cycle-static dataflow. In Signals, Systems and Computers, 1995. 1995 Conference Record of the Twenty-Ninth Asilomar Conference on (Vol. 1, pp. 204-210). IEEE.<br  /></li>
+<li><a id="orgheadline45"></a>Lee, E. A., &amp; Parks, T. M. (1995). Dataflow process networks. Proceedings of the IEEE, 83(5), 773-801.<br  /></li>
+<li><a id="orgheadline46"></a>Verdoscia, L. O. R. E. N. Z. O. (1996). ALFA fine grain dataflow machine. International Programming, ma orgun and ea ashcroft edition.<br  /></li>
+<li><a id="orgheadline47"></a>Lee, E. A. (1997). A denotational semantics for dataflow with firing. Electronics Research Laboratory, College of Engineering, University of California.<br  /></li>
+<li><a id="orgheadline48"></a>Robic, B., Silc, J., &amp; Ungerer, T. (2000). Beyond dataflow. Journal of Computing and Information Technology, 8(2), 89-102.<br  /></li>
+<li><a id="orgheadline49"></a>Lee, B. (2000). Specification and design of reactive systems (Doctoral dissertation, UNIVERSITY of CALIFORNIA).<br  /></li>
+<li><a id="orgheadline50"></a>Liu, J., &amp; Lee, E. A. (2002). A component-based approach to modeling and simulating mixed-signal and hybrid systems. ACM Transactions on Modeling and Computer Simulation (TOMACS), 12(4), 343-368.<br  /></li>
+<li><a id="orgheadline51"></a>Johnston, W. M., Hanna, J. R., &amp; Millar, R. J. (2004). Advances in dataflow programming languages. ACM Computing Surveys (CSUR), 36(1), 1-34.<br  /></li>
+<li><a id="orgheadline52"></a>Petersen, A., Putnam, A., Mercaldi, M., Schwerin, A., Eggers, S., Swanson, S., &amp; Oskin, M. (2006, September). Reducing control overhead in dataflow architectures. In 「Proceedings of the 15th international conference on Parallel architectures and compilation techniques (pp. 182-191). ACM.<br  /></li>
+<li><a id="orgheadline53"></a>Lee, E. A. (2009). Computing needs time. Communications of the ACM, 52(5), 70-79.<br  /></li>
+<li><a id="orgheadline54"></a>Arandi, S., &amp; Evripidou, P. (2010, July). Programming multi-core architectures using data-flow techniques. In Embedded Computer Systems (SAMOS), 2010 International Conference on (pp. 152-161). IEEE.<br  /></li>
+<li><a id="orgheadline55"></a>Lee, E. A., &amp; Varaiya, P. (2011). Structure and interpretation of signals and systems, Second Edition, LeeVaraiya.org.<br  /></li>
+<li><a id="orgheadline56"></a>Amsden, E. (2011). A survey of functional reactive programming. Unpublished.<br  /></li>
+<li><a id="orgheadline57"></a>Sousa, T. B. (2012). Dataflow Programming Concept, Languages and Applications. In Doctoral Symposium on Informatics Engineering.<br  /></li>
+<li><a id="orgheadline58"></a>Odersky, M., &amp; Maier, I. (2012). Deprecating the Observer Pattern with Scala. React (No. EPFL-REPORT-176887).<br  /></li>
+<li><a id="orgheadline59"></a>Mishra, V., &amp; Oney, K. Predictive Block Dataflow Model for Parallel Computation.<br  /></li>
+<li><a id="orgheadline60"></a>Chakilam, S. R. A. K. C., &amp; O’Neil, T. W. STATIC SCHEDULING FOR CYCLO STATIC DATA FLOW GRAPHS.<br  /></li></ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline64" class="outline-2">
+<h2 id="orgheadline64">Flow-Based Programming 2ND Edition, J. Paul Morrison</h2>
+<div class="outline-text-2" id="text-orgheadline64">
+</div>
+<div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65">Terms</h3>
+<div class="outline-text-3" id="text-orgheadline65">
+<dl class="org-dl">
+<dt>Configurable modularity</dt><dd>a term coined by Raoul de Campo of IBM Research and later expanded on by Nate Edwards of the same organization, denoting the ability to reuse independent components by changing their interconnections, but not their internals.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> In Edwards' view this characterizes all successful reuse systems, and indeed all systems which can be described as "engineered".</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgheadline66" class="outline-3">
+<h3 id="orgheadline66">Mentioned People</h3>
+<div class="outline-text-3" id="text-orgheadline66">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-right">Page</th>
+<th scope="col" class="org-left">Purpose</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Wayne Stevens</td>
+<td class="org-right">5</td>
+<td class="org-left">強調FBP會成為典範轉移的重要因素</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">David Gelernter</td>
+<td class="org-right">7</td>
+<td class="org-left">指出FBP是 Coordination Language的一種例子</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Nicholas Carriero</td>
+<td class="org-right">7</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Raoul de Campo</td>
+<td class="org-right">7</td>
+<td class="org-left">介紹Raoul 研究的 "configurable modularity</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Nate Edwards</td>
+<td class="org-right">7</td>
+<td class="org-left">指出Nate Edwards 的 configurable modularity 研究篇硬體所以沒被重視</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Jackson 1975</td>
+<td class="org-right">24</td>
+<td class="org-left">指出 Design 跟 Impleentartion 在FBP的概念</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgheadline67" class="outline-4">
+<h4 id="orgheadline67"><a href="https://en.wikipedia.org/wiki/Wayne_Stevens">Wayne Stevens</a></h4>
+<div class="outline-text-4" id="text-orgheadline67">
+<ul class="org-ul">
+<li>A software engineer, chief architect of application development methodology 
+for IBM's consulting group.</li>
+<li>Important works are 
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Structured_analysis">Structured Design</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline68" class="outline-4">
+<h4 id="orgheadline68"><a href="https://en.wikipedia.org/wiki/David_Gelernter">David Gelernter</a></h4>
+<div class="outline-text-4" id="text-orgheadline68">
+<ul class="org-ul">
+<li>Parallel Computation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69">Nicholas Carriero</h4>
+</div>
+</div>
+
+<div id="outline-container-orgheadline108" class="outline-3">
+<h3 id="orgheadline108">Notes</h3>
+<div class="outline-text-3" id="text-orgheadline108">
+</div><div id="outline-container-orgheadline70" class="outline-4">
+<h4 id="orgheadline70">Chaoter 0: Prologue</h4>
+<div class="outline-text-4" id="text-orgheadline70">
+<p>
+作者自介自己的成長背景，大學在 King's college 就讀人類學系，並且強調將人類行為轉換成符號邏輯是件很困難的事情
+在他的IBM生涯中，不斷碰觸到IBM電腦的瓶頸，這使得他開始專注在一個基本問題 - 為什麼在電腦上開發程式這麼困難，當要讓電腦做一些人類覺得很簡單的事情時。
+</p>
+</div>
+<ul class="org-ul"><li><a id="orgheadline71"></a>Reusable Code<br  /><div class="outline-text-5" id="text-orgheadline71">
+<p>
+作者寫過 Compiler (BABEL), 也寫過 Interpreter (BLIS), 而在那個年代已經有 reusable subroutine library，只是幾乎都是一次性函數, 
+像是*binary function*, 他曾試圖撰寫通用的大量更新的*function*, 但卻失敗了(只支援少數的資料集合), 這些經驗讓他開始思考是否有另一種方式
+可以產生可再用的程式碼。
+</p>
+</div></li>
+<li><a id="orgheadline72"></a>Rapid Prototyping<br  /><div class="outline-text-5" id="text-orgheadline72">
+<p>
+作者相信不管做任何事，只要有懷疑的地方，就先做出一個 prototyping, 並認為好的 prototyping 是可以一直成長，直到成為完整的系統。
+並提到[David的書:1]也有說到數種結合互動式開發與Milestone的放式。
+</p>
+</div></li>
+<li><a id="orgheadline73"></a>Focus Of This Book<br  /><div class="outline-text-5" id="text-orgheadline73">
+<p>
+The approach mentioned hre is for bussiness applications, not mathematical applications.
+</p>
+</div></li>
+<li><a id="orgheadline74"></a>Thinking things visual term<br  /><div class="outline-text-5" id="text-orgheadline74">
+<p>
+由於他媽媽使母親的關係，使他在成長過程中常使用圖像式思考，在這本書提到的很重要的一點是使用圖像是符號來開發程式，有個好處是能利用到人類的圖像思考能力。
+間或提到 [GPSS:2]對他的影響，使他在介紹資料處理時是從單一 Record，而非電腦邏輯。(作者沒有電腦科學訓練)
+</p>
+</div></li>
+<li><a id="orgheadline75"></a>Application Design is a creative activity<br  /></li>
+<li><a id="orgheadline76"></a>Fun<br  /><div class="outline-text-5" id="text-orgheadline76">
+<ul class="org-ul">
+<li>The word "amateur" comes from the idea of loving. One should be proud to be called an computing amateur.</li>
+<li>If an activity isn't fun, humans probaly shouldn't be doing it.</li>
+<li>The guys who turn out the most code are the ones who are having fun! - P.R Ewing.</li>
+<li>Play is not something we have to put away when we reach the state of adulthood</li>
+</ul>
+</div></li></ul>
+</div>
+<div id="outline-container-orgheadline77" class="outline-4">
+<h4 id="orgheadline77">Chpater 1: Introduction</h4>
+<div class="outline-text-4" id="text-orgheadline77">
+<p>
+敘述FBP實作的應用程式很容易被修改以達成目標，並強調這是個存在四十年以上且被驗證的技術。
+讓開發者專注在data transformation的方式，而不是procedural code，讓開發者專注在快速開發，產生跟容易維護的系統。
+同時，FBP也很適合分散式運算。
+作者同時指出，FBP需要數天到數週的學習時間。因為FBP背後隱含的思考模型與傳統程式相當不同。
+要把sequencial program改成支援multiplethread很困難，而 Von Neumann Computer Model 是讓程式開發非常困難的原因之一
+</p>
+</div>
+<ul class="org-ul"><li><a id="orgheadline78"></a>FBP != Data Flow<br  /><div class="outline-text-5" id="text-orgheadline78">
+<ul class="org-ul">
+<li>flow-based programming shares some basic concept with dataflow 
+architectures in computer design, but they are still not the same.</li>
+<li>作者認為要使用FBP是因為dataflow archtecture 不包含control flow的部分，而FBP包含，
+因此要使用另一個名稱以方便區隔。</li>
+<li>其他大多數 data flow programming 專注在數學運算，但FBP不僅僅是</li>
+<li>作者曾有過的模擬器經驗，讓他意識到若讓物件在這些運算中流動，會有更好的生產力。</li>
+</ul>
+</div></li>
+<li><a id="orgheadline79"></a>Entity flow throw the network<br  /><div class="outline-text-5" id="text-orgheadline79">
+<ul class="org-ul">
+<li>each entity reoresents an object with attributes.</li>
+<li>the term <b>entity</b>, <b>object</b> is too often used in many aspects, to more be 
+cliafied, the author defines a new term <b>Information Packets</b>.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline80"></a>打預防針<br  /><div class="outline-text-5" id="text-orgheadline80">
+<ul class="org-ul">
+<li>避免讀者快速下結論說FBP就只是&#x2026;, 而放棄了閱讀</li>
+</ul>
+</div></li></ul>
+</div>
+<div id="outline-container-orgheadline81" class="outline-4">
+<h4 id="orgheadline81">Chapter 2: High-Level Languages, 4GLs and Source Code Reuse</h4>
+</div>
+<div id="outline-container-orgheadline82" class="outline-4">
+<h4 id="orgheadline82">Chapter 3: Basic Concepts</h4>
+</div>
+<div id="outline-container-orgheadline83" class="outline-4">
+<h4 id="orgheadline83">Chapter 4: Reuse of components</h4>
+</div>
+<div id="outline-container-orgheadline84" class="outline-4">
+<h4 id="orgheadline84">Chapter 5: Parametrization of Reusable Components</h4>
+</div>
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85">Chapter 6: Composite Components</h4>
+</div>
+<div id="outline-container-orgheadline86" class="outline-4">
+<h4 id="orgheadline86">Chapter 7: Building Components &amp; Some More Simple Applications</h4>
+</div>
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87">Chapter 8: Substreams and Control IPs</h4>
+<div class="outline-text-4" id="text-orgheadline87">
+<ul class="org-ul">
+<li>大約有1/4 商業程式是在做 Update，用非FBP做會非常困難。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline88" class="outline-4">
+<h4 id="orgheadline88">Chapter 9: Some more components and Simple Applications</h4>
+</div>
+<div id="outline-container-orgheadline89" class="outline-4">
+<h4 id="orgheadline89">Chapter 10: Data Descriptions and Descriptors</h4>
+</div>
+<div id="outline-container-orgheadline90" class="outline-4">
+<h4 id="orgheadline90">Chapter 11: Tree Structure</h4>
+</div>
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91">Chapter 12: Scheduling Rules</h4>
+</div>
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92">Chapter 13: Loop-Type Networks</h4>
+</div>
+<div id="outline-container-orgheadline93" class="outline-4">
+<h4 id="orgheadline93">Chapter 14: Implementation, Network Splitting and Client-Server</h4>
+</div>
+<div id="outline-container-orgheadline94" class="outline-4">
+<h4 id="orgheadline94">Chapter 15: Deadlocks: Their Causes and Prevention</h4>
+</div>
+<div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95">Chapter 16: Problem-Oriented Mini Language</h4>
+</div>
+<div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96">Chapter 17: A Bussiness-Oriented Very High Level Language</h4>
+</div>
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97">Chapter 18: Synchronization and Checkpoints</h4>
+</div>
+<div id="outline-container-orgheadline98" class="outline-4">
+<h4 id="orgheadline98">Chapter 19: General Framwork for Interactive Applications</h4>
+</div>
+<div id="outline-container-orgheadline99" class="outline-4">
+<h4 id="orgheadline99">Chapter 20: Performance Considerations</h4>
+</div>
+<div id="outline-container-orgheadline100" class="outline-4">
+<h4 id="orgheadline100">Chapter 21: Defining Networks</h4>
+</div>
+<div id="outline-container-orgheadline101" class="outline-4">
+<h4 id="orgheadline101">Chapter 22: Related Compiler Theory Concepts</h4>
+</div>
+<div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102">Chapter 23: Streams and Recursive Function Definitions</h4>
+</div>
+<div id="outline-container-orgheadline103" class="outline-4">
+<h4 id="orgheadline103">Chapter 24: Comparison between FBP and Object-Oriented Porgramming</h4>
+</div>
+<div id="outline-container-orgheadline104" class="outline-4">
+<h4 id="orgheadline104">Chapter 25: Related Concepts and Forerunners</h4>
+</div>
+<div id="outline-container-orgheadline105" class="outline-4">
+<h4 id="orgheadline105">Chapter 26: The FBP Explosion</h4>
+</div>
+<div id="outline-container-orgheadline106" class="outline-4">
+<h4 id="orgheadline106">Chapter 27: Ending and Beginnings</h4>
+</div>
+<div id="outline-container-orgheadline107" class="outline-4">
+<h4 id="orgheadline107">Appendix: FBP Implementations and Diagramming Tool</h4>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+: Exploiting Chaos: Cashing in on the realities of Software Development, 1993, Dave Olson
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Chen Hsin-Yi</p>
+<p class="date">Created: 2016-03-27 Sun 15:39</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
