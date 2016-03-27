@@ -5,6 +5,10 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * 如何建立客服團隊 
+#+BEGIN_ABSTRACT
+參加KK Innovation活動的筆記
+#+END_ABSTRACT
+
 - 勞力密集
 - Policy + SOP + System Agreement Management
 - 要能參與重要決策，否則客服不知道如何回答及解決客戶問題。
