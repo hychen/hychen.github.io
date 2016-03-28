@@ -5,12 +5,12 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * Zsh Configuration 
-I switched to zsh from bash a while, oh-my-zsh is the framwork I had choosen. 
+I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
 It is handy and well documented, but what did not stastify me is its slow startup times,
 Antigen shares same issue with oh-my-zsh, finally I tried zplug and very happy with its speed and 
 flexibility - To be able use plugins of oh-my-zsh and have better response time.
 
-This configuration is specified for Mac users only because I moved Mac from Linux since 2013.
+This configuration is specified for Mac users only because I moved to Mac from Linux since 2013.
 ** Installation
 #+BEGIN_SRC sh
 brew install zsh
