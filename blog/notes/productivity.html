@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-28 Mon 14:00 -->
+<!-- 2016-03-28 Mon 14:12 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>生產力</title>
@@ -172,12 +172,18 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline24">Put it all together</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline29">Remapping Keyboard Keys On Mac</a>
+<li><a href="#orgheadline25">VIM Configuration</a>
 <ul>
-<li><a href="#orgheadline25">Gloal</a></li>
-<li><a href="#orgheadline26">Why</a></li>
-<li><a href="#orgheadline27">Remaps Capslock To Ctrl</a></li>
-<li><a href="#orgheadline28">Remaps Capslock to Escape</a></li>
+<li><a href="#orgheadline26">Syntax Highlight</a></li>
+<li><a href="#orgheadline27">Highlight and strip eatra white spaces</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline32">Remapping Keyboard Keys On Mac</a>
+<ul>
+<li><a href="#orgheadline28">Gloal</a></li>
+<li><a href="#orgheadline29">Why</a></li>
+<li><a href="#orgheadline30">Remaps Capslock To Ctrl</a></li>
+<li><a href="#orgheadline31">Remaps Capslock to Escape</a></li>
 </ul>
 </li>
 </ul>
@@ -465,21 +471,59 @@ zplug load --verbose
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline29" class="outline-2">
-<h2 id="orgheadline29">Remapping Keyboard Keys On Mac</h2>
-<div class="outline-text-2" id="text-orgheadline29">
-</div><div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="orgheadline25">Gloal</h3>
-<div class="outline-text-3" id="text-orgheadline25">
+<div id="outline-container-orgheadline25" class="outline-2">
+<h2 id="orgheadline25">VIM Configuration</h2>
+<div class="outline-text-2" id="text-orgheadline25">
+<p>
+Normally I use Emacs to write codes and documents, but sometimes 
+I  do quick modification on terminal by using VIM. 
+</p>
+</div>
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26">Syntax Highlight</h3>
+<div class="outline-text-3" id="text-orgheadline26">
+<div class="org-src-container">
+
+<pre class="src src-shell">syntax on
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27">Highlight and strip eatra white spaces</h3>
+<div class="outline-text-3" id="text-orgheadline27">
+<p>
+Highlight existing trailing whitespace and also strip trailing 
+whitespace.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell">highlight ExtraWhitespace <span style="color: #7590db;">ctermbg</span>=red <span style="color: #7590db;">guibg</span>=red
+match ExtraWhitespace /\s<span style="color: #2d9574;">\+</span>$/
+autocmd BufWinEnter * match ExtraWhitespace /\s<span style="color: #2d9574;">\+</span>$/
+autocmd InsertEnter * match ExtraWhitespace /\s<span style="color: #2d9574;">\+\%</span>#<span style="color: #2d9574;">\@</span>&lt;!$/
+autocmd InsertLeave * match ExtraWhitespace /\s<span style="color: #2d9574;">\+</span>$/
+autocmd BufWinLeave * call clearmatches<span style="color: #4f97d7;">()</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-2">
+<h2 id="orgheadline32">Remapping Keyboard Keys On Mac</h2>
+<div class="outline-text-2" id="text-orgheadline32">
+</div><div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28">Gloal</h3>
+<div class="outline-text-3" id="text-orgheadline28">
 <ol class="org-ol">
 <li>Remaps capslock to Ctrl.</li>
 <li>Remaps casplock to Escape.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="orgheadline26">Why</h3>
-<div class="outline-text-3" id="text-orgheadline26">
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29">Why</h3>
+<div class="outline-text-3" id="text-orgheadline29">
 <ol class="org-ol">
 <li>I am a fan of <b>Emacs</b> but prefer <b>VIM style editing</b> (which leads me to start using spacemacs), 
 I'll use <b>Ctrl</b> and <b>Escape</b> very very often.</li>
@@ -488,9 +532,9 @@ I'll use <b>Ctrl</b> and <b>Escape</b> very very often.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline27" class="outline-3">
-<h3 id="orgheadline27">Remaps Capslock To Ctrl</h3>
-<div class="outline-text-3" id="text-orgheadline27">
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30">Remaps Capslock To Ctrl</h3>
+<div class="outline-text-3" id="text-orgheadline30">
 <ol class="org-ol">
 <li>Go into the Keyboard preference pane.</li>
 <li>Click "Modifier Keys…", and change Caps Lock to Control.</li>
@@ -499,9 +543,9 @@ I'll use <b>Ctrl</b> and <b>Escape</b> very very often.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline28" class="outline-3">
-<h3 id="orgheadline28">Remaps Capslock to Escape</h3>
-<div class="outline-text-3" id="text-orgheadline28">
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31">Remaps Capslock to Escape</h3>
+<div class="outline-text-3" id="text-orgheadline31">
 <ol class="org-ol">
 <li>Download the lastest version of <a href="https://pqrs.org/osx/karabiner/">Karabiner</a>.</li>
 <li>go into Karabiner and search for this option:</li>
@@ -516,7 +560,7 @@ Control<sub>L</sub> to Control<sub>L</sub><br  />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-03-28 Mon 14:00</p>
+<p class="date">Created: 2016-03-28 Mon 14:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

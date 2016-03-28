@@ -116,6 +116,24 @@ function r() { grep "$1" ${@:2} -R . }
 #+END_SRC
 ** Put it all together
 #+INCLUDE: "~/.zshrc" src sh
+* VIM Configuration
+Normally I use Emacs to write codes and documents, but sometimes 
+I  do quick modification on terminal by using VIM. 
+** Syntax Highlight
+#+BEGIN_SRC shell :tangle ~/.vimrc
+syntax on
+#+END_SRC
+** Highlight and strip eatra white spaces
+Highlight existing trailing whitespace and also strip trailing 
+whitespace.
+ #+BEGIN_SRC shell :tangle ~/.vimrc
+ highlight ExtraWhitespace ctermbg=red guibg=red
+ match ExtraWhitespace /\s\+$/
+ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+ autocmd BufWinLeave * call clearmatches()
+ #+END_SRC
 * Remapping Keyboard Keys On Mac
 ** Gloal
 1. Remaps capslock to Ctrl.
