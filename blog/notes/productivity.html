@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-27 Sun 22:06 -->
+<!-- 2016-03-28 Mon 10:13 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>生產力</title>
@@ -153,33 +153,266 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline5">Remapping Keyboard Keys On Mac</a>
+<li><a href="#orgheadline1">Zsh Configuration</a>
 <ul>
-<li><a href="#orgheadline1">Gloal</a></li>
-<li><a href="#orgheadline2">Why</a></li>
-<li><a href="#orgheadline3">Remaps Capslock To Ctrl</a></li>
-<li><a href="#orgheadline4">Remaps Capslock to Escape</a></li>
+<li><a href="#orgheadline2">Installation</a></li>
+<li><a href="#orgheadline3">Initialization</a></li>
+<li><a href="#orgheadline4">Command Search PATH</a></li>
+<li><a href="#orgheadline5">Default Editor</a></li>
+<li><a href="#orgheadline6">VIM mode</a></li>
+<li><a href="#orgheadline7">Theme</a></li>
+<li><a href="#orgheadline8">Syntax Highlight</a></li>
+<li><a href="#orgheadline9">History Search</a></li>
+<li><a href="#orgheadline10">Git</a></li>
+<li><a href="#orgheadline11">OSX Enhancement</a></li>
+<li><a href="#orgheadline14">NodeJS Development Env</a></li>
+<li><a href="#orgheadline15">Install plugins automatically</a></li>
+<li><a href="#orgheadline16">Loads Zplug Plugins.</a></li>
+<li><a href="#orgheadline20">Aliases &amp; Additonal Commands</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline25">Remapping Keyboard Keys On Mac</a>
+<ul>
+<li><a href="#orgheadline21">Gloal</a></li>
+<li><a href="#orgheadline22">Why</a></li>
+<li><a href="#orgheadline23">Remaps Capslock To Ctrl</a></li>
+<li><a href="#orgheadline24">Remaps Capslock to Escape</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">Remapping Keyboard Keys On Mac</h2>
-<div class="outline-text-2" id="text-orgheadline5">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">Gloal</h3>
-<div class="outline-text-3" id="text-orgheadline1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Zsh Configuration</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+I switched to zsh from bash a while, oh-my-zsh is the framwork I had choosen. 
+It is handy and well documented, but what did not stastify me is its slow startup times,
+Antigen shares same issue with oh-my-zsh, finally I tried zplug and very happy with its speed and 
+flexibility - To be able use plugins of oh-my-zsh and have better response time.
+</p>
+
+<p>
+This configuration is specified for Mac users only because I moved Mac from Linux since 2013.
+</p>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Installation</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-sh">brew install zsh
+git clone https://github.com/b4b4r07/zplug ~/.zplug
+chsh -s /usr/local/bin/zsh
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Initialization</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7;">source</span> ~/.zplug/zplug
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Command Search PATH</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">PATH</span>=$<span style="color: #4f97d7;">{</span><span style="color: #7590db;">HOME</span><span style="color: #4f97d7;">}</span>/bin:$<span style="color: #4f97d7;">{</span><span style="color: #7590db;">HOME</span><span style="color: #4f97d7;">}</span>/.local/bin:/usr/local/bin:$<span style="color: #4f97d7;">{</span><span style="color: #7590db;">PATH</span><span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Default Editor</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">EDITOR</span>=vim
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">VIM mode</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/vi-mode"</span>, from:oh-my-zsh
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Theme</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"themes/pygmalion"</span>, from:oh-my-zsh
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Syntax Highlight</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"zsh-users/zsh-syntax-highlighting"</span>, nice:10
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">History Search</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<p>
+Type in any part of any previously entered command and press the UP and DOWN arrow keys to cycle 
+through the matching commands. You can also use K and J in VI mode or ^P and ^N in EMACS mode for the same.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"zsh-users/zsh-history-substring-search"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bind UP and DOWN arrow keys</span>
+zmodload zsh/terminfo
+<span style="color: #4f97d7;">bindkey</span> <span style="color: #2d9574;">"$terminfo[kcuu1]"</span> history-substring-search-up
+<span style="color: #4f97d7;">bindkey</span> <span style="color: #2d9574;">"$terminfo[kcud1]"</span> history-substring-search-down
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bind P and N for EMACS mode</span>
+<span style="color: #4f97d7;">bindkey</span> -M emacs <span style="color: #2d9574;">'^P'</span> history-substring-search-up
+<span style="color: #4f97d7;">bindkey</span> -M emacs <span style="color: #2d9574;">'^N'</span> history-substring-search-down
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bind k and j for VI mode</span>
+<span style="color: #4f97d7;">bindkey</span> -M vicmd <span style="color: #2d9574;">'k'</span> history-substring-search-up
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">Git</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/git"</span>, from:oh-my-zsh
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">OSX Enhancement</h3>
+<div class="outline-text-3" id="text-orgheadline11">
+<ul class="org-ul">
+<li>brew auto completion.</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/brew"</span>, from:oh-my-zsh
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">NodeJS Development Env</h3>
+<div class="outline-text-3" id="text-orgheadline14">
+</div><ul class="org-ul"><li><a id="orgheadline12"></a>NPM auto completion<br  /><div class="outline-text-4" id="text-orgheadline12">
+<div class="org-src-container">
+
+<pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/npm"</span>, from:oh-my-zsh
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline13"></a>NVM setup<br  /><div class="outline-text-4" id="text-orgheadline13">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">NVM_DIR</span>=~/.nvm
+<span style="color: #4f97d7;">source</span> $<span style="color: #4f97d7;">(</span>brew --prefix nvm<span style="color: #4f97d7;">)</span>/nvm.sh
+</pre>
+</div>
+</div></li></ul>
+</div>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15">Install plugins automatically</h3>
+<div class="outline-text-3" id="text-orgheadline15">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">zplug check return true if all plugins are installed</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Therefore, when it returns not true (thus false),</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">run zplug install</span>
+<span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #a45bad;">!</span> zplug check; <span style="color: #4f97d7; font-weight: bold;">then</span>
+    zplug install
+<span style="color: #4f97d7; font-weight: bold;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16">Loads Zplug Plugins.</h3>
+<div class="outline-text-3" id="text-orgheadline16">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">source and add to the PATH</span>
+zplug load --verbose
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20">Aliases &amp; Additonal Commands</h3>
+<div class="outline-text-3" id="text-orgheadline20">
+</div><ul class="org-ul"><li><a id="orgheadline17"></a>List all branchs in tig by default.<br  /><div class="outline-text-4" id="text-orgheadline17">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7;">which</span> tig &gt;/dev/null     &amp;&amp; <span style="color: #4f97d7;">alias</span> <span style="color: #7590db;">tig</span>=tig --all
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline18"></a>Searches files with names containing a string<br  /><div class="outline-text-4" id="text-orgheadline18">
+<p>
+f: searches the current directory subtree for files with names containing a
+string (ignoring case). f png would find all PNG files in the current subtree,
+as well as “PNGisMyFavorite.txt” and so forth.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">f</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> find . -iname <span style="color: #2d9574;">"*$1*"</span> $<span style="color: #bc6ec5;">{</span><span style="color: #7590db;">@</span>:2<span style="color: #bc6ec5;">}</span> <span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline19"></a>Greps the current directory subtree for files matching a pattern.<br  /><div class="outline-text-4" id="text-orgheadline19">
+<p>
+r: recursively greps the current directory subtree for files matching a pattern.
+r HTTP would grep for files containing that exact string, while r '"http[^"]*"'
+  -i would search for double-quoted strings starting with “http”, ignoring case.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4f97d7; font-weight: bold;">function </span><span style="color: #4f97d7;">r</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span> grep <span style="color: #2d9574;">"$1"</span> $<span style="color: #bc6ec5;">{</span><span style="color: #7590db;">@</span>:2<span style="color: #bc6ec5;">}</span> -R . <span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div></li></ul>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-2">
+<h2 id="orgheadline25">Remapping Keyboard Keys On Mac</h2>
+<div class="outline-text-2" id="text-orgheadline25">
+</div><div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21">Gloal</h3>
+<div class="outline-text-3" id="text-orgheadline21">
 <ol class="org-ol">
 <li>Remaps capslock to Ctrl.</li>
 <li>Remaps casplock to Escape.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">Why</h3>
-<div class="outline-text-3" id="text-orgheadline2">
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22">Why</h3>
+<div class="outline-text-3" id="text-orgheadline22">
 <ol class="org-ol">
 <li>I am a fan of <b>Emacs</b> but prefer <b>VIM style editing</b> (which leads me to start using spacemacs), 
 I'll use <b>Ctrl</b> and <b>Escape</b> very very often.</li>
@@ -188,9 +421,9 @@ I'll use <b>Ctrl</b> and <b>Escape</b> very very often.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">Remaps Capslock To Ctrl</h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23">Remaps Capslock To Ctrl</h3>
+<div class="outline-text-3" id="text-orgheadline23">
 <ol class="org-ol">
 <li>Go into the Keyboard preference pane.</li>
 <li>Click "Modifier Keys…", and change Caps Lock to Control.</li>
@@ -199,9 +432,9 @@ I'll use <b>Ctrl</b> and <b>Escape</b> very very often.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">Remaps Capslock to Escape</h3>
-<div class="outline-text-3" id="text-orgheadline4">
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24">Remaps Capslock to Escape</h3>
+<div class="outline-text-3" id="text-orgheadline24">
 <ol class="org-ol">
 <li>Download the lastest version of <a href="https://pqrs.org/osx/karabiner/">Karabiner</a>.</li>
 <li>go into Karabiner and search for this option:</li>
@@ -216,7 +449,7 @@ Control<sub>L</sub> to Control<sub>L</sub><br  />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-03-27 Sun 22:06</p>
+<p class="date">Created: 2016-03-28 Mon 10:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
