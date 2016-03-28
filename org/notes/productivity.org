@@ -46,16 +46,20 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
  through the matching commands. You can also use K and J in VI mode or ^P and ^N in EMACS mode for the same.
 #+BEGIN_SRC sh :tangle ~/.zshrc
 zplug "zsh-users/zsh-history-substring-search"
-# bind UP and DOWN arrow keys
+#+END_SRC
+*** Bind UP and DOWN arrow keys
+#+BEGIN_SRC sh :tangle ~/.zshrc
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# bind P and N for EMACS mode
+#+END_SRC
+*** Bind P and N for EMACS mode
+#+BEGIN_SRC sh :tangle ~/.zshrc
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
-
-# bind k and j for VI mode
+#+END_SRC
+*** Bind k and j for VI mode
+#+BEGIN_SRC sh :tangle ~/.zshrc
 bindkey -M vicmd 'k' history-substring-search-up
 #+END_SRC
 ** Git
@@ -78,17 +82,17 @@ export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 #+END_SRC
 ** Install plugins automatically
+zplug check return true if all plugins are installed
+Therefore, when it returns not true (thus false),
+run zplug install
 #+BEGIN_SRC sh :tangle ~/.zshrc
-# zplug check return true if all plugins are installed
-# Therefore, when it returns not true (thus false),
-# run zplug install
 if ! zplug check; then
     zplug install
 fi
 #+END_SRC
 ** Loads Zplug Plugins.
-#+BEGIN_SRC sh :tangle ~/.zshrc
 # source and add to the PATH
+#+BEGIN_SRC sh :tangle ~/.zshrc
 zplug load --verbose
 #+END_SRC
 ** Aliases & Additonal Commands
@@ -110,6 +114,8 @@ r HTTP would grep for files containing that exact string, while r '"http[^"]*"'
 #+BEGIN_SRC sh :tangle ~/.zshrc
 function r() { grep "$1" ${@:2} -R . }
 #+END_SRC
+** Put it all together
+#+INCLUDE: "~/.zshrc" src sh
 * Remapping Keyboard Keys On Mac
 ** Gloal
 1. Remaps capslock to Ctrl.
