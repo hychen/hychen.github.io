@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-28 Mon 22:01 -->
+<!-- 2016-03-29 Tue 23:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>生產力</title>
@@ -460,12 +460,26 @@ autocmd InsertLeave * match ExtraWhitespace /\s<span style="color: #2d9574;">\+<
 autocmd BufWinLeave * call clearmatches<span style="color: #4f97d7;">()</span>
 </pre>
 </div>
+</div></li>
+<li><a id="orgheadline33"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline33">
+<div class="org-src-container">
+
+<pre class="src src-sh">syntax on
+
+highlight ExtraWhitespace <span style="color: #7590db;">ctermbg</span>=red <span style="color: #7590db;">guibg</span>=red
+match ExtraWhitespace /\s<span style="color: #2d9574;">\+</span>$/
+autocmd BufWinEnter * match ExtraWhitespace /\s<span style="color: #2d9574;">\+</span>$/
+autocmd InsertEnter * match ExtraWhitespace /\s<span style="color: #2d9574;">\+\%</span>#<span style="color: #2d9574;">\@</span>&lt;!$/
+autocmd InsertLeave * match ExtraWhitespace /\s<span style="color: #2d9574;">\+</span>$/
+autocmd BufWinLeave * call clearmatches<span style="color: #4f97d7;">()</span>
+</pre>
+</div>
 </div></li></ul>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-03-28 Mon 22:01</p>
+<p class="date">Created: 2016-03-29 Tue 23:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

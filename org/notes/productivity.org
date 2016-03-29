@@ -155,3 +155,5 @@ whitespace.
  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
  autocmd BufWinLeave * call clearmatches()
  #+END_SRC
+** Put it all together 
+#+INCLUDE: ~/.vimrc src sh
