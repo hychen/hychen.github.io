@@ -437,7 +437,7 @@ This saves a lot time, and I think you should do too!.
 #+BEGIN_SRC shell :tangle ~/.gitconfig
 [alias]
 	s = status -sb
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	l = log --pretty=oneline -n 50 --graph --abbrev-commit
 	c = clone --recursive
   ci = commit
 	ca = !git add -A && git commit -av
