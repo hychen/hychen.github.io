@@ -5,9 +5,6 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 -----
-我是 [[../index.html][hychen]]。
------
-
 #+BEGIN_HTML
 <script>
   (function() {
@@ -23,6 +20,7 @@
 </script>
 <gcse:search></gcse:search>
 #+END_HTML
+-----
 
 * 文章
 - [[file:notes/thought.org][隨筆]] :: 一些看法，隨便寫寫。
