@@ -1,4 +1,5 @@
 #+TITLE: 不及格大學士後研究
+#+OPTIONS: toc:nil num:nil author:nil timestamp:nil html-postamble:nil
 #+HTML_LINK_HOME: ../index.html
 #+HTML_LINK_UP: ../index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
