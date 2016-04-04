@@ -1,7 +1,7 @@
 #+TITLE: 垃圾話
 #+OPTIONS: H2
 #+HTML_LINK_HOME: ../index.html
-#+HTML_LINK_UP: ../index.html
+#+HTML_LINK_UP: ./index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * 會議室裡遺失的東西

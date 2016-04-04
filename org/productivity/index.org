@@ -1,0 +1,11 @@
+#+TITLE: 生產力
+#+HTML_LINK_HOME: ../../index.html
+#+HTML_LINK_UP: ../index.html
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
+
+#+BEGIN_QUOTE
+"Get busy living or get busy dying." by  Shawshank Redemption
+#+END_QUOTE
+
+* Hacking degital life 
+** [[./config_mac.org][Work more efficiently on a mac]]

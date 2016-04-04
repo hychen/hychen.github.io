@@ -1,11 +1,12 @@
 #+TITLE: Sitemap for project blog-notes
 
-   + notes
-     + [[file:notes/management.org][企業管理]]
-     + [[file:notes/trash_talk.org][垃圾話]]
-     + [[file:notes/productivity.org][生產力]]
-     + [[file:notes/floss.org][自由軟體與開放源碼]]
-     + [[file:notes/language.org][語言學習]]
-     + [[file:notes/cs.org][資訊工程]]
-     + [[file:notes/thought.org][隨筆]]
+   + productivity
+     + [[file:productivity/config_mac.org][Work More Efficiently on a Mac]]
+     + [[file:productivity/index.org][生產力]]
    + [[file:index.org][不及格大學士後研究]]
+   + [[file:management.org][企業管理]]
+   + [[file:trash_talk.org][垃圾話]]
+   + [[file:floss.org][自由軟體與開放源碼]]
+   + [[file:language.org][語言學習]]
+   + [[file:cs.org][資訊工程]]
+   + [[file:thought.org][隨筆]]
