@@ -4,20 +4,15 @@
 #+HTML_LINK_UP: ../index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
-* Remapping Keyboard Keys On Mac
-** Gloal
-1. Remaps capslock to Ctrl.
-2. Remaps casplock to Escape.
-** Why
-1. I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
-   I'll use *Ctrl* and *Escape* very very often. 
-2. The default layout of Mac keyboard does not work very well to me.
-3. Capslock is useless, I never use it. Luckly, it seems a good place to put *Ctrl/Escape* there.
+* Mac Keyboard Configuration
 ** Remaps Capslock To Ctrl
+I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
+Capslock is useless, I never use it. Luckly, it seems a good place to put *Ctrl/Escape* there.
+
 1. Go into the Keyboard preference pane. 
 2. Click "Modifier Keys…", and change Caps Lock to Control.
 3. Download the lastest version of [[https://pqrs.org/osx/karabiner/seil.html.en][Seli]].
-4. Open Seli and go *other keys* section to Change *Ctrl_L*
+5. Open Seli and go *other keys* section to Change *Ctrl_L*
 ** Remaps Capslock to Escape
 1. Download the lastest version of [[https://pqrs.org/osx/karabiner/][Karabiner]].
 2. go into Karabiner and search for this option:
@@ -25,6 +20,8 @@
 Control_L to Control_L
       (+ when you type Control_L only, send Escape)
 #+END_VERSE
+** References
+- [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]] 
 * Zsh Configuration 
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
 It is handy and well documented, but what did not stastify me is its slow startup times,
@@ -245,3 +242,5 @@ This saves a lot time, and I think you should do too!.
 #+END_SRC
 ** Put it all together
 #+INCLUDE: ~/.gitconfig src sh
+** References
+- [[http://nuclearsquid.com/writings/git-tricks-tips-workflows/][A few of my Git tricks, tips and workflows]]
