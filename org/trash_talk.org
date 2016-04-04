@@ -1,7 +1,5 @@
 #+TITLE: 垃圾話
-#+OPTIONS: H2
 #+HTML_LINK_UP: ./index.html
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * 會議室裡遺失的東西
 K: 「有同學在會議室裡遺失重要的東西嗎？」

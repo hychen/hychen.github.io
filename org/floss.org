@@ -1,7 +1,5 @@
 #+TITLE: 自由軟體與開放源碼
-#+OPTIONS: H:2
 #+HTML_LINK_UP: ./index.html
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * 如何成為 Debian Deveoper 
 ** 10分鐘快速簡介

@@ -1,7 +1,6 @@
 #+TITLE: 資訊工程
 #+OPTIONS: H:2
 #+HTML_LINK_UP: ./index.html
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 * Assignment V.S. Binding
 
