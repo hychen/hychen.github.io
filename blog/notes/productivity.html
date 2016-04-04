@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-04 Mon 13:37 -->
+<!-- 2016-04-04 Mon 13:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>生產力</title>
@@ -893,7 +893,7 @@ This saves a lot time, and I think you should do too!.
 <li><a id="orgheadline45"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline45">
 <div class="org-src-container">
 
-<pre class="src src-shell"><span style="color: #4f97d7;">[</span>user<span style="color: #4f97d7;">]</span>
+<pre class="src src-sh"><span style="color: #4f97d7;">[</span>user<span style="color: #4f97d7;">]</span>
   <span style="color: #7590db;">name</span> = &#38515;&#20449;&#23673;
   <span style="color: #7590db;">email</span> = ossug.hychen@gmail.com
 
@@ -903,6 +903,10 @@ This saves a lot time, and I think you should do too!.
 <span style="color: #4f97d7;">[</span>push<span style="color: #4f97d7;">]</span>
   <span style="color: #7590db;">default</span> = simple
 
+<span style="color: #4f97d7;">[</span>advice<span style="color: #4f97d7;">]</span>
+  <span style="color: #7590db;">pushNonFastForward</span> = false
+  <span style="color: #7590db;">statusHints</span> = false
+
 <span style="color: #4f97d7;">[</span>alias<span style="color: #4f97d7;">]</span>
   <span style="color: #7590db;">s</span> = status -sb
   <span style="color: #7590db;">l</span> = log --pretty=oneline -n <span style="color: #a45bad;">20</span> --graph --abbrev-commit
@@ -910,8 +914,13 @@ This saves a lot time, and I think you should do too!.
   <span style="color: #7590db;">ci</span> = commit
   <span style="color: #7590db;">ca</span> = !git add -A &amp;&amp; git commit -av
   <span style="color: #7590db;">co</span> = checkout
+  <span style="color: #7590db;">save</span> = !git add -A &amp;&amp; git commit -m <span style="color: #2d9574;">'SAVEPOINT'</span>
+  <span style="color: #7590db;">undo</span> = reset HEAD~1 --mixed
+  <span style="color: #7590db;">wipe</span> = !git add -A &amp;&amp; git commit -qm <span style="color: #2d9574;">'WIPE SAVEPOINT'</span> &amp;&amp; git reset HEAD~1 --hard
+  <span style="color: #7590db;">r</span> = rebase -i HEAD~15
   <span style="color: #7590db;">fc</span> = <span style="color: #2d9574;">"!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"</span>
   <span style="color: #7590db;">fm</span> = <span style="color: #2d9574;">"!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"</span>
+  <span style="color: #7590db;">contributors</span> = shortlog --summary --numbered
 </pre>
 </div>
 </div></li></ul>
@@ -919,7 +928,7 @@ This saves a lot time, and I think you should do too!.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-04 Mon 13:37</p>
+<p class="date">Created: 2016-04-04 Mon 13:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
