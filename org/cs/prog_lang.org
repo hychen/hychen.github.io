@@ -1,6 +1,6 @@
-#+TITLE: 資訊工程
+#+TITLE: 程式語言
 #+OPTIONS: H:2
-#+HTML_LINK_UP: ./index.html
+#+HTML_LINK_UP: ../index.html
 
 * Assignment V.S. Binding
 

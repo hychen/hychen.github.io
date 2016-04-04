@@ -1,7 +1,6 @@
 #+TITLE: 語言學習
 #+OPTIONS: H2
-#+HTML_LINK_UP: ./index.html
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
+#+HTML_LINK_UP: ../index.html
 * 英文
 ** 垃圾話 
 - shoot the shit :: 閒聊

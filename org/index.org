@@ -25,8 +25,8 @@
 * 文章
 - [[file:thought.org][隨筆]] :: 一些看法，隨便寫寫。
 * 筆記
-- [[./language.org][語言學習]] :: 語言學習方法 / 文法 / 單字 / 片語。
-- [[file:cs.org][資訊工程]] :: 程式語言理論 / 演算法 。
+- [[./language/index.org][語言學習]] :: 語言學習方法 / 文法 / 單字 / 片語。
+- [[./cs/index.org][資訊工程]] :: 程式語言理論 / 演算法 。
 - [[file:management.org][企業管理]] :: 團隊管理 / 公司經營。
-- [[./notes/productivity/index.org][生產力]]  :: 時間管理 / 常用軟體。
+- [[./productivity/index.org][生產力]]  :: 時間管理 / 常用軟體。
 - [[file:trash_talk.org][垃圾話]] :: 閒聊用的梗全集。
