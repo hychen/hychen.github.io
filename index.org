@@ -1,0 +1,11 @@
+#+TITLE: 不及格大學士後研究
+
+#+OPTIONS: toc:nil num:nil author:nil timestamp:nil html-postamble:nil
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
+
+[[./limit.jpg]]
+
+嗨! 我是 Hychen!
+
+- Blog [[./blog][部落格]]
+- Resume 履歷 ([[./resume.html][HTML]] / [[./resume.json][JSON]])。
