@@ -1,7 +1,6 @@
 #+TITLE: Work More Efficiently on a Mac
 #+OPTIONS: H:3
 #+HTML_LINK_UP: ./index.html
-#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
 #+BEGIN_QUOTE
 Less is more, trust me.
