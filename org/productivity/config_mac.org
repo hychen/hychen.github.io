@@ -7,8 +7,8 @@
 Less is more, trust me.
 #+END_QUOTE
 * Manageing dotfiles in org-babel.
-I used to have almost 80% configuration that I stole from other people on internet which is never 
-used. Why? Maybe because I did not think why i need them, thoese things does not be adopted in my daily 
+I used to have almost 80% configurations that I stole from other people on internet which are never 
+used. Why? Maybe because I did not think why i need them, thoese things jsut did not be adopted in my daily 
 workflow. 
 
 *org-babel* is a way that you can embed your codeblock in your literatures.
