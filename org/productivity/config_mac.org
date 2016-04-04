@@ -1,7 +1,24 @@
 #+TITLE: Work More Efficiently on a Mac
+#+OPTIONS: H:3
 #+HTML_LINK_UP: ./index.html
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="/blog/css/readtheorg.css" />
 
+#+BEGIN_QUOTE
+Less is more, trust me.
+#+END_QUOTE
+* Manageing dotfiles in org-babel.
+I used to have almost 80% configuration that I stole from other people on internet which is never 
+used. Why? Maybe because I did not think why i need them, thoese things does not be adopted in my daily 
+workflow. 
+
+*org-babel* is a way that you can embed your codeblock in your literatures.
+I've ever saw people use it to manage their Emacs configuration many times,
+and think it might be easy to manage my dotfiles also.
+
+so, here you are, this is a post remains me why I need to theses configuration, how can I be more productivity,  
+but it is also used to export all my configurations on mac.
+
+Should you interest to see original source file, please visit [[https://raw.githubusercontent.com/hychen/hychen.github.io/master/org/productivity/config_mac.org][here]].
 * Mac Keyboard Configuration
 ** Remaps Capslock To Ctrl
 I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
