@@ -28,7 +28,10 @@ Control_L to Control_L
 * Tiling Window Management On MAC
 I missed xmonad such much and can not find a good replacement on mac. 
 Amyethyst is good but still not perfect to meet all my need.
-
+** Installation 
+#+BEGIN_SRC shell
+brew cask install amyethyst
+#+END_SRC
 ** Remaps modifier combinations
 - mod1 :: option + shift + control + command (hypher)
 - mod2 :: option
@@ -361,3 +364,23 @@ whitespace.
  #+END_SRC
 ** Put it all together 
 #+INCLUDE: ~/.vimrc src sh
+* Git Configuration
+Git is a widely used source code management system.
+** Installation 
+#+BEGIN_SRC shell
+brew install git
+#+END_SRC
+** Set up my name and e-mail address
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[user]
+	name = 陳信屹
+	email = ossug.hychen@gmail.com
+#+END_SRC 
+** Caching password in git.
+Cloning Github repositories using HTTPS is better than using SSH when you want to access those repositories 
+in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
+password in Git.
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[credential]
+	helper = osxkeychain
+#+END_SRC
