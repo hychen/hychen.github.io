@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-06 Wed 16:58 -->
+<!-- 2016-04-06 Wed 17:24 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript</title>
@@ -402,7 +402,6 @@ x - y =  4.11093381558203e-12
       <span style="color: #4f97d7; font-weight: bold;">return</span> diff / Math.min<span style="color: #2d9574;">(</span><span style="color: #67b11d;">(</span>absA + absB<span style="color: #67b11d;">)</span>, Number.MAX_VALUE<span style="color: #2d9574;">)</span> &lt; epsilon;
     <span style="color: #bc6ec5;">}</span>
   <span style="color: #4f97d7;">}</span>
-
 console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'sameNumber(3.141592653589793, 3.141592653585682) is'</span>, sameNumber<span style="color: #bc6ec5;">(</span><span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">141592653589793</span>, <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">141592653585682</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>;
 </pre>
 </div>
@@ -410,6 +409,10 @@ console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'
 <pre class="example">
 sameNumber(3.141592653589793, 3.141592653585682) is true
 </pre>
+
+<p class="verse">
+注意: 這個版還是有些 edge case沒有有辦法正確處理，像是 sameNumber(Number.MAX_VALUE, Number.MAX_VALUE - 100) 應該是 fasle, 但它卻回傳 true。<br  />
+</p>
 </div>
 </div>
 
@@ -441,7 +444,7 @@ sameNumber(3.141592653589793, 3.141592653585682) is true
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-06 Wed 16:58</p>
+<p class="date">Created: 2016-04-06 Wed 17:24</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

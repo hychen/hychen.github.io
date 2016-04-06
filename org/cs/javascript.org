@@ -124,12 +124,15 @@ console.log("x - y = ", z);
       return diff / Math.min((absA + absB), Number.MAX_VALUE) < epsilon;
     }
   }
-
 console.log('sameNumber(3.141592653589793, 3.141592653585682) is', sameNumber(3.141592653589793, 3.141592653585682));
 #+END_SRC
 
 #+RESULTS:
-: sameFloat(3.141592653589793, 3.141592653585682) is true
+: sameNumber(3.141592653589793, 3.141592653585682) is true
+
+#+BEGIN_VERSE
+注意: 這個版還是有些 edge case沒有有辦法正確處理，像是 sameNumber(Number.MAX\under{}VALUE, Number.MAX\under{}VALUE - 100) 應該是 fasle, 但它卻回傳 true。
+#+END_VERSE
 
 ** 結論 
 - 乘法與除法是安全的。
