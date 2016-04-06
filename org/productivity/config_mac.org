@@ -3,7 +3,7 @@
 #+HTML_LINK_UP: ./index.html
 
 #+BEGIN_QUOTE
-Less is more, trust me.
+工欲善其事，必先利其器。
 #+END_QUOTE
 * Managing dotfiles in org-babel.
 I used to have almost 80% configurations that I stole from other people on internet which are never 
