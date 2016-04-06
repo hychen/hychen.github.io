@@ -36,6 +36,32 @@ Control_L to Control_L
 #+END_VERSE
 ** References
 - [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]] 
+* Use Tiling Window Management
+Don't organize windows by yourself, let the computer do it. Have you ever aware how much times you spend 
+to organize windows? 
+
+Most of times, What you need is having 2 applications that 1 one left and one on right in same screen,
+for example, you may want to have browser on left, and a editor on right. Yo always need to move 
+applications to proper position on your screen after launch them.
+
+I can't help to organize windows by my self anymore after I tried one of best tiling window managers 
+on Linux - [[http://xmonad.org/][XMonad]].
+
+It is still, still one killer application I can't find replacement on MAC until now, even I found Amethyst 
+and it do really fit some of my needs.
+
+** Get [[https://github.com/ianyh/Amethyst][Amethyst]]
+[[../../assests/imgs/amethyst.gif]]
+*** Installation 
+#+BEGIN_SRC shell
+brew cask install amethyst
+#+END_SRC
+** Enable accessiblity
+Amethyst must be given permissions to use the accessibility APIs under the Privacy tab of the Security & Privacy preferences pane 
+
+** Set first modifier to Hypher
+TBD
+
 * Zsh Configuration 
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
 It is handy and well documented, but what did not stastify me is its slow startup times,
