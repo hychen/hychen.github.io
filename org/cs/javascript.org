@@ -100,4 +100,4 @@ console.log("x - y = ", z);
 
 ** 參考連結
 - [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]], chewxy, 2014
-- [[http://blog.dcview.com/article.php?a=VmhQNVY%2BCzo%3D][使用浮點數最最基本的觀念]], 洗鏡光, 2008
+- [[http://blog.dcview.com/article.php?a=VmhQNVY%2BCzo%3D][使用浮點數最最基本的觀念]],洗鏡光, 2008
