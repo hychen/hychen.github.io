@@ -6,5 +6,8 @@
 "Get busy living or get busy dying." by  Shawshank Redemption
 #+END_QUOTE
 
-* Hacking degital life 
-** [[./config_mac.org][Work more efficiently on a mac]]
+生為一個作息不正常，很沒生產效率的人，提高生產力的技巧一直是我尋找的銀彈 ⋯⋯
+
+但你知道，[[https://en.wikipedia.org/wiki/The_Mythical_Man-Month][人月神話]]提過 *No Silver Bullet!*
+
+* [[./config_mac.org][Work more efficiently on a mac]]
