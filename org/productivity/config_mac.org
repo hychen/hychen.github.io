@@ -18,7 +18,7 @@ so, here you are, this is a post remains me why I need to theses configuration, 
 but it is also used to export all my configurations on mac.
 
 Should you interest to see original source file, please visit [[https://raw.githubusercontent.com/hychen/hychen.github.io/master/org/productivity/config_mac.org][here]].
-* Mac Keyboard Configuration
+* Better Keyboard Configuration
 ** Remaps Capslock To Ctrl
 I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
 Capslock is useless, I never use it. Luckly, it seems a good place to put *Ctrl/Escape* there.
