@@ -28,14 +28,39 @@ Capslock is useless, I never use it. Luckly, it seems a good place to put *Ctrl/
 3. Download the lastest version of [[https://pqrs.org/osx/karabiner/seil.html.en][Seli]].
 5. Open Seli and go *other keys* section to Change *Ctrl_L*
 ** Remaps Capslock to Escape
+
 1. Download the lastest version of [[https://pqrs.org/osx/karabiner/][Karabiner]].
 2. go into Karabiner and search for this option:
 #+BEGIN_VERSE
 Control_L to Control_L
       (+ when you type Control_L only, send Escape)
 #+END_VERSE
+** Remaps Ctrl-L to Hypher
+To define Hyper as control+option+command+shift.
+*** open Karabiner and go to Misc & Uninstall > Open private.xml). 
+*** Add this XML snippet directly under the <root> element.
+#+BEGIN_SRC xml
+<?xml version="1.0"?>
+	<item>
+    <name>Remap Left Control to Hyper</name>
+    <appendix>OS X doesn't have a Hyper. This maps Left Control to Control + Shift + Option + Command.</appendix>
+
+    <identifier>space_cadet.left_control_to_hyper</identifier>
+
+    <autogen>
+        --KeyToKey--
+        KeyCode::F19,
+
+        KeyCode::COMMAND_L,
+        ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+    </autogen>
+  </item>
+#+END_SRC
+*** Save the file, then open Karabiner and press ReloadXML in the upper-right of the Change Key tab. 
+*** search for Remap Caps and check the box.
 ** References
-- [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]] 
+- [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]]
+- [[http://stevelosh.com/blog/2012/10/a-modern-space-cadet][A Modern Space Cadet]] 
 * Use Tiling Window Manager
 Don't organize windows by yourself, let the computer do it. Have you ever aware how much times you spend 
 to organize windows? 
