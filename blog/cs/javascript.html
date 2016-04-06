@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-06 Wed 17:24 -->
+<!-- 2016-04-06 Wed 17:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript</title>
@@ -427,9 +427,21 @@ sameNumber(3.141592653589793, 3.141592653585682) is true
 <li>盡量不要讓太相近的數值相減。</li>
 </ul></li>
 <li>如果非常在乎計算後的結果，使用特別的資料格式，像是<a href="https://jsperf.com/bignumber-js-vs-big-js-vs-decimal-js/8">BigDecimal</a>。</li>
+<li>否則最簡單的辦法是用 toFixed 。</li>
 </ul>
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">r</span> = parseFloat<span style="color: #4f97d7;">(</span>Math.sin<span style="color: #bc6ec5;">(</span>Math.PI<span style="color: #bc6ec5;">)</span>.toFixed<span style="color: #bc6ec5;">(</span><span style="color: #a45bad;">15</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>;
+console.log<span style="color: #4f97d7;">(</span>r<span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+0
+</pre>
 </div>
 </div>
+
 <div id="outline-container-orgheadline12" class="outline-3">
 <h3 id="orgheadline12">參考連結</h3>
 <div class="outline-text-3" id="text-orgheadline12">
@@ -444,7 +456,7 @@ sameNumber(3.141592653589793, 3.141592653585682) is true
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-06 Wed 17:24</p>
+<p class="date">Created: 2016-04-06 Wed 17:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
