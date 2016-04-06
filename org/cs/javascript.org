@@ -3,6 +3,9 @@
 #+HTML_LINK_UP: ./index.html
 
 * 浮點數運算精度問題
+#+CAPTION: from xkcd
+[[https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png]]
+
 JavaScript 的 Number 是 64 bit 的雙精度浮點數([[https://zh.wikipedia.org/wiki/IEEE_754][IEEE754]])，這邊出現的問題在其他語言都會發生。
 
 ** 加法的誤差
