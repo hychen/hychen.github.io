@@ -84,6 +84,20 @@ console.log('0.1 * 5 + 0.2 * 5 = ' + b);
 : x= 1.9999999999999998
 : x= 2.333333333333333
 
+** 失去精確位數
+太相近的數值相減的結果完全不可信
+
+$3.141592653589793$ - $3.141592653585682 \neq 0.000000000004111$
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+var x = 3.141592653589793;
+var y = 3.141592653585682;
+var z = x - y;
+console.log("x - y = ", z);
+#+END_SRC
+
+#+RESULTS:
+: x - y =  4.11093381558203e-12
+
 ** 參考連結
 - [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]], chewxy, 2014
 - [[http://blog.dcview.com/article.php?a=VmhQNVY%2BCzo%3D][使用浮點數最最基本的觀念]], 洗鏡光, 2008
