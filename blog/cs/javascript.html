@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-06 Wed 16:29 -->
+<!-- 2016-04-06 Wed 16:58 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript</title>
@@ -185,8 +185,9 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline7">分配律有時不成立</a></li>
 <li><a href="#orgheadline8">四捨五入誤差的影響</a></li>
 <li><a href="#orgheadline9">失去精確位數</a></li>
-<li><a href="#orgheadline10">結論</a></li>
-<li><a href="#orgheadline11">參考連結</a></li>
+<li><a href="#orgheadline10">如何判斷兩個浮點數相等</a></li>
+<li><a href="#orgheadline11">結論</a></li>
+<li><a href="#orgheadline12">參考連結</a></li>
 </ul>
 </li>
 </ul>
@@ -374,8 +375,47 @@ x - y =  4.11093381558203e-12
 </div>
 </div>
 <div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">結論</h3>
+<h3 id="orgheadline10">如何判斷兩個浮點數相等</h3>
 <div class="outline-text-3" id="text-orgheadline10">
+<p>
+由於有 round error, 所以兩個浮點數可能只有非常微小的差別，通常我們會將之視為兩數是相同的。
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">The following is js port of <a href="http://floating-point-gui.de/errors/comparison/">http://floating-point-gui.de/errors/comparison/</a>.</label>
+<pre class="src src-js">  <span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">sameNumber</span><span style="color: #4f97d7;">(</span><span style="color: #7590db;">a</span>, <span style="color: #7590db;">b</span>, <span style="color: #7590db;">epsilon</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">epsilon</span> = epsilon || <span style="color: #a45bad;">0</span>.<span style="color: #a45bad;">00001</span>;
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">absA</span> = Math.abs<span style="color: #bc6ec5;">(</span>a<span style="color: #bc6ec5;">)</span>;
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">absB</span> = Math.abs<span style="color: #bc6ec5;">(</span>b<span style="color: #bc6ec5;">)</span>;
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">diff</span> = Math.abs<span style="color: #bc6ec5;">(</span>a - b<span style="color: #bc6ec5;">)</span>;
+
+    <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>a === b<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+      <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">true</span>;
+    <span style="color: #bc6ec5;">}</span>
+    <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>a === <span style="color: #a45bad;">0</span> || b === <span style="color: #a45bad;">0</span> || diff &lt; Number.MIN_VALUE<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+      <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">a or b is zero or both are extremely close to it</span>
+      <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">relative error is less meaningful here</span>
+      <span style="color: #4f97d7; font-weight: bold;">return</span> diff &lt; <span style="color: #2d9574;">(</span>epsilon * Number.MIN_VALUE<span style="color: #2d9574;">)</span>;
+    <span style="color: #bc6ec5;">}</span>
+    <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #bc6ec5;">{</span>
+      <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">use relative error</span>
+      <span style="color: #4f97d7; font-weight: bold;">return</span> diff / Math.min<span style="color: #2d9574;">(</span><span style="color: #67b11d;">(</span>absA + absB<span style="color: #67b11d;">)</span>, Number.MAX_VALUE<span style="color: #2d9574;">)</span> &lt; epsilon;
+    <span style="color: #bc6ec5;">}</span>
+  <span style="color: #4f97d7;">}</span>
+
+console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'sameNumber(3.141592653589793, 3.141592653585682) is'</span>, sameNumber<span style="color: #bc6ec5;">(</span><span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">141592653589793</span>, <span style="color: #a45bad;">3</span>.<span style="color: #a45bad;">141592653585682</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+sameNumber(3.141592653589793, 3.141592653585682) is true
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">結論</h3>
+<div class="outline-text-3" id="text-orgheadline11">
 <ul class="org-ul">
 <li>乘法與除法是安全的。</li>
 <li>加法與減法是容易出錯的，需要多加留意。
@@ -387,12 +427,12 @@ x - y =  4.11093381558203e-12
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">參考連結</h3>
-<div class="outline-text-3" id="text-orgheadline11">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">參考連結</h3>
+<div class="outline-text-3" id="text-orgheadline12">
 <ul class="org-ul">
-<li><a href="http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/">What Every JavaScript Developer Should Know About Floating Point Numbers</a>, chewxy, 2014</li>
 <li><a href="http://blog.dcview.com/article.php?a=VmhQNVY+Czo=">使用浮點數最最基本的觀念</a>,洗鏡光, 2008</li>
+<li><a href="http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/">What Every JavaScript Developer Should Know About Floating Point Numbers</a>, chewxy, 2014</li>
 <li><a href="http://floating-point-gui.de/">What Every Programmer Should Know About Floating-Point Arithmetic</a></li>
 </ul>
 </div>
@@ -401,7 +441,7 @@ x - y =  4.11093381558203e-12
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-06 Wed 16:29</p>
+<p class="date">Created: 2016-04-06 Wed 16:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

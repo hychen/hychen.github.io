@@ -100,6 +100,37 @@ console.log("x - y = ", z);
 
 #+RESULTS:
 : x - y =  4.11093381558203e-12
+** 如何判斷兩個浮點數相等
+由於有 round error, 所以兩個浮點數可能只有非常微小的差別，通常我們會將之視為兩數是相同的。
+
+#+CAPTION: The following is js port of http://floating-point-gui.de/errors/comparison/.
+#+BEGIN_SRC js :results output :exports both
+  function sameNumber(a, b, epsilon) {
+    var epsilon = epsilon || 0.00001;
+    var absA = Math.abs(a);
+    var absB = Math.abs(b);
+    var diff = Math.abs(a - b);
+
+    if (a === b) {
+      return true;
+    }
+    else if (a === 0 || b === 0 || diff < Number.MIN_VALUE) {
+      // a or b is zero or both are extremely close to it
+      // relative error is less meaningful here
+      return diff < (epsilon * Number.MIN_VALUE);
+    }
+    else {
+      // use relative error
+      return diff / Math.min((absA + absB), Number.MAX_VALUE) < epsilon;
+    }
+  }
+
+console.log('sameNumber(3.141592653589793, 3.141592653585682) is', sameNumber(3.141592653589793, 3.141592653585682));
+#+END_SRC
+
+#+RESULTS:
+: sameFloat(3.141592653589793, 3.141592653585682) is true
+
 ** 結論 
 - 乘法與除法是安全的。
 - 加法與減法是容易出錯的，需要多加留意。
@@ -107,6 +138,6 @@ console.log("x - y = ", z);
   - 盡量不要讓太相近的數值相減。
 - 如果非常在乎計算後的結果，使用特別的資料格式，像是[[https://jsperf.com/bignumber-js-vs-big-js-vs-decimal-js/8][BigDecimal]]。
 ** 參考連結
-- [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]], chewxy, 2014
 - [[http://blog.dcview.com/article.php?a=VmhQNVY%2BCzo%3D][使用浮點數最最基本的觀念]],洗鏡光, 2008
+- [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]], chewxy, 2014
 - [[http://floating-point-gui.de/][What Every Programmer Should Know About Floating-Point Arithmetic]]
