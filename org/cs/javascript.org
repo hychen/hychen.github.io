@@ -1,0 +1,50 @@
+#+TITLE: JavaScript
+#+HTML_LINK_UP: ./index.html
+
+* 浮點數運算精度問題
+JavaScript 的 Number 是 64 bit 的雙精度浮點數([[https://zh.wikipedia.org/wiki/IEEE_754][IEEE754]])。
+
+** 加法
+0.1 + 0.2 不等於 3
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+console.log(0.1 + 0.2)
+#+END_SRC
+
+#+RESULTS:
+: 0.30000000000000004
+** 減法
+0.12 減 0.1 不等於 0.02
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+console.log(0.12 - 0.1)
+#+END_SRC
+
+#+RESULTS:
+: 0.01999999999999999
+** 乘法
+3.21 乘以 3 不等於 9.63
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+console.log(3.21 * 3)
+#+END_SRC
+
+#+RESULTS:
+: 9.629999999999999
+** 除法
+0.3 / 0.1 不等於 3
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+console.log(0.3 / 0.1)
+#+END_SRC
+
+#+RESULTS:
+: 2.9999999999999996
+
+** 三角函數
+Sin(Pi) 不等於 0
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+console.log(Math.sin(Math.PI))
+#+END_SRC
+
+#+RESULTS:
+: 1.2246467991473532e-16
+
+** 參考連結
+- [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]]
