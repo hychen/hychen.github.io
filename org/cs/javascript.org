@@ -3,7 +3,7 @@
 #+HTML_LINK_UP: ./index.html
 
 * 浮點數運算精度問題
-JavaScript 的 Number 是 64 bit 的雙精度浮點數([[https://zh.wikipedia.org/wiki/IEEE_754][IEEE754]])。
+JavaScript 的 Number 是 64 bit 的雙精度浮點數([[https://zh.wikipedia.org/wiki/IEEE_754][IEEE754]])，這邊出現的問題在其他語言都會發生。
 
 ** 加法的誤差
 $0.1+0.2 \neq 0.3$
@@ -101,3 +101,4 @@ console.log("x - y = ", z);
 ** 參考連結
 - [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]], chewxy, 2014
 - [[http://blog.dcview.com/article.php?a=VmhQNVY%2BCzo%3D][使用浮點數最最基本的觀念]],洗鏡光, 2008
+- [[http://floating-point-gui.de/][What Every Programmer Should Know About Floating-Point Arithmetic]]
