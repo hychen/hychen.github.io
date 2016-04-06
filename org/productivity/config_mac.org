@@ -56,11 +56,25 @@ and it do really fit some of my needs.
 #+BEGIN_SRC shell
 brew cask install amethyst
 #+END_SRC
-** Enable accessiblity
-Amethyst must be given permissions to use the accessibility APIs under the Privacy tab of the Security & Privacy preferences pane 
+*** Enable accessibility APIs
+To give permissions to use the accessibility APIs under the Privacy tab of the Security
+& Privacy preferences pane 
+** Setup
+The default configuration of amethyst is good enought to use, but it can do better by having the 
+following preferences.
 
-** Set first modifier to Hypher
-TBD
+- set first modifier to Hypher(which is my original left control key).
+- floating smal windows.
+** Usage
+| Key             | Descriptions                                         |
+|-----------------+------------------------------------------------------|
+| Hypher + space  | cycle to next layout                                 |
+| Hypher + h      | shrink the main pane                                 |
+| Hypher + l      | expand the main pane                                 |
+| Hypher + j      | focus the next window counterclockwise               |
+| Hypher + k      | focus the next window clockwise                      |
+| Hypher + return | swap the focused window with the main window         |
+| Hypher + t      | toggle whether or not the focused window is floating |
 
 * Zsh Configuration 
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
