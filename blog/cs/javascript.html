@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-06 Wed 13:53 -->
+<!-- 2016-04-06 Wed 14:25 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript</title>
@@ -177,13 +177,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgheadline1">浮點數運算精度問題</a>
 <ul>
-<li><a href="#orgheadline2">加法</a></li>
-<li><a href="#orgheadline3">減法</a></li>
-<li><a href="#orgheadline4">乘法</a></li>
-<li><a href="#orgheadline5">除法</a></li>
-<li><a href="#orgheadline6">三角函數</a></li>
-<li><a href="#orgheadline7">分配律</a></li>
-<li><a href="#orgheadline8">參考連結</a></li>
+<li><a href="#orgheadline2">加法的誤差</a></li>
+<li><a href="#orgheadline3">減法的誤差</a></li>
+<li><a href="#orgheadline4">乘法的誤差</a></li>
+<li><a href="#orgheadline5">除法的誤差</a></li>
+<li><a href="#orgheadline6">三角函數的誤差</a></li>
+<li><a href="#orgheadline7">分配律有時不成立</a></li>
+<li><a href="#orgheadline8">四捨五入誤差的影響</a></li>
+<li><a href="#orgheadline9">參考連結</a></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +200,7 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">加法</h3>
+<h3 id="orgheadline2">加法的誤差</h3>
 <div class="outline-text-3" id="text-orgheadline2">
 <p>
 \(0.1+0.2 \neq 0.3\)
@@ -216,7 +217,7 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 </div>
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">減法</h3>
+<h3 id="orgheadline3">減法的誤差</h3>
 <div class="outline-text-3" id="text-orgheadline3">
 <p>
 \(0.12 - 0.1 \neq 0.02\)
@@ -233,7 +234,7 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 </div>
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">乘法</h3>
+<h3 id="orgheadline4">乘法的誤差</h3>
 <div class="outline-text-3" id="text-orgheadline4">
 <p>
 \(3.21 \times 3 \neq 9.63\)
@@ -250,7 +251,7 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 </div>
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">除法</h3>
+<h3 id="orgheadline5">除法的誤差</h3>
 <div class="outline-text-3" id="text-orgheadline5">
 <p>
 \(0.3 \div 0.1 \neq 3\)
@@ -268,7 +269,7 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">三角函數</h3>
+<h3 id="orgheadline6">三角函數的誤差</h3>
 <div class="outline-text-3" id="text-orgheadline6">
 <p>
 \(\sin(\pi) \neq 0\)
@@ -285,12 +286,8 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 </div>
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">分配律</h3>
+<h3 id="orgheadline7">分配律有時不成立</h3>
 <div class="outline-text-3" id="text-orgheadline7">
-<p>
-分配律有時不成立
-</p>
-
 <p>
 \((0.1 + 0.2) \times 5 \neq 0.1 \times 5 + 0.2 \times 5\)
 </p>
@@ -310,10 +307,42 @@ console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'
 </pre>
 </div>
 </div>
-
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">參考連結</h3>
+<h3 id="orgheadline8">四捨五入誤差的影響</h3>
 <div class="outline-text-3" id="text-orgheadline8">
+<p>
+多跑了一次回圈，因為預期最後一次結果是3，結果得到1.9999999999999998。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">start</span> = <span style="color: #a45bad;">1</span>;
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">end</span> = <span style="color: #a45bad;">2</span>;
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">x</span>, <span style="color: #7590db;">h</span>;
+
+h = <span style="color: #4f97d7;">(</span>end-start<span style="color: #4f97d7;">)</span>/<span style="color: #a45bad;">3</span>
+x = start;
+console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"x="</span>,x<span style="color: #4f97d7;">)</span>;
+<span style="color: #4f97d7; font-weight: bold;">while</span><span style="color: #4f97d7;">(</span>x&lt;end<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+  x=x+h;
+  console.log<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"x="</span>,x<span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+x= 1
+x= 1.3333333333333333
+x= 1.6666666666666665
+x= 1.9999999999999998
+x= 2.333333333333333
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">參考連結</h3>
+<div class="outline-text-3" id="text-orgheadline9">
 <ul class="org-ul">
 <li><a href="http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/">What Every JavaScript Developer Should Know About Floating Point Numbers</a>, chewxy, 2014</li>
 <li><a href="http://blog.dcview.com/article.php?a=VmhQNVY+Czo=">使用浮點數最最基本的觀念</a>, 洗鏡光, 2008</li>
@@ -324,7 +353,7 @@ console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-06 Wed 13:53</p>
+<p class="date">Created: 2016-04-06 Wed 14:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -5,7 +5,7 @@
 * 浮點數運算精度問題
 JavaScript 的 Number 是 64 bit 的雙精度浮點數([[https://zh.wikipedia.org/wiki/IEEE_754][IEEE754]])。
 
-** 加法
+** 加法的誤差
 $0.1+0.2 \neq 0.3$
 #+BEGIN_SRC js :cmd "node" :results output :exports both
 console.log(0.1 + 0.2)
@@ -13,7 +13,7 @@ console.log(0.1 + 0.2)
 
 #+RESULTS:
 : 0.30000000000000004
-** 減法
+** 減法的誤差
 $0.12 - 0.1 \neq 0.02$
 #+BEGIN_SRC js :cmd "node" :results output :exports both
 console.log(0.12 - 0.1)
@@ -21,7 +21,7 @@ console.log(0.12 - 0.1)
 
 #+RESULTS:
 : 0.01999999999999999
-** 乘法
+** 乘法的誤差
 $3.21 \times 3 \neq 9.63$
 #+BEGIN_SRC js :cmd "node" :results output :exports both
 console.log(3.21 * 3)
@@ -29,7 +29,7 @@ console.log(3.21 * 3)
 
 #+RESULTS:
 : 9.629999999999999
-** 除法
+** 除法的誤差
 $0.3 \div 0.1 \neq 3$
 #+BEGIN_SRC js :cmd "node" :results output :exports both
 console.log(0.3 / 0.1)
@@ -38,7 +38,7 @@ console.log(0.3 / 0.1)
 #+RESULTS:
 : 2.9999999999999996
 
-** 三角函數
+** 三角函數的誤差
 $\sin(\pi) \neq 0$
 #+BEGIN_SRC js :cmd "node" :results output :exports both
 console.log(Math.sin(Math.PI))
@@ -46,8 +46,7 @@ console.log(Math.sin(Math.PI))
 
 #+RESULTS:
 : 1.2246467991473532e-16
-** 分配律
-分配律有時不成立
+** 分配律有時不成立
 
 $(0.1 + 0.2) \times 5 \neq 0.1 \times 5 + 0.2 \times 5$
 
@@ -61,6 +60,29 @@ console.log('0.1 * 5 + 0.2 * 5 = ' + b);
 #+RESULTS:
 : (0.1 + 0.2) * 5 = 1.5000000000000002
 : 0.1 * 5 + 0.2 * 5 = 1.5
+** 四捨五入誤差的影響
+多跑了一次回圈，因為預期最後一次結果是3，結果得到1.9999999999999998。
+
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+  var start = 1;
+  var end = 2;
+  var x, h;
+
+  h = (end-start)/3
+  x = start;
+  console.log("x=",x);
+  while(x<end) {
+    x=x+h;
+    console.log("x=",x);
+  }
+#+END_SRC
+
+#+RESULTS:
+: x= 1
+: x= 1.3333333333333333
+: x= 1.6666666666666665
+: x= 1.9999999999999998
+: x= 2.333333333333333
 
 ** 參考連結
 - [[http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/][What Every JavaScript Developer Should Know About Floating Point Numbers]], chewxy, 2014
