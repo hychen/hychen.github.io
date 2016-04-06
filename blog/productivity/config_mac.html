@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-06 Wed 09:45 -->
+<!-- 2016-04-06 Wed 09:49 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Work More Efficiently on a Mac</title>
@@ -153,12 +153,12 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">Manageing dotfiles in org-babel.</a></li>
+<li><a href="#orgheadline1">Managing dotfiles in org-babel.</a></li>
 <li><a href="#orgheadline5">Mac Keyboard Configuration</a></li>
 <li><a href="#orgheadline6">Use Tiling Window Manager</a></li>
-<li><a href="#orgheadline12">Zsh Configuration</a></li>
-<li><a href="#orgheadline36">VIM Configuration</a></li>
-<li><a href="#orgheadline40">Git Configuration</a></li>
+<li><a href="#orgheadline12">Use Zsh</a></li>
+<li><a href="#orgheadline36">Use VIM</a></li>
+<li><a href="#orgheadline40">Use Git</a></li>
 </ul>
 </div>
 </div>
@@ -168,7 +168,7 @@ Less is more, trust me.
 </p>
 </blockquote>
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">Manageing dotfiles in org-babel.</h2>
+<h2 id="orgheadline1">Managing dotfiles in org-babel.</h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
 I used to have almost 80% configurations that I stole from other people on internet which are never 
@@ -336,7 +336,7 @@ following preferences.
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">Zsh Configuration</h2>
+<h2 id="orgheadline12">Use Zsh</h2>
 <div class="outline-text-2" id="text-orgheadline12">
 <p>
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
@@ -570,7 +570,7 @@ zplug load --verbose
 </div></li></ul>
 </div>
 <div id="outline-container-orgheadline36" class="outline-2">
-<h2 id="orgheadline36">VIM Configuration</h2>
+<h2 id="orgheadline36">Use VIM</h2>
 <div class="outline-text-2" id="text-orgheadline36">
 <p>
 Normally I use Emacs to write codes and documents, but sometimes 
@@ -616,247 +616,12 @@ autocmd BufWinLeave * call clearmatches<span style="color: #4f97d7;">()</span>
 </div></li></ul>
 </div>
 <div id="outline-container-orgheadline40" class="outline-2">
-<h2 id="orgheadline40">Git Configuration</h2>
-<div class="outline-text-2" id="text-orgheadline40">
-<p>
-Git is a widely used source code management system.
-</p>
-</div>
-<ul class="org-ul"><li><a id="orgheadline41"></a>Workflow<br  /><div class="outline-text-3" id="text-orgheadline41">
-<p>
-When I start to develop something, my workflow always looks like:
-</p>
-
-<ol class="org-ol">
-<li>run <b>git fetch</b>, <b>git rebase</b> to get other people's changes.</li>
-<li>do some experimients.</li>
-<li>run <b>git save</b> to save current codebase, so I can go back if I screw up my code later.</li>
-<li>do some experimients.</li>
-<li>run <b>git wipe</b> if I don't like the result and want to throw current modifications to the hell.</li>
-<li>do some experimients.</li>
-<li>run <b>git save</b>.</li>
-<li>do some experimients.</li>
-<li>run <b>git undo</b>, if I want to commit some changes.</li>
-<li>run <b>git save</b>.</li>
-<li>run <b>git r</b> to re-organize my commit logs.</li>
-<li>run <b>git push</b> to deliver my works or save on cloud.</li>
-</ol>
-</div></li>
-<li><a id="orgheadline42"></a>Installation<br  /><div class="outline-text-3" id="text-orgheadline42">
-<div class="org-src-container">
-
-<pre class="src src-shell">brew install git
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline43"></a>Set up my name and e-mail address<br  /><div class="outline-text-3" id="text-orgheadline43">
-<p>
-both of which are included in every commit i make.
-</p>
-<div class="org-src-container">
-
-<pre class="src src-shell"><span style="color: #4f97d7;">[</span>user<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">name</span> = &#38515;&#20449;&#23673;
-  <span style="color: #7590db;">email</span> = ossug.hychen@gmail.com
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline44"></a>Caching password in git<br  /><div class="outline-text-3" id="text-orgheadline44">
-<p>
-Cloning Github repositories using HTTPS is better than using SSH when you want to access those repositories 
-in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
-password in Git.
-</p>
-<div class="org-src-container">
-
-<pre class="src src-shell"><span style="color: #4f97d7;">[</span>credential<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">helper</span> = osxkeychain
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline45"></a>Change git push behavior to simple<br  /><div class="outline-text-3" id="text-orgheadline45">
-<p>
-When pushing without giving a refspec, push the current branch to its remote branch.
-</p>
-<div class="org-src-container">
-
-<pre class="src src-shell"><span style="color: #4f97d7;">[</span>push<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">default</span> = simple
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline46"></a>Disable advices which isnt useful anymore<br  /><div class="outline-text-3" id="text-orgheadline46">
-<p>
-It was useful when i was a beginer, but now it is annoy to me as a 老手!
-</p>
-<ul class="org-ul">
-<li>Disable the advice shown by Git when you attempt to push something that’s not fast forward-able</li>
-<li>Disable “how to stage/unstage/add” hints given by git status.</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-shell"><span style="color: #4f97d7;">[</span>advice<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">pushNonFastForward</span> = false
-  <span style="color: #7590db;">statusHints</span> = false
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline47"></a>Useful Aliases<br  /><div class="outline-text-3" id="text-orgheadline47">
-<p>
-This saves a lot time, and I think you should do too!.
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Alias</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">s</td>
-<td class="org-left">View the current working tree status using the short format with branch information.</td>
-</tr>
-
-<tr>
-<td class="org-left">l</td>
-<td class="org-left">View abbreviated SHA, description, and history graph of the latest 50 commits</td>
-</tr>
-
-<tr>
-<td class="org-left">c</td>
-<td class="org-left">Clone a repository including all submodules</td>
-</tr>
-
-<tr>
-<td class="org-left">ci</td>
-<td class="org-left">Normal git commit</td>
-</tr>
-
-<tr>
-<td class="org-left">ca</td>
-<td class="org-left">Commit all changes</td>
-</tr>
-
-<tr>
-<td class="org-left">co</td>
-<td class="org-left">Normal git checkout</td>
-</tr>
-
-<tr>
-<td class="org-left">p</td>
-<td class="org-left">git push</td>
-</tr>
-
-<tr>
-<td class="org-left">save</td>
-<td class="org-left">Adds all changes including untracked files and creates a commit as a savepoint.</td>
-</tr>
-
-<tr>
-<td class="org-left">undo</td>
-<td class="org-left">Resets the previous commit, but keeps all the changes from that commit in the working directory</td>
-</tr>
-
-<tr>
-<td class="org-left">wipe</td>
-<td class="org-left">Commit everything and then do hard reset.</td>
-</tr>
-
-<tr>
-<td class="org-left">r</td>
-<td class="org-left">rebase lastest 15 commits</td>
-</tr>
-
-<tr>
-<td class="org-left">fc</td>
-<td class="org-left">Find commits by source coude</td>
-</tr>
-
-<tr>
-<td class="org-left">fm</td>
-<td class="org-left">Find commits by commit message</td>
-</tr>
-
-<tr>
-<td class="org-left">contributors</td>
-<td class="org-left">List contributors with number of commits</td>
-</tr>
-</tbody>
-</table>
-
-<div class="org-src-container">
-
-<pre class="src src-shell" id="orgsrcblock1"><span style="color: #4f97d7;">[</span>alias<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">s</span> = status -sb
-  <span style="color: #7590db;">l</span> = log --pretty=oneline -n <span style="color: #a45bad;">50</span> --graph --abbrev-commit
-  <span style="color: #7590db;">c</span> = clone --recursive
-  <span style="color: #7590db;">ci</span> = commit
-  <span style="color: #7590db;">ca</span> = !git add -A &amp;&amp; git commit -av
-  <span style="color: #7590db;">co</span> = checkout
-  <span style="color: #7590db;">p</span> = push
-  <span style="color: #7590db;">save</span> = !git add -A &amp;&amp; git commit -v <span style="color: #2d9574;">'SAVEPOINT'</span>
-  <span style="color: #7590db;">undo</span> = reset HEAD~1 --mixed
-  <span style="color: #7590db;">wipe</span> = !git add -A &amp;&amp; git commit -qm <span style="color: #2d9574;">'WIPE SAVEPOINT'</span> &amp;&amp; git reset HEAD~1 --hard
-  <span style="color: #7590db;">r</span> = rebase -i HEAD~15
-  <span style="color: #7590db;">fc</span> = <span style="color: #2d9574;">"!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"</span>
-  <span style="color: #7590db;">fm</span> = <span style="color: #2d9574;">"!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"</span>
-  <span style="color: #7590db;">contributors</span> = shortlog --summary --numbered
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline48"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline48">
-<div class="org-src-container">
-
-<pre class="src src-sh"><span style="color: #4f97d7;">[</span>user<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">name</span> = &#38515;&#20449;&#23673;
-  <span style="color: #7590db;">email</span> = ossug.hychen@gmail.com
-
-<span style="color: #4f97d7;">[</span>credential<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">helper</span> = osxkeychain
-
-<span style="color: #4f97d7;">[</span>push<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">default</span> = simple
-
-<span style="color: #4f97d7;">[</span>advice<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">pushNonFastForward</span> = false
-  <span style="color: #7590db;">statusHints</span> = false
-
-<span style="color: #4f97d7;">[</span>alias<span style="color: #4f97d7;">]</span>
-  <span style="color: #7590db;">s</span> = status -sb
-  <span style="color: #7590db;">l</span> = log --pretty=oneline -n <span style="color: #a45bad;">50</span> --graph --abbrev-commit
-  <span style="color: #7590db;">c</span> = clone --recursive
-  <span style="color: #7590db;">ci</span> = commit
-  <span style="color: #7590db;">ca</span> = !git add -A &amp;&amp; git commit -av
-  <span style="color: #7590db;">co</span> = checkout
-  <span style="color: #7590db;">p</span> = push
-  <span style="color: #7590db;">save</span> = !git add -A &amp;&amp; git commit -v <span style="color: #2d9574;">'SAVEPOINT'</span>
-  <span style="color: #7590db;">undo</span> = reset HEAD~1 --mixed
-  <span style="color: #7590db;">wipe</span> = !git add -A &amp;&amp; git commit -qm <span style="color: #2d9574;">'WIPE SAVEPOINT'</span> &amp;&amp; git reset HEAD~1 --hard
-  <span style="color: #7590db;">r</span> = rebase -i HEAD~15
-  <span style="color: #7590db;">fc</span> = <span style="color: #2d9574;">"!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"</span>
-  <span style="color: #7590db;">fm</span> = <span style="color: #2d9574;">"!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"</span>
-  <span style="color: #7590db;">contributors</span> = shortlog --summary --numbered
-</pre>
-</div>
-</div></li>
-<li><a id="orgheadline49"></a>References<br  /><div class="outline-text-3" id="text-orgheadline49">
-<ul class="org-ul">
-<li><a href="http://nuclearsquid.com/writings/git-tricks-tips-workflows/">A few of my Git tricks, tips and workflows</a></li>
-</ul>
-</div></li></ul>
+<h2 id="orgheadline40">Use Git</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-06 Wed 09:45</p>
+<p class="date">Created: 2016-04-06 Wed 09:49</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
