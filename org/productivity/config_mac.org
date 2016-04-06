@@ -234,3 +234,94 @@ whitespace.
 ** Put it all together 
 #+INCLUDE: ~/.vimrc src sh
 * Use Git 
+Git is a widely used source code management system.
+** Workflow
+When I start to develop something, my workflow always looks like:
+
+1. run *git fetch*, *git rebase* to get other people's changes.
+2. do some experimients. 
+3. run *git save* to save current codebase, so I can go back if I screw up my code later.
+4. do some experimients. 
+5. run *git wipe* if I don't like the result and want to throw current modifications to the hell.
+6. do some experimients.
+7. run *git save*.
+8. do some experimients.
+9. run *git undo*, if I want to commit some changes.
+10. run *git save*.
+11. run *git r* to re-organize my commit logs.
+12. run *git push* to deliver my works or save on cloud.
+** Installation 
+#+BEGIN_SRC shell
+brew install git
+#+END_SRC
+** Set up my name and e-mail address
+both of which are included in every commit i make.
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[user]
+	name = 陳信屹
+	email = ossug.hychen@gmail.com
+#+END_SRC 
+** Caching password in git
+Cloning Github repositories using HTTPS is better than using SSH when you want to access those repositories 
+in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
+password in Git.
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[credential]
+	helper = osxkeychain
+#+END_SRC
+** Change git push behavior to simple
+When pushing without giving a refspec, push the current branch to its remote branch.
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[push]
+	default = simple
+#+END_SRC
+** Disable advices which isnt useful anymore
+It was useful when i was a beginer, but now it is annoy to me as a 老手!
+- Disable the advice shown by Git when you attempt to push something that’s not fast forward-able
+- Disable “how to stage/unstage/add” hints given by git status.
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[advice]
+  pushNonFastForward = false
+  statusHints = false
+#+END_SRC
+** Useful Aliases
+This saves a lot time, and I think you should do too!.
+| Alias          | Description                                                                                     |
+|----------------+-------------------------------------------------------------------------------------------------|
+| s              | View the current working tree status using the short format with branch information.            |
+| l              | View abbreviated SHA, description, and history graph of the latest 50 commits                   |
+| c              | Clone a repository including all submodules                                                     |
+| ci             | Normal git commit                                                                               |
+| ca             | Commit all changes                                                                              |
+| co             | Normal git checkout                                                                             |
+| p              | git push                                                                                        |
+| save           | Adds all changes including untracked files and creates a commit as a savepoint.                 |
+| undo           | Resets the previous commit, but keeps all the changes from that commit in the working directory |
+| wipe           | Commit everything and then do hard reset.                                                       |
+| r              | rebase lastest 15 commits                                                                       |
+| fc             | Find commits by source coude                                                                    |
+| fm             | Find commits by commit message                                                                  |
+| contributors	 | List contributors with number of commits                                                        |
+
+#+NAME: Git Config Aliases
+#+BEGIN_SRC shell :tangle ~/.gitconfig
+[alias]
+	s = status -sb
+	l = log --pretty=oneline -n 50 --graph --abbrev-commit
+	c = clone --recursive
+  ci = commit
+	ca = !git add -A && git commit -av
+  co = checkout
+  p = push
+	save = !git add -A && git commit -v 'SAVEPOINT'
+	undo = reset HEAD~1 --mixed
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  r = rebase -i HEAD~15
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	contributors = shortlog --summary --numbered
+#+END_SRC
+** Put it all together
+#+INCLUDE: ~/.gitconfig src sh
+** References
+- [[http://nuclearsquid.com/writings/git-tricks-tips-workflows/][A few of my Git tricks, tips and workflows]]
