@@ -61,6 +61,11 @@ To define Hyper as control+option+command+shift.
 ** References
 - [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]]
 - [[http://stevelosh.com/blog/2012/10/a-modern-space-cadet][A Modern Space Cadet]] 
+* Get The Missing Package Manager
+Do you miss *apt-get*, or any package manager on Linux after you swtiched to Mac?
+If you do then *brew* and *brew cask* is what you are looking for.
+
+TBD
 * Use Tiling Window Manager
 Don't organize windows by yourself, let the computer does. Have you ever aware how much times you spend 
 on organzing windows? 
@@ -101,6 +106,14 @@ following preferences.
 | Hypher + k      | focus the next window clockwise                      |
 | Hypher + return | swap the focused window with the main window         |
 | Hypher + t      | toggle whether or not the focused window is floating |
+* Use Quck Console
+As a developer and power command line user.
+
+TBD.
+* Use Spacemacs
+Spacemaacs is a community-driven Emacs distribution. 
+
+TBD
 
 * Use Zsh 
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
