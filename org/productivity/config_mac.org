@@ -106,7 +106,9 @@ following preferences.
 | Hypher + k      | focus the next window clockwise                      |
 | Hypher + return | swap the focused window with the main window         |
 | Hypher + t      | toggle whether or not the focused window is floating |
-* Use Quck Console
+* User ITerm2
+TBD
+* Use Quake Console
 As a developer and power command line user.
 
 TBD.
