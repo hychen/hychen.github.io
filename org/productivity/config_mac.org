@@ -62,18 +62,19 @@ To define Hyper as control+option+command+shift.
 - [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]]
 - [[http://stevelosh.com/blog/2012/10/a-modern-space-cadet][A Modern Space Cadet]] 
 * Use Tiling Window Manager
-Don't organize windows by yourself, let the computer do it. Have you ever aware how much times you spend 
-to organize windows? 
+Don't organize windows by yourself, let the computer does. Have you ever aware how much times you spend 
+on organzing windows? 
 
-Most of times, What you need is having 2 applications that 1 one left and one on right in same screen,
-for example, you may want to have browser on left, and a editor on right. Yo always need to move 
-applications to proper position on your screen after launch them.
+Most of times, what you actually need is having 2 applications that 1 is one left side and another one is on 
+right side in same screen, for example, you may want to read a webpage on browser which is on left side while you are 
+programming with a editor on the right side at the same time. Ideally those applications should be in proper position 
+on your screen after launch.
 
 I can't help to organize windows by my self anymore after I tried one of best tiling window managers 
 on Linux - [[http://xmonad.org/][XMonad]].
 
-It is still, still one killer application I can't find replacement on MAC until now, even I found Amethyst 
-and it do really fit some of my needs.
+It is still one killer application on Linux I can't find replacement on MAC until now, even I found Amethyst 
+and it really fit some of my needs.
 
 ** Get [[https://github.com/ianyh/Amethyst][Amethyst]]
 [[../../assests/imgs/amethyst.gif]]
