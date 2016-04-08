@@ -8,3 +8,4 @@
 
 - Blog [[./blog][部落格]]
 - Resume 履歷 ([[./resume.html][HTML]] / [[./resume.json][JSON]])。
+- GnuPG Public Key :: DF24 94F9 FA1B DEFC 1A71  8FFC D350 BB02 28F6 0193
