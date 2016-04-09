@@ -18,6 +18,37 @@ so, here you are, this is a post remains me why I need to theses configuration, 
 but it is also used to export all my configurations on mac.
 
 Should you interest to see original source file, please visit [[https://raw.githubusercontent.com/hychen/hychen.github.io/master/org/productivity/config_mac.org][here]].
+* Install command line tool
+Install Xcode from the App store or the Apple developer website.
+#+BEGIN_SRC sh
+xcode-select --install
+#+END_SRC
+* Get The Missing Package Manager
+Do you miss *aplt-get*, or any package manager on Linux after you swtiched to Mac?
+If you do then [[http://brew.sh][HomeBrew]] and [[https://caskroom.github.io/][HomeBrew Cask]] 
+is what you are looking for.
+
+** Get Brew 
+#+BEGIN_SRC sh 
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#+END_SRC
+** Add more sources
+*** System duplicate formulae
+#+BEGIN_SRC sh 
+brew tap homebrew/dupes
+#+END_SRC
+*** Versioned formulae
+#+BEGIN_SRC sh
+brew tap homebrew/versions
+#+END_SRC
+*** Homebrew Cask is an extension for Homebrew that allows you to automate the installation of Mac Apps.
+#+BEGIN_SRC sh
+brew tap caskroom/cask
+#+END_SRC
+*** Cask can also be used to automatically download and install fonts.
+#+BEGIN_SRC sh
+brew tap caskroom/fonts
+#+END_SRC
 * Better Terminal
 Iterm2 has a lot useful [features](https://www.iterm2.com/features.html), such as split panes, 
 hotkey window.
@@ -35,11 +66,6 @@ at your fingertips.
 2. Open *Preference > Keys*.
 3. Enable *Show/hide iTerm2 with a system-wide hotkey*, change Hotkey to *Command + ;*.
 4. Enable *Hotkey toogles a dedicated window with profile*, change the profile to *Hotkey Window*.
-* Get The Missing Package Manager
-Do you miss *apt-get*, or any package manager on Linux after you swtiched to Mac?
-If you do then *brew* and *brew cask* is what you are looking for.
-
-TBD
 * Better Keyboard Configuration
 ** Remaps Capslock To Ctrl
 I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
