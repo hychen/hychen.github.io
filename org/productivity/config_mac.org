@@ -5,7 +5,7 @@
 #+BEGIN_QUOTE
 工欲善其事，必先利其器。
 #+END_QUOTE
-* Managing dotfiles in org-babel.
+* Managing Dotfiles In Org-Babel.
 I used to have almost 80% configurations that I stole from other people on internet which are never 
 used. Why? Maybe because I did not think why i need them, thoese things jsut did not be adopted in my daily 
 workflow. 
@@ -18,7 +18,7 @@ so, here you are, this is a post remains me why I need to theses configuration, 
 but it is also used to export all my configurations on mac.
 
 Should you interest to see original source file, please visit [[https://raw.githubusercontent.com/hychen/hychen.github.io/master/org/productivity/config_mac.org][here]].
-* Install command line tool
+* Install Command Line Tool
 Install Xcode from the App store or the Apple developer website.
 #+BEGIN_SRC sh
 xcode-select --install
@@ -153,11 +153,6 @@ following preferences.
 | Hypher + k      | focus the next window clockwise                      |
 | Hypher + return | swap the focused window with the main window         |
 | Hypher + t      | toggle whether or not the focused window is floating |
-* Use Spacemacs
-Spacemaacs is a community-driven Emacs distribution. 
-
-TBD
-
 * Use Zsh 
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
 It is handy and well documented, but what did not stastify me is its slow startup times,
@@ -270,6 +265,25 @@ function r() { grep "$1" ${@:2} -R . }
 #+END_SRC
 ** Put it all together
 #+INCLUDE: "~/.zshrc" src sh
+* Use Spacemacs
+Emacs default configuration is, well, not really easy to use, so you need to spend a lot of time to 
+config it. I used to have a big configuration until I found spacemacs.
+
+The most favaor part of Spacemacs is it can be used naturally by both Emacs and Vim users, the second 
+part is its shortcuts is god damm easy to remeber. ok, some people might not agree, but at least it is easy to 
+remeber than Emacs's.
+
+** Installation
+*** Get Emacs
+#+BEGIN_SRC sh
+brew tap railwaycat/homebrew-emacsmacport
+brew install emacs-mac --with-spacemacs-icon
+brew linkapps
+#+END_SRC
+*** Get Spacemaacs configurations
+#+BEGIN_SRC sh
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+#+END_SRC
 * Use VIM 
 Normally I use Emacs to write codes and documents, but sometimes 
 I  do quick modification on terminal by using VIM. 
