@@ -34,7 +34,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 #+END_SRC
 ** Add more sources
 *** System duplicate formulae
-#+BEGIN_SRC sh 
+#+BEGIN_SRC sh
 brew tap homebrew/dupes
 #+END_SRC
 *** Versioned formulae
@@ -48,6 +48,10 @@ brew tap caskroom/cask
 *** Cask can also be used to automatically download and install fonts.
 #+BEGIN_SRC sh
 brew tap caskroom/fonts
+#+END_SRC
+** Update formulaes
+#+BEGIN_SRC sh
+brew update
 #+END_SRC
 * Better Terminal
 Iterm2 has a lot useful [features](https://www.iterm2.com/features.html), such as split panes, 
@@ -304,17 +308,27 @@ When I start to develop something, my workflow always looks like:
 11. run *git r* to re-organize my commit logs.
 12. run *git push* to deliver my works or save on cloud.
 ** Installation 
+*** Get Git
 #+BEGIN_SRC shell
 brew install git
 #+END_SRC
-** Set up my name and e-mail address
+*** Get Tig
+[[https://github.com/jonas/tig][Tig]] is an ncurses-based text-mode interface for git. It functions mainly as a Git repository browser, 
+but can also assist in staging changes for commit at chunk level and act as a pager for output from 
+various Git commands.
+
+#+BEGIN_SRC shell
+brew install tig
+#+END_SRC
+** .gitconfig
+*** Set up my name and e-mail address
 both of which are included in every commit i make.
 #+BEGIN_SRC shell :tangle ~/.gitconfig
 [user]
 	name = 陳信屹
 	email = ossug.hychen@gmail.com
 #+END_SRC 
-** Caching password in git
+*** Caching password in git
 Cloning Github repositories using HTTPS is better than using SSH when you want to access those repositories 
 in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
 password in Git.
@@ -322,13 +336,13 @@ password in Git.
 [credential]
 	helper = osxkeychain
 #+END_SRC
-** Change git push behavior to simple
+*** Change git push behavior to simple
 When pushing without giving a refspec, push the current branch to its remote branch.
 #+BEGIN_SRC shell :tangle ~/.gitconfig
 [push]
 	default = simple
 #+END_SRC
-** Disable advices which isnt useful anymore
+*** Disable advices which isnt useful anymore
 It was useful when i was a beginer, but now it is annoy to me as a 老手!
 - Disable the advice shown by Git when you attempt to push something that’s not fast forward-able
 - Disable “how to stage/unstage/add” hints given by git status.
@@ -337,7 +351,7 @@ It was useful when i was a beginer, but now it is annoy to me as a 老手!
   pushNonFastForward = false
   statusHints = false
 #+END_SRC
-** Useful Aliases
+*** Useful Aliases
 This saves a lot time, and I think you should do too!.
 | Alias          | Description                                                                                     |
 |----------------+-------------------------------------------------------------------------------------------------|
@@ -374,8 +388,38 @@ This saves a lot time, and I think you should do too!.
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 	contributors = shortlog --summary --numbered
 #+END_SRC
-** Put it all together
+*** Put it all together
 #+INCLUDE: ~/.gitconfig src sh
+** .gitignore
+Create the file ~/.gitignore as shown below to remove the files that are almost always ignored in 
+all git repositories. more global git ignores can found on [[https://github.com/github/gitignore/tree/master/Global][Github Gitignores]].
+
+#+BEGIN_SRC sh :tangle ~/.gitignore
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# VIM.
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+Session.vim
+.netrwhist
+*~
+tags
+#+END_SRC
+
 ** References
 - [[http://nuclearsquid.com/writings/git-tricks-tips-workflows/][A few of my Git tricks, tips and workflows]]
 * References
