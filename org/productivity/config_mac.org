@@ -18,6 +18,28 @@ so, here you are, this is a post remains me why I need to theses configuration, 
 but it is also used to export all my configurations on mac.
 
 Should you interest to see original source file, please visit [[https://raw.githubusercontent.com/hychen/hychen.github.io/master/org/productivity/config_mac.org][here]].
+* Better Terminal
+Iterm2 has a lot useful [features](https://www.iterm2.com/features.html), such as split panes, 
+hotkey window.
+
+** Installation 
+#+BEGIN_SRC sh
+brew cask install iterm2
+#+END_SRC
+** Enable Hotkey Window
+Register a hotkey that brings iTerm2 to the foreground when you're in another application. 
+A terminal is always a keypress away. This gives you an always-available terminal (like Visor, Guake, or Yakuake) 
+at your fingertips.
+
+1. Creates a new profile named as *Hotkey Window*.
+2. Open *Preference > Keys*.
+3. Enable *Show/hide iTerm2 with a system-wide hotkey*, change Hotkey to *Command + ;*.
+4. Enable *Hotkey toogles a dedicated window with profile*, change the profile to *Hotkey Window*.
+* Get The Missing Package Manager
+Do you miss *apt-get*, or any package manager on Linux after you swtiched to Mac?
+If you do then *brew* and *brew cask* is what you are looking for.
+
+TBD
 * Better Keyboard Configuration
 ** Remaps Capslock To Ctrl
 I am a fan of *Emacs* but prefer *VIM style editing* (which leads me to start using spacemacs), 
@@ -61,11 +83,6 @@ To define Hyper as control+option+command+shift.
 ** References
 - [[https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape][Work more efficiently on your Mac (for developers)]]
 - [[http://stevelosh.com/blog/2012/10/a-modern-space-cadet][A Modern Space Cadet]] 
-* Get The Missing Package Manager
-Do you miss *apt-get*, or any package manager on Linux after you swtiched to Mac?
-If you do then *brew* and *brew cask* is what you are looking for.
-
-TBD
 * Use Tiling Window Manager
 Don't organize windows by yourself, let the computer does. Have you ever aware how much times you spend 
 on organzing windows? 
@@ -106,12 +123,6 @@ following preferences.
 | Hypher + k      | focus the next window clockwise                      |
 | Hypher + return | swap the focused window with the main window         |
 | Hypher + t      | toggle whether or not the focused window is floating |
-* User ITerm2
-TBD
-* Use Quake Console
-As a developer and power command line user.
-
-TBD.
 * Use Spacemacs
 Spacemaacs is a community-driven Emacs distribution. 
 
@@ -341,3 +352,5 @@ This saves a lot time, and I think you should do too!.
 #+INCLUDE: ~/.gitconfig src sh
 ** References
 - [[http://nuclearsquid.com/writings/git-tricks-tips-workflows/][A few of my Git tricks, tips and workflows]]
+* References
+- [[http://sourabhbajaj.com/mac-setup/Xcode/README.html][Mac OS X Setup Guide]]

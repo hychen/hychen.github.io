@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-08 Fri 09:10 -->
+<!-- 2016-04-09 Sat 14:31 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Work More Efficiently on a Mac</title>
@@ -154,15 +154,15 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">Managing dotfiles in org-babel.</a></li>
-<li><a href="#orgheadline10">Better Keyboard Configuration</a></li>
-<li><a href="#orgheadline11">Get The Missing Package Manager</a></li>
-<li><a href="#orgheadline12">Use Tiling Window Manager</a></li>
-<li><a href="#orgheadline18">User ITerm2</a></li>
-<li><a href="#orgheadline19">Use Quake Console</a></li>
-<li><a href="#orgheadline20">Use Spacemacs</a></li>
-<li><a href="#orgheadline21">Use Zsh</a></li>
-<li><a href="#orgheadline45">Use VIM</a></li>
-<li><a href="#orgheadline49">Use Git</a></li>
+<li><a href="#orgheadline2">Better Terminal</a></li>
+<li><a href="#orgheadline13">Better Keyboard Configuration</a></li>
+<li><a href="#orgheadline14">Get The Missing Package Manager</a></li>
+<li><a href="#orgheadline15">Use Tiling Window Manager</a></li>
+<li><a href="#orgheadline21">Use Spacemacs</a></li>
+<li><a href="#orgheadline22">Use Zsh</a></li>
+<li><a href="#orgheadline46">Use VIM</a></li>
+<li><a href="#orgheadline50">Use Git</a></li>
+<li><a href="#orgheadline60">References</a></li>
 </ul>
 </div>
 </div>
@@ -196,10 +196,41 @@ Should you interest to see original source file, please visit <a href="https://r
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10">Better Keyboard Configuration</h2>
-<div class="outline-text-2" id="text-orgheadline10">
-</div><ul class="org-ul"><li><a id="orgheadline2"></a>Remaps Capslock To Ctrl<br  /><div class="outline-text-3" id="text-orgheadline2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Better Terminal</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+Iterm2 has a lot useful [features](<a href="https://www.iterm2.com/features.html">https://www.iterm2.com/features.html</a>), such as split panes, 
+hotkey window.
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="orgheadline3"></a>Installation<br  /><div class="outline-text-3" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-sh">brew cask install iterm2
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline4"></a>Enable Hotkey Window<br  /><div class="outline-text-3" id="text-orgheadline4">
+<p>
+Register a hotkey that brings iTerm2 to the foreground when you're in another application. 
+A terminal is always a keypress away. This gives you an always-available terminal (like Visor, Guake, or Yakuake) 
+at your fingertips.
+</p>
+
+<ol class="org-ol">
+<li>Creates a new profile named as <b>Hotkey Window</b>.</li>
+<li>Open <b>Preference &gt; Keys</b>.</li>
+<li>Enable <b>Show/hide iTerm2 with a system-wide hotkey</b>, change Hotkey to <b>Command + ;</b>.</li>
+<li>Enable <b>Hotkey toogles a dedicated window with profile</b>, change the profile to <b>Hotkey Window</b>.</li>
+</ol>
+</div></li></ul>
+</div>
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">Better Keyboard Configuration</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+</div><ul class="org-ul"><li><a id="orgheadline5"></a>Remaps Capslock To Ctrl<br  /><div class="outline-text-3" id="text-orgheadline5">
 <p>
 I am a fan of <b>Emacs</b> but prefer <b>VIM style editing</b> (which leads me to start using spacemacs), 
 Capslock is useless, I never use it. Luckly, it seems a good place to put <b>Ctrl/Escape</b> there.
@@ -212,7 +243,7 @@ Capslock is useless, I never use it. Luckly, it seems a good place to put <b>Ctr
 <li>Open Seli and go <b>other keys</b> section to Change <b>Ctrl<sub>L</sub></b></li>
 </ol>
 </div></li>
-<li><a id="orgheadline3"></a>Remaps Capslock to Escape<br  /><div class="outline-text-3" id="text-orgheadline3">
+<li><a id="orgheadline6"></a>Remaps Capslock to Escape<br  /><div class="outline-text-3" id="text-orgheadline6">
 <ol class="org-ol">
 <li>Download the lastest version of <a href="https://pqrs.org/osx/karabiner/">Karabiner</a>.</li>
 <li>go into Karabiner and search for this option:</li>
@@ -222,13 +253,13 @@ Control<sub>L</sub> to Control<sub>L</sub><br  />
 &#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;(+ when you type Control<sub>L</sub> only, send Escape)<br  />
 </p>
 </div></li>
-<li><a id="orgheadline4"></a>Remaps Ctrl-L to Hypher<br  /><div class="outline-text-3" id="text-orgheadline4">
+<li><a id="orgheadline7"></a>Remaps Ctrl-L to Hypher<br  /><div class="outline-text-3" id="text-orgheadline7">
 <p>
 To define Hyper as control+option+command+shift.
 </p>
 </div>
-<ul class="org-ul"><li><a id="orgheadline5"></a>open Karabiner and go to Misc &amp; Uninstall &gt; Open private.xml).<br  /></li>
-<li><a id="orgheadline6"></a>Add this XML snippet directly under the &lt;root&gt; element.<br  /><div class="outline-text-4" id="text-orgheadline6">
+<ul class="org-ul"><li><a id="orgheadline8"></a>open Karabiner and go to Misc &amp; Uninstall &gt; Open private.xml).<br  /></li>
+<li><a id="orgheadline9"></a>Add this XML snippet directly under the &lt;root&gt; element.<br  /><div class="outline-text-4" id="text-orgheadline9">
 <div class="org-src-container">
 
 <pre class="src src-xml">&lt;?<span style="color: #4f97d7; font-weight: bold;">xml</span> <span style="color: #7590db;">version</span>=<span style="color: #2d9574;">"</span><span style="color: #2d9574;">1.0</span><span style="color: #2d9574;">"</span>?&gt;
@@ -249,18 +280,18 @@ To define Hyper as control+option+command+shift.
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline7"></a>Save the file, then open Karabiner and press ReloadXML in the upper-right of the Change Key tab.<br  /></li>
-<li><a id="orgheadline8"></a>search for Remap Caps and check the box.<br  /></li></ul></li>
-<li><a id="orgheadline9"></a>References<br  /><div class="outline-text-3" id="text-orgheadline9">
+<li><a id="orgheadline10"></a>Save the file, then open Karabiner and press ReloadXML in the upper-right of the Change Key tab.<br  /></li>
+<li><a id="orgheadline11"></a>search for Remap Caps and check the box.<br  /></li></ul></li>
+<li><a id="orgheadline12"></a>References<br  /><div class="outline-text-3" id="text-orgheadline12">
 <ul class="org-ul">
 <li><a href="https://msol.io/blog/tech/work-more-efficiently-on-your-mac-for-developers/#tap-caps-lock-for-escape">Work more efficiently on your Mac (for developers)</a></li>
 <li><a href="http://stevelosh.com/blog/2012/10/a-modern-space-cadet">A Modern Space Cadet</a></li>
 </ul>
 </div></li></ul>
 </div>
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">Get The Missing Package Manager</h2>
-<div class="outline-text-2" id="text-orgheadline11">
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14">Get The Missing Package Manager</h2>
+<div class="outline-text-2" id="text-orgheadline14">
 <p>
 Do you miss <b>apt-get</b>, or any package manager on Linux after you swtiched to Mac?
 If you do then <b>brew</b> and <b>brew cask</b> is what you are looking for.
@@ -271,9 +302,9 @@ TBD
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">Use Tiling Window Manager</h2>
-<div class="outline-text-2" id="text-orgheadline12">
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15">Use Tiling Window Manager</h2>
+<div class="outline-text-2" id="text-orgheadline15">
 <p>
 Don't organize windows by yourself, let the computer does. Have you ever aware how much times you spend 
 on organzing windows? 
@@ -297,27 +328,27 @@ and it really fit some of my needs.
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="orgheadline13"></a>Get <a href="https://github.com/ianyh/Amethyst">Amethyst</a><br  /><div class="outline-text-3" id="text-orgheadline13">
+<ul class="org-ul"><li><a id="orgheadline16"></a>Get <a href="https://github.com/ianyh/Amethyst">Amethyst</a><br  /><div class="outline-text-3" id="text-orgheadline16">
 
 <div class="figure">
 <p><img src="../../assests/imgs/amethyst.gif" alt="amethyst.gif" />
 </p>
 </div>
 </div>
-<ul class="org-ul"><li><a id="orgheadline14"></a>Installation<br  /><div class="outline-text-4" id="text-orgheadline14">
+<ul class="org-ul"><li><a id="orgheadline17"></a>Installation<br  /><div class="outline-text-4" id="text-orgheadline17">
 <div class="org-src-container">
 
 <pre class="src src-shell">brew cask install amethyst
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline15"></a>Enable accessibility APIs<br  /><div class="outline-text-4" id="text-orgheadline15">
+<li><a id="orgheadline18"></a>Enable accessibility APIs<br  /><div class="outline-text-4" id="text-orgheadline18">
 <p>
 To give permissions to use the accessibility APIs under the Privacy tab of the Security
 &amp; Privacy preferences pane 
 </p>
 </div></li></ul></li>
-<li><a id="orgheadline16"></a>Setup<br  /><div class="outline-text-3" id="text-orgheadline16">
+<li><a id="orgheadline19"></a>Setup<br  /><div class="outline-text-3" id="text-orgheadline19">
 <p>
 The default configuration of amethyst is good enought to use, but it can do better by having the 
 following preferences.
@@ -328,7 +359,7 @@ following preferences.
 <li>floating smal windows.</li>
 </ul>
 </div></li>
-<li><a id="orgheadline17"></a>Usage<br  /><div class="outline-text-3" id="text-orgheadline17">
+<li><a id="orgheadline20"></a>Usage<br  /><div class="outline-text-3" id="text-orgheadline20">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -382,29 +413,9 @@ following preferences.
 </table>
 </div></li></ul>
 </div>
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18">User ITerm2</h2>
-<div class="outline-text-2" id="text-orgheadline18">
-<p>
-TBD
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="orgheadline19">Use Quake Console</h2>
-<div class="outline-text-2" id="text-orgheadline19">
-<p>
-As a developer and power command line user.
-</p>
-
-<p>
-TBD.
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline20" class="outline-2">
-<h2 id="orgheadline20">Use Spacemacs</h2>
-<div class="outline-text-2" id="text-orgheadline20">
+<div id="outline-container-orgheadline21" class="outline-2">
+<h2 id="orgheadline21">Use Spacemacs</h2>
+<div class="outline-text-2" id="text-orgheadline21">
 <p>
 Spacemaacs is a community-driven Emacs distribution. 
 </p>
@@ -415,9 +426,9 @@ TBD
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-2">
-<h2 id="orgheadline21">Use Zsh</h2>
-<div class="outline-text-2" id="text-orgheadline21">
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22">Use Zsh</h2>
+<div class="outline-text-2" id="text-orgheadline22">
 <p>
 I switched to zsh from bash a while, oh-my-zsh is first framwork I used. 
 It is handy and well documented, but what did not stastify me is its slow startup times,
@@ -429,7 +440,7 @@ flexibility - To be able use plugins of oh-my-zsh and have better response time.
 This configuration is specified for Mac users only because I moved to Mac from Linux since 2013.
 </p>
 </div>
-<ul class="org-ul"><li><a id="orgheadline22"></a>Installation<br  /><div class="outline-text-3" id="text-orgheadline22">
+<ul class="org-ul"><li><a id="orgheadline23"></a>Installation<br  /><div class="outline-text-3" id="text-orgheadline23">
 <div class="org-src-container">
 
 <pre class="src src-sh">brew install zsh
@@ -438,49 +449,49 @@ chsh -s /usr/local/bin/zsh
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline23"></a>Initialization<br  /><div class="outline-text-3" id="text-orgheadline23">
+<li><a id="orgheadline24"></a>Initialization<br  /><div class="outline-text-3" id="text-orgheadline24">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">source</span> ~/.zplug/zplug
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline24"></a>Command Search PATH<br  /><div class="outline-text-3" id="text-orgheadline24">
+<li><a id="orgheadline25"></a>Command Search PATH<br  /><div class="outline-text-3" id="text-orgheadline25">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">PATH</span>=$<span style="color: #4f97d7;">{</span><span style="color: #7590db;">HOME</span><span style="color: #4f97d7;">}</span>/bin:$<span style="color: #4f97d7;">{</span><span style="color: #7590db;">HOME</span><span style="color: #4f97d7;">}</span>/.local/bin:/usr/local/bin:$<span style="color: #4f97d7;">{</span><span style="color: #7590db;">PATH</span><span style="color: #4f97d7;">}</span>
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline25"></a>Default Editor<br  /><div class="outline-text-3" id="text-orgheadline25">
+<li><a id="orgheadline26"></a>Default Editor<br  /><div class="outline-text-3" id="text-orgheadline26">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">EDITOR</span>=vim
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline26"></a>VIM mode<br  /><div class="outline-text-3" id="text-orgheadline26">
+<li><a id="orgheadline27"></a>VIM mode<br  /><div class="outline-text-3" id="text-orgheadline27">
 <div class="org-src-container">
 
 <pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/vi-mode"</span>, from:oh-my-zsh
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline27"></a>Theme<br  /><div class="outline-text-3" id="text-orgheadline27">
+<li><a id="orgheadline28"></a>Theme<br  /><div class="outline-text-3" id="text-orgheadline28">
 <div class="org-src-container">
 
 <pre class="src src-sh">zplug <span style="color: #2d9574;">"themes/pygmalion"</span>, from:oh-my-zsh
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline28"></a>Syntax Highlight<br  /><div class="outline-text-3" id="text-orgheadline28">
+<li><a id="orgheadline29"></a>Syntax Highlight<br  /><div class="outline-text-3" id="text-orgheadline29">
 <div class="org-src-container">
 
 <pre class="src src-sh">zplug <span style="color: #2d9574;">"zsh-users/zsh-syntax-highlighting"</span>, nice:10
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline29"></a>History Search<br  /><div class="outline-text-3" id="text-orgheadline29">
+<li><a id="orgheadline30"></a>History Search<br  /><div class="outline-text-3" id="text-orgheadline30">
 <p>
 Type in any part of any previously entered command and press the UP and DOWN arrow keys to cycle 
 through the matching commands. You can also use K and J in VI mode or ^P and ^N in EMACS mode for the same.
@@ -491,7 +502,7 @@ through the matching commands. You can also use K and J in VI mode or ^P and ^N 
 </pre>
 </div>
 </div>
-<ul class="org-ul"><li><a id="orgheadline30"></a>Bind UP and DOWN arrow keys<br  /><div class="outline-text-4" id="text-orgheadline30">
+<ul class="org-ul"><li><a id="orgheadline31"></a>Bind UP and DOWN arrow keys<br  /><div class="outline-text-4" id="text-orgheadline31">
 <div class="org-src-container">
 
 <pre class="src src-sh">zmodload zsh/terminfo
@@ -500,7 +511,7 @@ through the matching commands. You can also use K and J in VI mode or ^P and ^N 
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline31"></a>Bind P and N for EMACS mode<br  /><div class="outline-text-4" id="text-orgheadline31">
+<li><a id="orgheadline32"></a>Bind P and N for EMACS mode<br  /><div class="outline-text-4" id="text-orgheadline32">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">bindkey</span> -M emacs <span style="color: #2d9574;">'^P'</span> history-substring-search-up
@@ -508,21 +519,21 @@ through the matching commands. You can also use K and J in VI mode or ^P and ^N 
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline32"></a>Bind k and j for VI mode<br  /><div class="outline-text-4" id="text-orgheadline32">
+<li><a id="orgheadline33"></a>Bind k and j for VI mode<br  /><div class="outline-text-4" id="text-orgheadline33">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">bindkey</span> -M vicmd <span style="color: #2d9574;">'k'</span> history-substring-search-up
 </pre>
 </div>
 </div></li></ul></li>
-<li><a id="orgheadline33"></a>Git<br  /><div class="outline-text-3" id="text-orgheadline33">
+<li><a id="orgheadline34"></a>Git<br  /><div class="outline-text-3" id="text-orgheadline34">
 <div class="org-src-container">
 
 <pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/git"</span>, from:oh-my-zsh
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline34"></a>OSX Enhancement<br  /><div class="outline-text-3" id="text-orgheadline34">
+<li><a id="orgheadline35"></a>OSX Enhancement<br  /><div class="outline-text-3" id="text-orgheadline35">
 <ul class="org-ul">
 <li>brew auto completion.</li>
 </ul>
@@ -532,14 +543,14 @@ through the matching commands. You can also use K and J in VI mode or ^P and ^N 
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline37"></a>NodeJS Development Env<br  /><ul class="org-ul"><li><a id="orgheadline35"></a>NPM auto completion<br  /><div class="outline-text-4" id="text-orgheadline35">
+<li><a id="orgheadline38"></a>NodeJS Development Env<br  /><ul class="org-ul"><li><a id="orgheadline36"></a>NPM auto completion<br  /><div class="outline-text-4" id="text-orgheadline36">
 <div class="org-src-container">
 
 <pre class="src src-sh">zplug <span style="color: #2d9574;">"plugins/npm"</span>, from:oh-my-zsh
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline36"></a>NVM setup<br  /><div class="outline-text-4" id="text-orgheadline36">
+<li><a id="orgheadline37"></a>NVM setup<br  /><div class="outline-text-4" id="text-orgheadline37">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">NVM_DIR</span>=~/.nvm
@@ -547,7 +558,7 @@ through the matching commands. You can also use K and J in VI mode or ^P and ^N 
 </pre>
 </div>
 </div></li></ul></li>
-<li><a id="orgheadline38"></a>Install plugins automatically<br  /><div class="outline-text-3" id="text-orgheadline38">
+<li><a id="orgheadline39"></a>Install plugins automatically<br  /><div class="outline-text-3" id="text-orgheadline39">
 <p>
 zplug check return true if all plugins are installed
 Therefore, when it returns not true (thus false),
@@ -561,21 +572,21 @@ run zplug install
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline39"></a>Loads Zplug Plugins.<br  /><div class="outline-text-3" id="text-orgheadline39">
+<li><a id="orgheadline40"></a>Loads Zplug Plugins.<br  /><div class="outline-text-3" id="text-orgheadline40">
 <div class="org-src-container">
 
 <pre class="src src-sh">zplug load --verbose
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline43"></a>Aliases &amp; Additonal Commands<br  /><ul class="org-ul"><li><a id="orgheadline40"></a>List all branchs in tig by default.<br  /><div class="outline-text-4" id="text-orgheadline40">
+<li><a id="orgheadline44"></a>Aliases &amp; Additonal Commands<br  /><ul class="org-ul"><li><a id="orgheadline41"></a>List all branchs in tig by default.<br  /><div class="outline-text-4" id="text-orgheadline41">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">which</span> tig &gt;/dev/null     &amp;&amp; <span style="color: #4f97d7;">alias</span> <span style="color: #7590db;">tig</span>=tig --all
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline41"></a>Searches files with names containing a string<br  /><div class="outline-text-4" id="text-orgheadline41">
+<li><a id="orgheadline42"></a>Searches files with names containing a string<br  /><div class="outline-text-4" id="text-orgheadline42">
 <p>
 f: searches the current directory subtree for files with names containing a
 string (ignoring case). f png would find all PNG files in the current subtree,
@@ -587,7 +598,7 @@ as well as “PNGisMyFavorite.txt” and so forth.
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline42"></a>Greps the current directory subtree for files matching a pattern.<br  /><div class="outline-text-4" id="text-orgheadline42">
+<li><a id="orgheadline43"></a>Greps the current directory subtree for files matching a pattern.<br  /><div class="outline-text-4" id="text-orgheadline43">
 <p>
 r: recursively greps the current directory subtree for files matching a pattern.
 r HTTP would grep for files containing that exact string, while r '"http[^"]*"'
@@ -599,7 +610,7 @@ r HTTP would grep for files containing that exact string, while r '"http[^"]*"'
 </pre>
 </div>
 </div></li></ul></li>
-<li><a id="orgheadline44"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline44">
+<li><a id="orgheadline45"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline45">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">source</span> ~/.zplug/zplug
@@ -649,22 +660,22 @@ zplug load --verbose
 </div>
 </div></li></ul>
 </div>
-<div id="outline-container-orgheadline45" class="outline-2">
-<h2 id="orgheadline45">Use VIM</h2>
-<div class="outline-text-2" id="text-orgheadline45">
+<div id="outline-container-orgheadline46" class="outline-2">
+<h2 id="orgheadline46">Use VIM</h2>
+<div class="outline-text-2" id="text-orgheadline46">
 <p>
 Normally I use Emacs to write codes and documents, but sometimes 
 I  do quick modification on terminal by using VIM. 
 </p>
 </div>
-<ul class="org-ul"><li><a id="orgheadline46"></a>Syntax Highlight<br  /><div class="outline-text-3" id="text-orgheadline46">
+<ul class="org-ul"><li><a id="orgheadline47"></a>Syntax Highlight<br  /><div class="outline-text-3" id="text-orgheadline47">
 <div class="org-src-container">
 
 <pre class="src src-shell">syntax on
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline47"></a>Highlight and strip eatra white spaces<br  /><div class="outline-text-3" id="text-orgheadline47">
+<li><a id="orgheadline48"></a>Highlight and strip eatra white spaces<br  /><div class="outline-text-3" id="text-orgheadline48">
 <p>
 Highlight existing trailing whitespace and also strip trailing 
 whitespace.
@@ -680,7 +691,7 @@ autocmd BufWinLeave * call clearmatches<span style="color: #4f97d7;">()</span>
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline48"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline48">
+<li><a id="orgheadline49"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline49">
 <div class="org-src-container">
 
 <pre class="src src-sh">syntax on
@@ -695,14 +706,14 @@ autocmd BufWinLeave * call clearmatches<span style="color: #4f97d7;">()</span>
 </div>
 </div></li></ul>
 </div>
-<div id="outline-container-orgheadline49" class="outline-2">
-<h2 id="orgheadline49">Use Git</h2>
-<div class="outline-text-2" id="text-orgheadline49">
+<div id="outline-container-orgheadline50" class="outline-2">
+<h2 id="orgheadline50">Use Git</h2>
+<div class="outline-text-2" id="text-orgheadline50">
 <p>
 Git is a widely used source code management system.
 </p>
 </div>
-<ul class="org-ul"><li><a id="orgheadline50"></a>Workflow<br  /><div class="outline-text-3" id="text-orgheadline50">
+<ul class="org-ul"><li><a id="orgheadline51"></a>Workflow<br  /><div class="outline-text-3" id="text-orgheadline51">
 <p>
 When I start to develop something, my workflow always looks like:
 </p>
@@ -722,14 +733,14 @@ When I start to develop something, my workflow always looks like:
 <li>run <b>git push</b> to deliver my works or save on cloud.</li>
 </ol>
 </div></li>
-<li><a id="orgheadline51"></a>Installation<br  /><div class="outline-text-3" id="text-orgheadline51">
+<li><a id="orgheadline52"></a>Installation<br  /><div class="outline-text-3" id="text-orgheadline52">
 <div class="org-src-container">
 
 <pre class="src src-shell">brew install git
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline52"></a>Set up my name and e-mail address<br  /><div class="outline-text-3" id="text-orgheadline52">
+<li><a id="orgheadline53"></a>Set up my name and e-mail address<br  /><div class="outline-text-3" id="text-orgheadline53">
 <p>
 both of which are included in every commit i make.
 </p>
@@ -741,7 +752,7 @@ both of which are included in every commit i make.
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline53"></a>Caching password in git<br  /><div class="outline-text-3" id="text-orgheadline53">
+<li><a id="orgheadline54"></a>Caching password in git<br  /><div class="outline-text-3" id="text-orgheadline54">
 <p>
 Cloning Github repositories using HTTPS is better than using SSH when you want to access those repositories 
 in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
@@ -754,7 +765,7 @@ password in Git.
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline54"></a>Change git push behavior to simple<br  /><div class="outline-text-3" id="text-orgheadline54">
+<li><a id="orgheadline55"></a>Change git push behavior to simple<br  /><div class="outline-text-3" id="text-orgheadline55">
 <p>
 When pushing without giving a refspec, push the current branch to its remote branch.
 </p>
@@ -765,7 +776,7 @@ When pushing without giving a refspec, push the current branch to its remote bra
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline55"></a>Disable advices which isnt useful anymore<br  /><div class="outline-text-3" id="text-orgheadline55">
+<li><a id="orgheadline56"></a>Disable advices which isnt useful anymore<br  /><div class="outline-text-3" id="text-orgheadline56">
 <p>
 It was useful when i was a beginer, but now it is annoy to me as a 老手!
 </p>
@@ -781,7 +792,7 @@ It was useful when i was a beginer, but now it is annoy to me as a 老手!
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline56"></a>Useful Aliases<br  /><div class="outline-text-3" id="text-orgheadline56">
+<li><a id="orgheadline57"></a>Useful Aliases<br  /><div class="outline-text-3" id="text-orgheadline57">
 <p>
 This saves a lot time, and I think you should do too!.
 </p>
@@ -892,7 +903,7 @@ This saves a lot time, and I think you should do too!.
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline57"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline57">
+<li><a id="orgheadline58"></a>Put it all together<br  /><div class="outline-text-3" id="text-orgheadline58">
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4f97d7;">[</span>user<span style="color: #4f97d7;">]</span>
@@ -927,16 +938,24 @@ This saves a lot time, and I think you should do too!.
 </pre>
 </div>
 </div></li>
-<li><a id="orgheadline58"></a>References<br  /><div class="outline-text-3" id="text-orgheadline58">
+<li><a id="orgheadline59"></a>References<br  /><div class="outline-text-3" id="text-orgheadline59">
 <ul class="org-ul">
 <li><a href="http://nuclearsquid.com/writings/git-tricks-tips-workflows/">A few of my Git tricks, tips and workflows</a></li>
 </ul>
 </div></li></ul>
 </div>
+<div id="outline-container-orgheadline60" class="outline-2">
+<h2 id="orgheadline60">References</h2>
+<div class="outline-text-2" id="text-orgheadline60">
+<ul class="org-ul">
+<li><a href="http://sourabhbajaj.com/mac-setup/Xcode/README.html">Mac OS X Setup Guide</a></li>
+</ul>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-08 Fri 09:10</p>
+<p class="date">Created: 2016-04-09 Sat 14:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
