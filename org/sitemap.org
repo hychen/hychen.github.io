@@ -1,14 +1,18 @@
 #+TITLE: Sitemap for project blog-notes
 
    + cs
+     + [[file:cs/javascript.org][JavaScript]]
      + [[file:cs/prog_lang.org][程式語言]]
      + [[file:cs/floss.org][自由軟體與開放源碼]]
      + [[file:cs/index.org][資訊工程]]
+   + fitness
+     + [[file:fitness/index.org][健身]]
+   + language
+     + [[file:language/index.org][語言學習]]
    + productivity
      + [[file:productivity/config_mac.org][Work More Efficiently on a Mac]]
      + [[file:productivity/index.org][生產力]]
    + [[file:index.org][不及格大學士後研究]]
    + [[file:management.org][企業管理]]
    + [[file:trash_talk.org][垃圾話]]
-   + [[file:language.org][語言學習]]
    + [[file:thought.org][隨筆]]
