@@ -1,0 +1,18 @@
+#+TITLE: 常用句子
+#+HTML_LINK_UP: ./index.html
+
+* 垃圾話 
+- shoot the shit :: 閒聊
+* 用餐
+- Are you full? 飽了嗎?
+- Are you hungry? 餓了嗎？
+* 討論事情常用句
+- Definitely worth looking into :: 值得深入了解
+- it is just my speculation :: 只是我的猜測
+- We need to understand at least a decent estimate of how much time we’d be investing to do it this way from here onwards :: .....
+- Do you think I’m off base with these estimates? :: 你有覺得我有估太多久的時間嗎?
+- It is my gut feeling :: 這是我的直覺
+* 筆戰常用句
+- it’s a huge can of worms :: to create a situation that will cause trouble or be unpleasant
+- that’s a strawman :: 那是的稻草人謬誤
+- so again going in circles now. :: 我們又在繞圈子了。
