@@ -1,0 +1,50 @@
+#+TITLE: Web Development
+#+OPTIONS: H:2
+#+HTML_LINK_UP: ../index.html
+
+* Web Performance
+- Edge Cache :: The cache on edge servers, controlled by CDN or proxy server.
+- Browser Cache :: The cache on browser, controlled by browser.
+* HTTP1.1 Cache Control
+*** Expiration
+**** Request
+***** no-store
+***** max-age
+***** max-stale
+***** min-fresh
+***** no-transform
+***** only-if-cached
+**** Response 
+***** public
+***** private
+***** no-cache
+***** no-store
+***** no-transform
+***** must-revalidate
+***** proxy-revalidate
+***** max-age
+***** s-maxage
+*** Validation
+**** [[https://en.wikipedia.org/wiki/HTTP_ETag][ETag]]
+***** ETag Value
+1. is unique.
+2. typically looks like as the following:
+#+BEGIN_VERSE
+"123456789"    – A strong ETag validator
+W/"123456789"  – A weak ETag validator
+#+END_VERSE
+3. Common methods of ETag generation include using a collision-resistant hash function 
+   of the resource's content, a hash of the last modification timestamp, or even just a revision number.
+***** Pros.
+1. Don't rely on client's clock.
+***** Cons.
+1. ETag requests a client make at least a request, so it might not that useful 
+if the lantecy betwen a client to your server is high, which leads the pages loading still 
+took too long.
+**** Last-Modified
+1. does same thing as ETag does but it is timebased checking.
+2. unit is seconds.
+3. GMT.
+*** Conclution  
+1. For cache expiration, use *max-age* to reduce requests, use *private* when handling sesetive data.
+3. use *ETag* or *Last-Modified* to valid content.
