@@ -9,3 +9,5 @@ You do think people can't live without computers nowdays. don't you?
 ** [[./javascript.org][JavaScript]]
 * [[./web.org][Web]]
 * [[./floss.org][自由軟體/開放源碼]]
+* 測試
+** [[./prop_test.org][Property-Based Testing]]

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-27 Wed 16:58 -->
+<!-- 2016-04-27 Wed 16:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>資訊工程</title>
+<title>Property-based testing</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Chen Hsin-Yi" />
 <style type="text/css">
@@ -144,60 +144,131 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
+ <a accesskey="h" href="./index.html"> UP </a>
  |
  <a accesskey="H" href="/"> HOME </a>
 </div><div id="content">
-<h1 class="title">資訊工程</h1>
+<h1 class="title">Property-based testing</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline2">程式語言</a>
+<li><a href="#orgheadline8">Data</a>
 <ul>
-<li><a href="#orgheadline1">JavaScript</a></li>
+<li><a href="#orgheadline3">Pure</a>
+<ul>
+<li><a href="#orgheadline1">length == 1</a></li>
+<li><a href="#orgheadline2">length &gt;= 0</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline3">Web</a></li>
-<li><a href="#orgheadline4">自由軟體/開放源碼</a></li>
-<li><a href="#orgheadline6">測試</a>
+<li><a href="#orgheadline7">With context</a>
 <ul>
-<li><a href="#orgheadline5">Property-Based Testing</a></li>
+<li><a href="#orgheadline4">traversable</a></li>
+<li><a href="#orgheadline5">applicative</a></li>
+<li><a href="#orgheadline6">effective</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgheadline9">Generator</a></li>
 </ul>
 </div>
 </div>
-<blockquote>
 <p>
-You do think people can't live without computers nowdays. don't you?
+Property-based tests make statements about the output of your code based on 
+the input, and these statements are verified for many different possible inputs.
 </p>
-</blockquote>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><a href="./prog_lang.html">程式語言</a></h2>
-<div class="outline-text-2" id="text-orgheadline2">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><a href="./javascript.html">JavaScript</a></h3>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">Data</h2>
+<div class="outline-text-2" id="text-orgheadline8">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Pure</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1">length == 1</h4>
+<div class="outline-text-4" id="text-orgheadline1">
+<ul class="org-ul">
+<li>undefined</li>
+<li>none</li>
+<li>boolean</li>
+<li>character</li>
+</ul>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><a href="./web.html">Web</a></h2>
+<div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2">length &gt;= 0</h4>
+<div class="outline-text-4" id="text-orgheadline2">
+<ul class="org-ul">
+<li>string</li>
+<li>number</li>
+</ul>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><a href="./floss.html">自由軟體/開放源碼</a></h2>
 </div>
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">測試</h2>
-<div class="outline-text-2" id="text-orgheadline6">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><a href="./prop_test.html">Property-Based Testing</a></h3>
 </div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">With context</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+</div><div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">traversable</h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<ul class="org-ul">
+<li>tuple, list, records, tree, etc.</li>
+<li>can be nested .</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-js">console.log<span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">[</span><span style="color: #a45bad;">1</span>, <span style="color: #a45bad;">2</span>, <span style="color: #a45bad;">3</span>, <span style="color: #2d9574;">[</span><span style="color: #a45bad;">2</span>,<span style="color: #67b11d;">[</span><span style="color: #b1951d;">[]</span><span style="color: #67b11d;">]</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">]</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+[ 1, 2, 3, [ 2, [ [] ] ] ]
+</pre>
+
+<ul class="org-ul">
+<li>can be  circular referenced.</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">a</span> = <span style="color: #4f97d7;">[</span><span style="color: #a45bad;">1</span>, <span style="color: #a45bad;">2</span>, <span style="color: #a45bad;">3</span><span style="color: #4f97d7;">]</span>;
+a.push<span style="color: #4f97d7;">(</span>a<span style="color: #4f97d7;">)</span>;
+console.log<span style="color: #4f97d7;">(</span>a<span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+[ 1, 2, 3, [Circular] ]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">applicative</h4>
+<div class="outline-text-4" id="text-orgheadline5">
+<ul class="org-ul">
+<li>functions, object methods.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">effective</h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<p>
+stuffs that has side effect after evaluation, such as 
+file opening, deletion, exceptions etc.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">Generator</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-27 Wed 16:58</p>
+<p class="date">Created: 2016-04-27 Wed 16:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

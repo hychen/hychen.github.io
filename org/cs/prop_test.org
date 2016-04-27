@@ -1,0 +1,43 @@
+#+TITLE: Property-based testing
+#+HTML_LINK_UP: ./index.html
+
+Property-based tests make statements about the output of your code based on 
+the input, and these statements are verified for many different possible inputs.
+
+* Data
+** Pure 
+*** length == 1
+- undefined
+- none
+- boolean
+- character
+*** length >= 0
+- string
+- number
+** With context
+*** traversable
+- tuple, list, records, tree, etc.
+- can be nested .
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+console.log([1, 2, 3, [2,[[]]]]);
+#+END_SRC
+
+#+RESULTS:
+: [ 1, 2, 3, [ 2, [ [] ] ] ]
+
+- can be  circular referenced.
+#+BEGIN_SRC js :cmd "node" :results output :exports both
+var a = [1, 2, 3];
+a.push(a);
+console.log(a);
+#+END_SRC
+
+#+RESULTS:
+: [ 1, 2, 3, [Circular] ]
+
+*** applicative
+- functions, object methods.
+*** effective
+stuffs that has side effect after evaluation, such as 
+file opening, deletion, exceptions etc.
+* Generator
