@@ -1,0 +1,5 @@
+1. sized :: 產生的資料數量
+2. variant :: 將整數轉換成bit，然後用來挑選要用哪一個random seed.
+3. coarbitrary :: 產生一個把 arbitrary 變成 function 的 generator transformer
+4. promote :: 把一個 arbitrary 轉換成拿 arbitray 當參數的 function.
+
