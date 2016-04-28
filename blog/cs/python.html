@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-28 Thu 14:02 -->
+<!-- 2016-04-28 Thu 14:16 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python</title>
@@ -153,7 +153,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">用 Data Object 傳遞資料</a></li>
+<li><a href="#orgheadline1">用 Data Object 傳遞資料</a>
+<ul>
+<li><a href="#orgheadline2">簡易版</a></li>
+<li><a href="#orgheadline3">保護 Built-In Attributes 版</a></li>
+<li><a href="#orgheadline4">Metclass 版</a>
+<ul>
+<li><a href="#orgheadline5">a: 建立名為Value的class,含有x,y屬性</a></li>
+<li><a href="#orgheadline6">b: Value class 含有y 屬性, 正確</a></li>
+<li><a href="#orgheadline7">c:  Value class 沒有包含z屬性(因為沒有定義), 正確</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline8">讓屬性為唯讀</a></li>
+<li><a href="#orgheadline9">結論</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -166,11 +180,11 @@ for the JavaScript code in this tag.
 因為python是dynamic programming language, 
 所以你可以在create object時, 直接設定object attribute value
 </p>
+</div>
 
-<p>
-以下是很偷懶的版本
-</p>
-
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">簡易版</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 <div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Data</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7;">object</span><span style="color: #4f97d7;">)</span>:
@@ -184,7 +198,11 @@ for the JavaScript code in this tag.
 <pre class="example">
 hychen
 </pre>
-
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">保護 Built-In Attributes 版</h3>
+<div class="outline-text-3" id="text-orgheadline3">
 <p>
 這個版本則保護了built-in attributes, 避免被污染
 </p>
@@ -255,10 +273,216 @@ setter, getter 也是可以被修改的, 進階運用請在shell 執行 <b>pydoc
 </p>
 </div>
 </div>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Metclass 版</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<p>
+源碼如下:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">DataObjectType</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7;">type</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span><span style="color: #4f97d7;">(</span>mbs, name, bases, dct<span style="color: #4f97d7;">)</span>:
+
+        <span style="color: #4f97d7;">super</span><span style="color: #4f97d7;">(</span>DataObjectType, mbs<span style="color: #4f97d7;">)</span>.__init__<span style="color: #4f97d7;">(</span>name, bases, dct<span style="color: #4f97d7;">)</span>
+        <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#23559;&#24314;&#22909;&#30340;class&#30340;__init__ function &#35373;&#28858; clsinit</span>
+        <span style="color: #7590db;">mbs.__init__</span> = clsinit
+        <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#23559;&#24314;&#22909;&#30340;class&#30340;__repr__ function &#35373;&#28858; clsrepr</span>
+        <span style="color: #7590db;">mbs.__repr__</span> = clsrepr
+
+<span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">clsinit</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>, **kwargs<span style="color: #4f97d7;">)</span>:
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#26356;&#26032;self, &#20063;&#23601;&#26159;&#24314;&#27083;&#22909;&#30340;instance&#30340;attributes</span>
+    <span style="color: #4f97d7; font-weight: bold;">self</span>.__dict__.update<span style="color: #4f97d7;">(</span>kwargs<span style="color: #4f97d7;">)</span>
+
+<span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">clsrepr</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#39023;&#31034; DataObject(a=1,b=2)&#36889;&#27171;&#30340;&#23383;&#20018;</span>
+    <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #2d9574;">"{}({})"</span>.<span style="color: #4f97d7;">format</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>.__class__.<span style="color: #4f97d7;">__name__</span>,
+            <span style="color: #2d9574;">','</span>.join<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">[</span> <span style="color: #2d9574;">"{}={}"</span>.<span style="color: #4f97d7;">format</span><span style="color: #67b11d;">(</span>k,v<span style="color: #67b11d;">)</span> <span style="color: #4f97d7; font-weight: bold;">for</span> k,v <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7; font-weight: bold;">self</span>.__dict__.items<span style="color: #67b11d;">()</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#23559;Value class &#30340; type &#25913;&#25104; DataObjectType, &#21407;&#26412;&#25033;&#35442;&#26159;object&#30340;type (&#20063;&#23601;&#26159;type)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#20320;&#21487;&#20197;&#22312;python interpreter&#35041;&#25171; type(object) &#30475;&#19968;&#19979;&#32080;&#26524; :p</span>
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Value</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7;">object</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #7590db;">__metaclass__</span> = DataObjectType
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">here we go!</span>
+<span style="color: #7590db;">v</span> = Value<span style="color: #4f97d7;">(</span>x=<span style="color: #a45bad;">1</span>,y=<span style="color: #a45bad;">2</span>,z=<span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7; font-weight: bold;">print</span> v.x
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1</span>
+</pre>
+</div>
+
+<p>
+而如果你想要跟collections.namedtuple 一樣可以動態產生class的話, 像這樣
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #7590db;">Value</span> = dataobject<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'Value'</span>, <span style="color: #2d9574;">'x,y,z'</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7; font-weight: bold;">print</span> Value.x
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">None</span>
+</pre>
+</div>
+
+<p>
+其實做方式如下
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">dataobject</span><span style="color: #4f97d7;">(</span>name, attrsstr<span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">for</span> attrname <span style="color: #4f97d7; font-weight: bold;">in</span> attrsstr.split<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">','</span><span style="color: #4f97d7;">)</span>:
+        <span style="color: #7590db;">dct</span><span style="color: #4f97d7;">[</span>attrname<span style="color: #4f97d7;">]</span> = <span style="color: #a45bad;">None</span>
+    <span style="color: #4f97d7; font-weight: bold;">return</span> DataObjectType<span style="color: #4f97d7;">(</span>name, <span style="color: #bc6ec5;">()</span>, dct<span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+
+<p>
+ok, 我們來檢查一下class的行為是不是符合我們的預期.
+</p>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">a: 建立名為Value的class,含有x,y屬性</h4>
+<div class="outline-text-4" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; dataobject<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'Value'</span>, <span style="color: #2d9574;">'x,y'</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">b: Value class 含有y 屬性, 正確</h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; dataobject<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'Value'</span>, <span style="color: #2d9574;">'x,y'</span><span style="color: #4f97d7;">)</span>.y == <span style="color: #a45bad;">None</span>
+<span style="color: #a45bad;">True</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">c:  Value class 沒有包含z屬性(因為沒有定義), 正確</h4>
+<div class="outline-text-4" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; dataobject<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'Value'</span>, <span style="color: #2d9574;">'x,y'</span><span style="color: #4f97d7;">)</span>.z == <span style="color: #a45bad;">None</span>
+Traceback <span style="color: #4f97d7;">(</span>most recent call last<span style="color: #4f97d7;">)</span>:
+  File <span style="color: #2d9574;">""</span>, line <span style="color: #a45bad;">1</span>, <span style="color: #4f97d7; font-weight: bold;">in</span>
+<span style="color: #ce537a; font-weight: bold;">AttributeError</span>: <span style="color: #4f97d7;">type</span> <span style="color: #4f97d7;">object</span> <span style="color: #2d9574;">'Value'</span> has no attribute <span style="color: #2d9574;">'z'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">讓屬性為唯讀</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+到目前為止我們已經可以動態產生data object class, 也可以動態設定data object 的值.
+但卻沒辦法像namedtuple一樣, 強迫設值的動作只能在建立instance時進行. 範例如下
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #4f97d7; font-weight: bold;">from</span> collections <span style="color: #4f97d7; font-weight: bold;">import</span> namedtuple
+&gt;&gt;&gt; <span style="color: #7590db;">cls</span> = namedtuple<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'TestClass'</span>, <span style="color: #2d9574;">'x,y'</span><span style="color: #4f97d7;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#24314;&#31435;instance</span>
+&gt;&gt;&gt; <span style="color: #7590db;">obj</span> = cls<span style="color: #4f97d7;">(</span>x=<span style="color: #a45bad;">1</span>,y=<span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#35712;&#21462;instance&#30340;x &#23660;&#24615;</span>
+&gt;&gt;&gt; obj.x
+<span style="color: #a45bad;">1</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#35373;&#23450;instance &#30340; x &#23660;&#24615; (&#21908;&#21908;, &#19981;&#33021;&#35373;&#23450;)</span>
+&gt;&gt;&gt; <span style="color: #7590db;">obj.x</span> = <span style="color: #a45bad;">3</span>
+Traceback <span style="color: #4f97d7;">(</span>most recent call last<span style="color: #4f97d7;">)</span>:
+  File <span style="color: #2d9574;">""</span>, line <span style="color: #a45bad;">1</span>, <span style="color: #4f97d7; font-weight: bold;">in</span>
+<span style="color: #ce537a; font-weight: bold;">AttributeError</span>: can<span style="color: #2d9574;">'t set attribute</span>
+</pre>
+</div>
+
+<p>
+要達成相似的行為非常簡單, 只要對DataObjectType 的 __setattr__ method 動點手腳 :p
+先寫一個會檢查instance有沒有readonly的變數, 若有檢查其值, 為真時, 則不允許設值
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">clssetattr</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>, k, v<span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">try</span>:
+        <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">check readonly attributes</span>
+        <span style="color: #7590db;">readonly</span> = <span style="color: #4f97d7; font-weight: bold;">self</span>.readonly
+    <span style="color: #4f97d7; font-weight: bold;">except</span> <span style="color: #ce537a; font-weight: bold;">AttributeError</span>:
+        <span style="color: #7590db;">readonly</span> = <span style="color: #a45bad;">False</span>
+    <span style="color: #4f97d7; font-weight: bold;">if</span> readonly:
+        <span style="color: #4f97d7; font-weight: bold;">raise</span> <span style="color: #ce537a; font-weight: bold;">AttributeError</span><span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"can't set attribute"</span><span style="color: #4f97d7;">)</span>
+    <span style="color: #4f97d7;">object</span>.__setattr__<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>, k, v<span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+
+<p>
+再把DataObjectType產生的class的__setattr__換掉
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">DataObjectType</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7;">type</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span><span style="color: #4f97d7;">(</span>mbs, name, bases, dct<span style="color: #4f97d7;">)</span>:
+        <span style="color: #4f97d7;">super</span><span style="color: #4f97d7;">(</span>DataObjectType, mbs<span style="color: #4f97d7;">)</span>.__init__<span style="color: #4f97d7;">(</span>name, bases, dct<span style="color: #4f97d7;">)</span>
+        <span style="color: #7590db;">mbs.__init__</span> = clsinit
+        <span style="color: #7590db;">mbs.__repr__</span> = clsrepr
+        <span style="color: #7590db;">mbs.__setattr__</span> = clssetattr
+.....
+</pre>
+</div>
+
+<p>
+完成! 來看看結果吧
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">&#39318;&#20808;, &#27794;&#26377;&#35373;&#23450;readonly&#30340;&#29376;&#24907;&#19979;</span>
+&gt;&gt;&gt; <span style="color: #7590db;">obj</span> = Value<span style="color: #4f97d7;">(</span>x=<span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">&#25104;&#21151;&#35373;&#23450;x&#28858;4</span>
+&gt;&gt;&gt; <span style="color: #7590db;">obj.x</span>=<span style="color: #a45bad;">4</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">&#20877;&#20358;&#25226;Value&#35373;&#28858;readonly</span>
+&gt;&gt;&gt; <span style="color: #7590db;">Value.readonly</span> = <span style="color: #a45bad;">True</span>
+&gt;&gt;&gt; <span style="color: #7590db;">obj</span> = Value<span style="color: #4f97d7;">(</span>x=<span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#27794;&#36774;&#27861;&#25226;x&#35373;&#25104;4, &#25104;&#21151;!</span>
+&gt;&gt;&gt; <span style="color: #7590db;">obj.x</span>=<span style="color: #a45bad;">4</span>
+Traceback <span style="color: #4f97d7;">(</span>most recent call last<span style="color: #4f97d7;">)</span>:
+  File <span style="color: #2d9574;">""</span>, line <span style="color: #a45bad;">1</span>, <span style="color: #4f97d7; font-weight: bold;">in</span>
+  File <span style="color: #2d9574;">"metaclass.py"</span>, line <span style="color: #a45bad;">41</span>, <span style="color: #4f97d7; font-weight: bold;">in</span> clssetattr
+    <span style="color: #4f97d7; font-weight: bold;">raise</span> <span style="color: #ce537a; font-weight: bold;">AttributeError</span><span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"can't set attribute"</span><span style="color: #4f97d7;">)</span>
+<span style="color: #ce537a; font-weight: bold;">AttributeError</span>: can<span style="color: #2d9574;">'t set attribute</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">結論</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<p>
+在Refactory一書中, 建議使用data object來減少需要傳遞的參數, 而 Python 又可以使用property使得 getter function 使用方式與讀取attribute 一模一樣
+, 使得data object在python裡面更powerful.
+</p>
+
+<p>
+推薦大家使用 :)
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-28 Thu 14:02</p>
+<p class="date">Created: 2016-04-28 Thu 14:16</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
