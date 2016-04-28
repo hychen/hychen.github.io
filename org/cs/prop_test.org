@@ -4,40 +4,52 @@
 Property-based tests make statements about the output of your code based on 
 the input, and these statements are verified for many different possible inputs.
 
-* Data
-** Pure 
-*** length == 1
-- undefined
-- none
-- boolean
-- character
-*** length >= 0
-- string
-- number
-** With context
-*** traversable
-- tuple, list, records, tree, etc.
-- can be nested .
-#+BEGIN_SRC js :cmd "node" :results output :exports both
-console.log([1, 2, 3, [2,[[]]]]);
-#+END_SRC
+* Type
+** Data
+*** Binary Values 
+true or false.
+*** Numbers 
+*** Characters
+*** Functions
+** Data Structure
+A data structure is a collection of aggregate of data. The data may be 
+binary values, numbers, characters, or data structure.
 
-#+RESULTS:
-: [ 1, 2, 3, [ 2, [ [] ] ] ]
+the following are basic data structure.
 
-- can be  circular referenced.
-#+BEGIN_SRC js :cmd "node" :results output :exports both
-var a = [1, 2, 3];
+- bunch :: unpackaged, unindexed
+- string :: unpackaged, indexed
+- set :: packaged, unindexed
+- array :: packaged, indexed
+
+*** Indexed
+elements in a collection can be indexed by binary values, numbers, 
+characters, strings.
+
+a arrary is indexed by positive interger numbers.
+*** Packaged
+A bunch of data packaged in a container, such as array, tree.
+
+A packaged data structure can have *circular reference*, which means it 
+contains itself or two data structure reference each other as a loop.
+
+#+BEGIN_SRC js :cmd node :results output
+var a = [1];
 a.push(a);
 console.log(a);
 #+END_SRC
 
 #+RESULTS:
-: [ 1, 2, 3, [Circular] ]
+: [ 1, [Circular] ]
 
-*** applicative
-- functions, object methods.
-*** effective
-stuffs that has side effect after evaluation, such as 
-file opening, deletion, exceptions etc.
+In another word, an unpackaged data structure can not have 
+*circular reference*, a string can not contain itself or another 
+strings.
+
 * Generator
+
+A generator is a function to generate a arbitrary value of given type.
+
+* Arbitrary
+
+A data represents generator builder.
