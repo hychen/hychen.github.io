@@ -56,7 +56,7 @@ print Data(name='hychen').name
 
 當 attribute value 需要被動態產生時，像是需要被計算, 
 或是需要執行系統命令去獲得，則可以對getter動手腳, 
-例如下面這個範例, access dist_info.uname 會得到在
+例如下面這個範例, access dist\under{}info.uname 會得到在
 shell 執行 *uname -a* 一樣的結果
 
 #+BEGIN_SRC python :exports both
