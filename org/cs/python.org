@@ -1,0 +1,75 @@
+#+TITLE: Python
+#+HTML_LINK_UP: ./index.html
+
+* 用 Data Object 傳遞資料
+
+當資料耦合度很高時候, 我習慣做一個 data object class 把他放進去, 
+因為python是dynamic programming language, 
+所以你可以在create object時, 直接設定object attribute value
+
+以下是很偷懶的版本
+
+#+BEGIN_SRC python :results output :exports both
+class Data(object):
+   def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+print Data(name='hychen').name
+#+END_SRC
+
+#+RESULTS:
+: hychen
+
+這個版本則保護了built-in attributes, 避免被污染
+
+#+BEGIN_SRC python :results output :exports both
+class Data(object):
+    _excludes = ['__class__',
+                 '__delattr__',
+                 '__dict__',
+                 '__doc__',
+                 '__format__',
+                 '__getattribute__',
+                 '__hash__',
+                 '__init__',
+                 '__module__',
+                 '__new__',
+                 '__reduce__',
+                 '__reduce_ex__',
+                 '__repr__',
+                 '__setattr__',
+                 '__sizeof__',
+                 '__str__',
+                 '__subclasshook__',
+                 '__weakref__']
+    def __init__(self, **kwargs):
+        for k,v in kwargs.items():
+            if k in self._excludes:
+                raise TypeError("{0} is not a valide keyword argument".format(k))
+            self.__dict__[k] = v
+
+print Data(name='hychen').name
+#+END_SRC
+
+#+RESULTS:
+: hychen
+
+當 attribute value 需要被動態產生時，像是需要被計算, 
+或是需要執行系統命令去獲得，則可以對getter動手腳, 
+例如下面這個範例, access dist_info.uname 會得到在
+shell 執行 *uname -a* 一樣的結果
+
+#+BEGIN_SRC python :exports both
+class Data(object):
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+    @property
+    def uname(self):
+        import commands
+        return commands.getoutput('uname -a')
+
+dist_info = Data(id=1)
+#+END_SRC
+
+setter, getter 也是可以被修改的, 進階運用請在shell 執行 *pydoc property* 了解

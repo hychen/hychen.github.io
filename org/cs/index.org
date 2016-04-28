@@ -7,6 +7,7 @@ You do think people can't live without computers nowdays. don't you?
 
 * [[./prog_lang.org][程式語言]]
 ** [[./javascript.org][JavaScript]]
+** [[./python.org][Python]] 
 * [[./web.org][Web]]
 * [[./floss.org][自由軟體/開放源碼]]
 * 測試
