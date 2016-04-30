@@ -17,5 +17,15 @@
 1.運動過程中心率要達到中低強度運動心率；
 1. 運動要持續20分鐘以上； 
 2. 必須是大肌肉群的運動，如慢跑、游泳、健身操等。
+
+* 裝置
+** 手腕
+
+| 型號                | 維修   | 輕便 | 心率 | 卡路里 | GPS | iOS App | 待機 | 售價  |
+|---------------------+--------+------+------+--------+-----+---------+------+-------|
+| [[https://www.fitbit.com/cn/chargehr][Fitbit Charge HR]]    | 不方便 | 細長 | V    | V      | X   | V       | 5 天 | ~5000 |
+| [[https://www.fitbit.com/cn/surgeFitbit][Fitbit Surge]]        | 不方便 | 略大 | V    | V      | X   | V       | 7 天 | ~8000 |
+| Garmin Forunner 225 | good   | 略大 | V    |        | V   | V       |      | ~9000 |
+
 * 參考資料
 - [[https://pragprog.com/book/jkthp/the-healthy-programmer][Healthy Programmer]], Joe Kutner, 2013
