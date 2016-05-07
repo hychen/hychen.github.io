@@ -9,6 +9,8 @@
      + [[file:cs/prog_lang.org][程式語言]]
      + [[file:cs/floss.org][自由軟體與開放源碼]]
      + [[file:cs/index.org][資訊工程]]
+   + finacial
+     + [[file:finacial/index.org][財經]]
    + fitness
      + [[file:fitness/index.org][健身]]
    + language
