@@ -2,6 +2,153 @@
 #+OPTIONS: tex:t 
 #+HTML_LINK_UP: ./index.html
 
+* Node.js  
+** Runtime Performance
+*** Sample Stack Traces
+A stack trace is a report of the active stack frames at a certain point 
+in time during the execution of a program.
+*** How to sample stack traces from a running process?
+**** Dtrace 
+[[https://en.wikipedia.org/wiki/DTrace][DTrace]] is a comprehensive dynamic tracing framework created by Sun Microsystems for 
+troubleshooting kernel and application problems on production systems in real time. 
+
+#+BEGIN_SRC sh
+dtrace -n 'profile-997/execname == "node" && arg1/ {
+    @[jstack(40, 2000)] = count(); } tick-60s { exit(0); }' > out.stacks
+#+END_SRC
+
+jstack is totally broken on mac.
+**** Perf
+CPU profiling Linux perf_events.
+
+***** Run node.js with --perf-basic-prof
+
+#+BEGIN_SRC sh
+node --perf-basic-prof demo.js &
+#+END_SRC 
+
+***** Collect statcktrace data. 
+
+#+BEGIN_SRC sh
+perf record -F 99 -a -p `pgrep node` -g -- sleep 60
+perf script > example-perf-stacks.txt.gz
+#+END_SRc
+
+**** Visulaize Stacke Traces
+Flame graphs are a visualization of profiled software, allowing the most frequent code-paths to 
+be identified quickly and accurately.
+
+#+BEGIN_SRC sh
+git clone https://github.com/brendangregg/FlameGraph/
+#+END_SRC
+
+**** One Liner
+
+***** unzip and generate interactive svg report.
+
+#+BEGIN_SRC sh
+gunzip -c example-perf-stacks.txt.gz | ./stackcollapse-perf.pl --kernel | ./flamegraph.pl --color=js --hash > example-perf.svg
+#+END_SRC
+
+** Runtime Crashes 
+** Memory Leaks
+*** Defninitions
+- resident set size :: is the portion of memory occupied by a process that is held in the RAM, this contains:
+  - the code itself
+  - the stack
+  - the heap
+- stack :: contains primitive types and references to objects
+- heap :: stores reference types, like objects, strings or closures
+- shallow size of an object :: the size of memory that is held by the object itself
+- retained size of an object :: the size of the memory that is freed up once the object is deleted along with its' dependent objects
+*** Garbage Collector
+**** Heap
+***** New Space 
+- Where new allocations are happening.
+- Objects living in the New Space are called Young Generation.
+***** Old Space
+- Where the objects that survived the collector in the New Space are promoted into
+- are called the Old Generation.
+*** Use Heapdump
+#+BEGIN_SRC js
+/**
+ * Simple userland heapdump generator using v8-profiler
+ * Usage: require('[path_to]/HeapDump').init('datadir')
+ *
+ * @module HeapDump
+ * @type {exports}
+ */
+
+var fs = require('fs');
+var profiler = require('v8-profiler');
+var _datadir = null;
+var nextMBThreshold = 0;
+
+
+/**
+ * Init and scheule heap dump runs
+ *
+ * @param datadir Folder to save the data to
+ */
+module.exports.init = function (datadir) {
+    _datadir = datadir;
+    setInterval(tickHeapDump, 500);
+};
+
+/**
+ * Schedule a heapdump by the end of next tick
+ */
+function tickHeapDump() {
+    setImmediate(function () {
+        heapDump();
+    });
+}
+
+/**
+ * Creates a heap dump if the currently memory threshold is exceeded
+ */
+function heapDump() {
+    var memMB = process.memoryUsage().rss / 1048576;
+
+    console.log(memMB + '>' + nextMBThreshold);
+
+    if (memMB > nextMBThreshold) {
+        console.log('Current memory usage: %j', process.memoryUsage());
+        nextMBThreshold += 50;
+        var snap = profiler.takeSnapshot('profile');
+        saveHeapSnapshot(snap, _datadir);
+    }
+}
+
+/**
+ * Saves a given snapshot
+ *
+ * @param snapshot Snapshot object
+ * @param datadir Location to save to
+ */
+function saveHeapSnapshot(snapshot, datadir) {
+    var buffer = '';
+    var stamp = Date.now();
+    snapshot.serialize(
+        function iterator(data, length) {
+            buffer += data;
+        }, function complete() {
+
+            var name = stamp + '.heapsnapshot';
+            fs.writeFile(datadir + '/' + name , buffer, function () {
+                console.log('Heap snapshot written to ' + name);
+            });
+        }
+    );
+}
+#+END_SRC
+** Coredump + MDB on Smart OS
+** References 
+- [[http://www.slideshare.net/yunongx/debugging-node-in-prod][Debugging node in prod]], Yunong Xiao, Netflix
+- [[https://blog.risingstack.com/finding-a-memory-leak-in-node-js/][Hunting a Ghost - Finding a Memory Leak in Node.js]]
+- [[http://apmblog.dynatrace.com/2015/11/04/understanding-garbage-collection-and-hunting-memory-leaks-in-node-js/][Understanding Garbage Collection and hunting Memory Leaks in Node.js]]
+- [[http://www.brendangregg.com/flamegraphs.html][Flame Graphs]],  Brendangregg
+- [[http://dtrace.org/blogs/dap/2012/01/05/where-does-your-node-program-spend-its-time/][Where does your Node program spend its time?]], Dave Pacheco
 * 浮點數運算精度問題
 #+CAPTION: from xkcd
 [[https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png]]
