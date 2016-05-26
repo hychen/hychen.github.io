@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-06 Wed 17:40 -->
+<!-- 2016-05-26 Thu 11:45 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript</title>
@@ -175,28 +175,264 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">浮點數運算精度問題</a>
+<li><a href="#orgheadline21">Node.js</a>
 <ul>
-<li><a href="#orgheadline2">加法的誤差</a></li>
-<li><a href="#orgheadline3">減法的誤差</a></li>
-<li><a href="#orgheadline4">乘法的誤差</a></li>
-<li><a href="#orgheadline5">除法的誤差</a></li>
-<li><a href="#orgheadline6">三角函數的誤差</a></li>
-<li><a href="#orgheadline7">分配律有時不成立</a></li>
-<li><a href="#orgheadline8">四捨五入誤差的影響</a></li>
-<li><a href="#orgheadline9">失去精確位數</a></li>
-<li><a href="#orgheadline10">如何判斷兩個浮點數相等</a></li>
-<li><a href="#orgheadline11">結論</a></li>
-<li><a href="#orgheadline12">參考連結</a></li>
+<li><a href="#orgheadline10">Runtime Performance</a>
+<ul>
+<li><a href="#orgheadline1">Sample Stack Traces</a></li>
+<li><a href="#orgheadline9">How to sample stack traces from a running process?</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline11">Runtime Crashes</a></li>
+<li><a href="#orgheadline18">Memory Leaks</a>
+<ul>
+<li><a href="#orgheadline12">Defninitions</a></li>
+<li><a href="#orgheadline16">Garbage Collector</a></li>
+<li><a href="#orgheadline17">Use Heapdump</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline19">Coredump + MDB on Smart OS</a></li>
+<li><a href="#orgheadline20">References</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline22">浮點數運算精度問題</a>
+<ul>
+<li><a href="#orgheadline23">加法的誤差</a></li>
+<li><a href="#orgheadline24">減法的誤差</a></li>
+<li><a href="#orgheadline25">乘法的誤差</a></li>
+<li><a href="#orgheadline26">除法的誤差</a></li>
+<li><a href="#orgheadline27">三角函數的誤差</a></li>
+<li><a href="#orgheadline28">分配律有時不成立</a></li>
+<li><a href="#orgheadline29">四捨五入誤差的影響</a></li>
+<li><a href="#orgheadline30">失去精確位數</a></li>
+<li><a href="#orgheadline31">如何判斷兩個浮點數相等</a></li>
+<li><a href="#orgheadline32">結論</a></li>
+<li><a href="#orgheadline33">參考連結</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">浮點數運算精度問題</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgheadline21" class="outline-2">
+<h2 id="orgheadline21">Node.js</h2>
+<div class="outline-text-2" id="text-orgheadline21">
+</div><div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">Runtime Performance</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1">Sample Stack Traces</h4>
+<div class="outline-text-4" id="text-orgheadline1">
+<p>
+A stack trace is a report of the active stack frames at a certain point 
+in time during the execution of a program.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">How to sample stack traces from a running process?</h4>
+<div class="outline-text-4" id="text-orgheadline9">
+</div><ul class="org-ul"><li><a id="orgheadline2"></a>Dtrace<br  /><div class="outline-text-5" id="text-orgheadline2">
+<p>
+<a href="https://en.wikipedia.org/wiki/DTrace">DTrace</a> is a comprehensive dynamic tracing framework created by Sun Microsystems for 
+troubleshooting kernel and application problems on production systems in real time. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">dtrace -n <span style="color: #2d9574;">'profile-997/execname == "node" &amp;&amp; arg1/ {</span>
+<span style="color: #2d9574;">    @[jstack(40, 2000)] = count(); } tick-60s { exit(0); }'</span> &gt; out.stacks
+</pre>
+</div>
+
+<p>
+jstack is totally broken on mac.
+</p>
+</div></li>
+<li><a id="orgheadline3"></a>Perf<br  /><div class="outline-text-5" id="text-orgheadline3">
+<p>
+CPU profiling Linux perf<sub>events</sub>.
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="orgheadline4"></a>Run node.js with &#x2013;perf-basic-prof<br  /><div class="outline-text-6" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-sh">node --perf-basic-prof demo.js &amp;
+</pre>
+</div>
+</div></li>
+
+<li><a id="orgheadline5"></a>Collect statcktrace data.<br  /><div class="outline-text-6" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-sh">perf record -F <span style="color: #a45bad;">99</span> -a -p <span style="color: #fa8072;">`pgrep node`</span> -g -- sleep <span style="color: #a45bad;">60</span>
+perf script &gt; example-perf-stacks.txt.gz
+</pre>
+</div>
+</div></li></ul></li>
+
+<li><a id="orgheadline6"></a>Visulaize Stacke Traces<br  /><div class="outline-text-5" id="text-orgheadline6">
+<p>
+Flame graphs are a visualization of profiled software, allowing the most frequent code-paths to 
+be identified quickly and accurately.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/brendangregg/FlameGraph/
+</pre>
+</div>
+</div></li>
+
+<li><a id="orgheadline8"></a>One Liner<br  /><ul class="org-ul"><li><a id="orgheadline7"></a>unzip and generate interactive svg report.<br  /><div class="outline-text-6" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-sh">gunzip -c example-perf-stacks.txt.gz | ./stackcollapse-perf.pl --kernel | ./flamegraph.pl --color=js --hash &gt; example-perf.svg
+</pre>
+</div>
+</div></li></ul></li></ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">Runtime Crashes</h3>
+</div>
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18">Memory Leaks</h3>
+<div class="outline-text-3" id="text-orgheadline18">
+</div><div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">Defninitions</h4>
+<div class="outline-text-4" id="text-orgheadline12">
+<dl class="org-dl">
+<dt>resident set size</dt><dd>is the portion of memory occupied by a process that is held in the RAM, this contains:
+<ul class="org-ul">
+<li>the code itself</li>
+<li>the stack</li>
+<li>the heap</li>
+</ul></dd>
+<dt>stack</dt><dd>contains primitive types and references to objects</dd>
+<dt>heap</dt><dd>stores reference types, like objects, strings or closures</dd>
+<dt>shallow size of an object</dt><dd>the size of memory that is held by the object itself</dd>
+<dt>retained size of an object</dt><dd>the size of the memory that is freed up once the object is deleted along with its' dependent objects</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16">Garbage Collector</h4>
+<div class="outline-text-4" id="text-orgheadline16">
+</div><ul class="org-ul"><li><a id="orgheadline15"></a>Heap<br  /><ul class="org-ul"><li><a id="orgheadline13"></a>New Space<br  /><div class="outline-text-6" id="text-orgheadline13">
+<ul class="org-ul">
+<li>Where new allocations are happening.</li>
+<li>Objects living in the New Space are called Young Generation.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline14"></a>Old Space<br  /><div class="outline-text-6" id="text-orgheadline14">
+<ul class="org-ul">
+<li>Where the objects that survived the collector in the New Space are promoted into</li>
+<li>are called the Old Generation.</li>
+</ul>
+</div></li></ul></li></ul>
+</div>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17">Use Heapdump</h4>
+<div class="outline-text-4" id="text-orgheadline17">
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #292e34;">/**</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * Simple userland heapdump generator using v8-profiler</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * Usage: require('[path_to]/HeapDump').init('datadir')</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> *</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * @module HeapDump</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * @type {exports}</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">fs</span> = require<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'fs'</span><span style="color: #4f97d7;">)</span>;
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">profiler</span> = require<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'v8-profiler'</span><span style="color: #4f97d7;">)</span>;
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">_datadir</span> = <span style="color: #a45bad;">null</span>;
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">nextMBThreshold</span> = <span style="color: #a45bad;">0</span>;
+
+
+<span style="color: #2aa1ae; background-color: #292e34;">/**</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * Init and scheule heap dump runs</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> *</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * @param datadir Folder to save the data to</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+module.exports.init = <span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #4f97d7;">(</span><span style="color: #7590db;">datadir</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+    _datadir = datadir;
+    setInterval<span style="color: #bc6ec5;">(</span>tickHeapDump, <span style="color: #a45bad;">500</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>;
+
+<span style="color: #2aa1ae; background-color: #292e34;">/**</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * Schedule a heapdump by the end of next tick</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">tickHeapDump</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span>
+    setImmediate<span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #2d9574;">()</span> <span style="color: #2d9574;">{</span>
+        heapDump<span style="color: #67b11d;">()</span>;
+    <span style="color: #2d9574;">}</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">/**</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * Creates a heap dump if the currently memory threshold is exceeded</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">heapDump</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span>
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">memMB</span> = process.memoryUsage<span style="color: #bc6ec5;">()</span>.rss / <span style="color: #a45bad;">1048576</span>;
+
+    console.log<span style="color: #bc6ec5;">(</span>memMB + <span style="color: #2d9574;">'&gt;'</span> + nextMBThreshold<span style="color: #bc6ec5;">)</span>;
+
+    <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>memMB &gt; nextMBThreshold<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">{</span>
+        console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'Current memory usage: %j'</span>, process.memoryUsage<span style="color: #67b11d;">()</span><span style="color: #2d9574;">)</span>;
+        nextMBThreshold += <span style="color: #a45bad;">50</span>;
+        <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">snap</span> = profiler.takeSnapshot<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'profile'</span><span style="color: #2d9574;">)</span>;
+        saveHeapSnapshot<span style="color: #2d9574;">(</span>snap, _datadir<span style="color: #2d9574;">)</span>;
+    <span style="color: #bc6ec5;">}</span>
+<span style="color: #4f97d7;">}</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">/**</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * Saves a given snapshot</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> *</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * @param snapshot Snapshot object</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> * @param datadir Location to save to</span>
+<span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+<span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">saveHeapSnapshot</span><span style="color: #4f97d7;">(</span><span style="color: #7590db;">snapshot</span>, <span style="color: #7590db;">datadir</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">{</span>
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">buffer</span> = <span style="color: #2d9574;">''</span>;
+    <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">stamp</span> = Date.now<span style="color: #bc6ec5;">()</span>;
+    snapshot.serialize<span style="color: #bc6ec5;">(</span>
+        <span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">iterator</span><span style="color: #2d9574;">(</span><span style="color: #7590db;">data</span>, <span style="color: #7590db;">length</span><span style="color: #2d9574;">)</span> <span style="color: #2d9574;">{</span>
+            buffer += data;
+        <span style="color: #2d9574;">}</span>, <span style="color: #4f97d7; font-weight: bold;">function</span> complete<span style="color: #2d9574;">()</span> <span style="color: #2d9574;">{</span>
+
+            <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">name</span> = stamp + <span style="color: #2d9574;">'.heapsnapshot'</span>;
+            fs.writeFile<span style="color: #67b11d;">(</span>datadir + <span style="color: #2d9574;">'/'</span> + name , buffer, <span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #b1951d;">()</span> <span style="color: #b1951d;">{</span>
+                console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'Heap snapshot written to '</span> + name<span style="color: #4f97d7;">)</span>;
+            <span style="color: #b1951d;">}</span><span style="color: #67b11d;">)</span>;
+        <span style="color: #2d9574;">}</span>
+    <span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19">Coredump + MDB on Smart OS</h3>
+</div>
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20">References</h3>
+<div class="outline-text-3" id="text-orgheadline20">
+<ul class="org-ul">
+<li><a href="http://www.slideshare.net/yunongx/debugging-node-in-prod">Debugging node in prod</a>, Yunong Xiao, Netflix</li>
+<li><a href="https://blog.risingstack.com/finding-a-memory-leak-in-node-js/">Hunting a Ghost - Finding a Memory Leak in Node.js</a></li>
+<li><a href="http://apmblog.dynatrace.com/2015/11/04/understanding-garbage-collection-and-hunting-memory-leaks-in-node-js/">Understanding Garbage Collection and hunting Memory Leaks in Node.js</a></li>
+<li><a href="http://www.brendangregg.com/flamegraphs.html">Flame Graphs</a>,  Brendangregg</li>
+<li><a href="http://dtrace.org/blogs/dap/2012/01/05/where-does-your-node-program-spend-its-time/">Where does your Node program spend its time?</a>, Dave Pacheco</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22">浮點數運算精度問題</h2>
+<div class="outline-text-2" id="text-orgheadline22">
 
 <div class="figure">
 <p><img src="https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png" alt="e_to_the_pi_minus_pi.png" />
@@ -209,9 +445,9 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </p>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">加法的誤差</h3>
-<div class="outline-text-3" id="text-orgheadline2">
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23">加法的誤差</h3>
+<div class="outline-text-3" id="text-orgheadline23">
 <p>
 \(0.1+0.2 \neq 0.3\)
 </p>
@@ -226,9 +462,9 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">減法的誤差</h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24">減法的誤差</h3>
+<div class="outline-text-3" id="text-orgheadline24">
 <p>
 \(0.12 - 0.1 \neq 0.02\)
 </p>
@@ -243,9 +479,9 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">乘法的誤差</h3>
-<div class="outline-text-3" id="text-orgheadline4">
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25">乘法的誤差</h3>
+<div class="outline-text-3" id="text-orgheadline25">
 <p>
 \(3.21 \times 3 \neq 9.63\)
 </p>
@@ -260,9 +496,9 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">除法的誤差</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26">除法的誤差</h3>
+<div class="outline-text-3" id="text-orgheadline26">
 <p>
 \(0.3 \div 0.1 \neq 3\)
 </p>
@@ -278,9 +514,9 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">三角函數的誤差</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27">三角函數的誤差</h3>
+<div class="outline-text-3" id="text-orgheadline27">
 <p>
 \(\sin(\pi) \neq 0\)
 </p>
@@ -295,9 +531,9 @@ JavaScript 的 Number 是 64 bit 的雙精度浮點數(<a href="https://zh.wikip
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">分配律有時不成立</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28">分配律有時不成立</h3>
+<div class="outline-text-3" id="text-orgheadline28">
 <p>
 \((0.1 + 0.2) \times 5 \neq 0.1 \times 5 + 0.2 \times 5\)
 </p>
@@ -317,9 +553,9 @@ console.log<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">'
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">四捨五入誤差的影響</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29">四捨五入誤差的影響</h3>
+<div class="outline-text-3" id="text-orgheadline29">
 <p>
 多跑了一次回圈，因為預期最後一次結果是3，結果得到1.9999999999999998。
 </p>
@@ -350,9 +586,9 @@ x= 2.333333333333333
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">失去精確位數</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30">失去精確位數</h3>
+<div class="outline-text-3" id="text-orgheadline30">
 <p>
 太相近的數值相減的結果完全不可信
 </p>
@@ -374,9 +610,9 @@ x - y =  4.11093381558203e-12
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">如何判斷兩個浮點數相等</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31">如何判斷兩個浮點數相等</h3>
+<div class="outline-text-3" id="text-orgheadline31">
 <p>
 由於有 round error, 所以兩個浮點數可能只有非常微小的差別，通常我們會將之視為兩數是相同的。
 </p>
@@ -416,9 +652,9 @@ sameNumber(3.141592653589793, 3.141592653585682) is true
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">結論</h3>
-<div class="outline-text-3" id="text-orgheadline11">
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32">結論</h3>
+<div class="outline-text-3" id="text-orgheadline32">
 <ul class="org-ul">
 <li>乘法與除法是安全的。</li>
 <li>加法與減法是容易出錯的，需要多加留意。
@@ -442,9 +678,9 @@ console.log<span style="color: #4f97d7;">(</span>r<span style="color: #4f97d7;">
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12">參考連結</h3>
-<div class="outline-text-3" id="text-orgheadline12">
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33">參考連結</h3>
+<div class="outline-text-3" id="text-orgheadline33">
 <ul class="org-ul">
 <li><a href="http://blog.dcview.com/article.php?a=VmhQNVY+Czo=">使用浮點數最最基本的觀念</a>,洗鏡光, 2008</li>
 <li><a href="http://blog.chewxy.com/2014/02/24/what-every-javascript-developer-should-know-about-floating-point-numbers/">What Every JavaScript Developer Should Know About Floating Point Numbers</a>, chewxy, 2014</li>
@@ -456,7 +692,7 @@ console.log<span style="color: #4f97d7;">(</span>r<span style="color: #4f97d7;">
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-06 Wed 17:40</p>
+<p class="date">Created: 2016-05-26 Thu 11:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
