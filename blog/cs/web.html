@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-15 Fri 09:34 -->
+<!-- 2016-08-10 Wed 19:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Web Development</title>
@@ -153,40 +153,114 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">Web Performance</a></li>
-<li><a href="#orgheadline27">HTTP1.1 Cache Control</a></li>
+<li><a href="#orgheadline9">Full Text Searching</a>
+<ul>
+<li><a href="#orgheadline6">Mongodb Text Search</a></li>
+<li><a href="#orgheadline7">Solr</a></li>
+<li><a href="#orgheadline8">Elasticsearch</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline10">Web Performance</a></li>
+<li><a href="#orgheadline36">HTTP1.1 Cache Control</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">Web Performance</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">Full Text Searching</h2>
+<div class="outline-text-2" id="text-orgheadline9">
+</div><div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Mongodb Text Search</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+</div><ul class="org-ul"><li><a id="orgheadline1"></a>Text Index<br  /><div class="outline-text-4" id="text-orgheadline1">
+<ul class="org-ul">
+<li>only allow one text index per collection.</li>
+<li>$language parameter.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline2"></a>Control Search Results with Weights<br  /><div class="outline-text-4" id="text-orgheadline2">
+<ul class="org-ul">
+<li><a href="https://docs.mongodb.com/manual/core/index-compound/">https://docs.mongodb.com/manual/core/index-compound/</a></li>
+</ul>
+<p>
+``` 
+db.blog.createIndex(
+   {
+     content: "text",
+     keywords: "text",
+     about: "text"
+   },
+   {
+     weights: {
+       content: 10,
+       keywords: 5
+     },
+     name: "TextIndex"
+   }
+ )
+```
+</p>
+</div></li>
+<li><a id="orgheadline3"></a>Storage Requirements and Performance Costs<br  /><div class="outline-text-4" id="text-orgheadline3">
+<p>
+text indexes can be large. They contain one index entry for each unique post-stemmed word in each indexed field for each document inserted.
+</p>
+<ul class="org-ul">
+<li>Building a text index is very similar to building a large multi-key index and will take longer than building a simple ordered (scalar) index on the same data.</li>
+<li>When building a large text index on an existing collection, ensure that you have a sufficiently high limit on open file descriptors. See the recommended settings.</li>
+<li>text indexes will impact insertion throughput because MongoDB must add an index entry for each unique post-stemmed word in each indexed field of each new source document.</li>
+<li>Additionally, text indexes do not store phrases or information about the proximity of words in the documents. As a result, phrase queries will run much more effectively when the entire collection fits in RAM.</li>
+</ul>
+</div></li>
+<li><a id="orgheadline4"></a>Text Search.<br  /><div class="outline-text-4" id="text-orgheadline4">
+<ul class="org-ul">
+<li>$text, $match</li>
+</ul>
+<p>
+<a href="https://docs.mongodb.com/manual/tutorial/text-search-in-aggregation/">https://docs.mongodb.com/manual/tutorial/text-search-in-aggregation/</a>
+</p>
+</div></li>
+<li><a id="orgheadline5"></a>References<br  /><div class="outline-text-4" id="text-orgheadline5">
+<ul class="org-ul">
+<li><a href="http://willowtreeapps.com/blog/text-searching-with-mongodb/">http://willowtreeapps.com/blog/text-searching-with-mongodb/</a></li>
+</ul>
+</div></li></ul>
+</div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Solr</h3>
+</div>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Elasticsearch</h3>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">Web Performance</h2>
+<div class="outline-text-2" id="text-orgheadline10">
 <dl class="org-dl">
 <dt>Edge Cache</dt><dd>The cache on edge servers, controlled by CDN or proxy server.</dd>
 <dt>Browser Cache</dt><dd>The cache on browser, controlled by browser.</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgheadline27" class="outline-2">
-<h2 id="orgheadline27">HTTP1.1 Cache Control</h2>
-<div class="outline-text-2" id="text-orgheadline27">
-</div><ul class="org-ul"><li><a id="orgheadline19"></a>Expiration<br  /><ul class="org-ul"><li><a id="orgheadline8"></a>Request<br  /><ul class="org-ul"><li><a id="orgheadline2"></a>no-store<br  /></li>
-<li><a id="orgheadline3"></a>max-age<br  /></li>
-<li><a id="orgheadline4"></a>max-stale<br  /></li>
-<li><a id="orgheadline5"></a>min-fresh<br  /></li>
-<li><a id="orgheadline6"></a>no-transform<br  /></li>
-<li><a id="orgheadline7"></a>only-if-cached<br  /></li></ul></li>
-<li><a id="orgheadline18"></a>Response<br  /><ul class="org-ul"><li><a id="orgheadline9"></a>public<br  /></li>
-<li><a id="orgheadline10"></a>private<br  /></li>
-<li><a id="orgheadline11"></a>no-cache<br  /></li>
-<li><a id="orgheadline12"></a>no-store<br  /></li>
-<li><a id="orgheadline13"></a>no-transform<br  /></li>
-<li><a id="orgheadline14"></a>must-revalidate<br  /></li>
-<li><a id="orgheadline15"></a>proxy-revalidate<br  /></li>
-<li><a id="orgheadline16"></a>max-age<br  /></li>
-<li><a id="orgheadline17"></a>s-maxage<br  /></li></ul></li></ul></li>
-<li><a id="orgheadline25"></a>Validation<br  /><ul class="org-ul"><li><a id="orgheadline23"></a><a href="https://en.wikipedia.org/wiki/HTTP_ETag">ETag</a><br  /><ul class="org-ul"><li><a id="orgheadline20"></a>ETag Value<br  /><div class="outline-text-6" id="text-orgheadline20">
+<div id="outline-container-orgheadline36" class="outline-2">
+<h2 id="orgheadline36">HTTP1.1 Cache Control</h2>
+<div class="outline-text-2" id="text-orgheadline36">
+</div><ul class="org-ul"><li><a id="orgheadline28"></a>Expiration<br  /><ul class="org-ul"><li><a id="orgheadline17"></a>Request<br  /><ul class="org-ul"><li><a id="orgheadline11"></a>no-store<br  /></li>
+<li><a id="orgheadline12"></a>max-age<br  /></li>
+<li><a id="orgheadline13"></a>max-stale<br  /></li>
+<li><a id="orgheadline14"></a>min-fresh<br  /></li>
+<li><a id="orgheadline15"></a>no-transform<br  /></li>
+<li><a id="orgheadline16"></a>only-if-cached<br  /></li></ul></li>
+<li><a id="orgheadline27"></a>Response<br  /><ul class="org-ul"><li><a id="orgheadline18"></a>public<br  /></li>
+<li><a id="orgheadline19"></a>private<br  /></li>
+<li><a id="orgheadline20"></a>no-cache<br  /></li>
+<li><a id="orgheadline21"></a>no-store<br  /></li>
+<li><a id="orgheadline22"></a>no-transform<br  /></li>
+<li><a id="orgheadline23"></a>must-revalidate<br  /></li>
+<li><a id="orgheadline24"></a>proxy-revalidate<br  /></li>
+<li><a id="orgheadline25"></a>max-age<br  /></li>
+<li><a id="orgheadline26"></a>s-maxage<br  /></li></ul></li></ul></li>
+<li><a id="orgheadline34"></a>Validation<br  /><ul class="org-ul"><li><a id="orgheadline32"></a><a href="https://en.wikipedia.org/wiki/HTTP_ETag">ETag</a><br  /><ul class="org-ul"><li><a id="orgheadline29"></a>ETag Value<br  /><div class="outline-text-6" id="text-orgheadline29">
 <ol class="org-ol">
 <li>is unique.</li>
 <li>typically looks like as the following:</li>
@@ -200,12 +274,12 @@ W/"123456789"  – A weak ETag validator<br  />
 of the resource's content, a hash of the last modification timestamp, or even just a revision number.</li>
 </ol>
 </div></li>
-<li><a id="orgheadline21"></a>Pros.<br  /><div class="outline-text-6" id="text-orgheadline21">
+<li><a id="orgheadline30"></a>Pros.<br  /><div class="outline-text-6" id="text-orgheadline30">
 <ol class="org-ol">
 <li>Don't rely on client's clock.</li>
 </ol>
 </div></li>
-<li><a id="orgheadline22"></a>Cons.<br  /><div class="outline-text-6" id="text-orgheadline22">
+<li><a id="orgheadline31"></a>Cons.<br  /><div class="outline-text-6" id="text-orgheadline31">
 <ol class="org-ol">
 <li>ETag requests a client make at least a request, so it might not that useful</li>
 </ol>
@@ -214,14 +288,14 @@ if the lantecy betwen a client to your server is high, which leads the pages loa
 took too long.
 </p>
 </div></li></ul></li>
-<li><a id="orgheadline24"></a>Last-Modified<br  /><div class="outline-text-5" id="text-orgheadline24">
+<li><a id="orgheadline33"></a>Last-Modified<br  /><div class="outline-text-5" id="text-orgheadline33">
 <ol class="org-ol">
 <li>does same thing as ETag does but it is timebased checking.</li>
 <li>unit is seconds.</li>
 <li>GMT.</li>
 </ol>
 </div></li></ul></li>
-<li><a id="orgheadline26"></a>Conclution<br  /><div class="outline-text-4" id="text-orgheadline26">
+<li><a id="orgheadline35"></a>Conclution<br  /><div class="outline-text-4" id="text-orgheadline35">
 <ol class="org-ol">
 <li>For cache expiration, use <b>max-age</b> to reduce requests, use <b>private</b> when handling sesetive data.</li>
 <li>use <b>ETag</b> or <b>Last-Modified</b> to valid content.</li>
@@ -231,7 +305,7 @@ took too long.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-04-15 Fri 09:34</p>
+<p class="date">Created: 2016-08-10 Wed 19:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
