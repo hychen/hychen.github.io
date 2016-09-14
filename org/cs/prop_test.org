@@ -4,52 +4,14 @@
 Property-based tests make statements about the output of your code based on 
 the input, and these statements are verified for many different possible inputs.
 
-* Type
-** Data
-*** Binary Values 
-true or false.
-*** Numbers 
-*** Characters
-*** Functions
-** Data Structure
-A data structure is a collection of aggregate of data. The data may be 
-binary values, numbers, characters, or data structure.
+* Categories for properties
+- Different paths, same destination
+- There and back again
+- Some things never change
+- The more things change, the more they stay the same
+- Solve a smaller problem first
+- Hard to prove, easy to verify
+- The test oracle
 
-the following are basic data structure.
-
-- bunch :: unpackaged, unindexed
-- string :: unpackaged, indexed
-- set :: packaged, unindexed
-- array :: packaged, indexed
-
-*** Indexed
-elements in a collection can be indexed by binary values, numbers, 
-characters, strings.
-
-a arrary is indexed by positive interger numbers.
-*** Packaged
-A bunch of data packaged in a container, such as array, tree.
-
-A packaged data structure can have *circular reference*, which means it 
-contains itself or two data structure reference each other as a loop.
-
-#+BEGIN_SRC js :cmd node :results output
-var a = [1];
-a.push(a);
-console.log(a);
-#+END_SRC
-
-#+RESULTS:
-: [ 1, [Circular] ]
-
-In another word, an unpackaged data structure can not have 
-*circular reference*, a string can not contain itself or another 
-strings.
-
-* Generator
-
-A generator is a function to generate a arbitrary value of given type.
-
-* Arbitrary
-
-A data represents generator builder.
+* References
+- https://fsharpforfunandprofit.com/posts/property-based-testing-2/

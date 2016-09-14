@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-05-07 Sat 15:34 -->
+<!-- 2016-09-14 Wed 21:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Property-based testing</title>
@@ -153,26 +153,8 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline9">Type</a>
-<ul>
-<li><a href="#orgheadline5">Data</a>
-<ul>
-<li><a href="#orgheadline1">Binary Values</a></li>
-<li><a href="#orgheadline2">Numbers</a></li>
-<li><a href="#orgheadline3">Characters</a></li>
-<li><a href="#orgheadline4">Functions</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline6">Data Structure</a>
-<ul>
-<li><a href="#orgheadline7">Indexed</a></li>
-<li><a href="#orgheadline8">Packaged</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline10">Generator</a></li>
-<li><a href="#orgheadline11">Arbitrary</a></li>
+<li><a href="#orgheadline1">Categories for properties</a></li>
+<li><a href="#orgheadline2">References</a></li>
 </ul>
 </div>
 </div>
@@ -181,114 +163,33 @@ Property-based tests make statements about the output of your code based on
 the input, and these statements are verified for many different possible inputs.
 </p>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">Type</h2>
-<div class="outline-text-2" id="text-orgheadline9">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">Data</h3>
-<div class="outline-text-3" id="text-orgheadline5">
-</div><div id="outline-container-orgheadline1" class="outline-4">
-<h4 id="orgheadline1">Binary Values</h4>
-<div class="outline-text-4" id="text-orgheadline1">
-<p>
-true or false.
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2">Numbers</h4>
-</div>
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3">Characters</h4>
-</div>
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">Functions</h4>
-</div>
-</div>
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Data Structure</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<p>
-A data structure is a collection of aggregate of data. The data may be 
-binary values, numbers, characters, or data structure.
-</p>
-
-<p>
-the following are basic data structure.
-</p>
-
-<dl class="org-dl">
-<dt>bunch</dt><dd>unpackaged, unindexed</dd>
-<dt>string</dt><dd>unpackaged, indexed</dd>
-<dt>set</dt><dd>packaged, unindexed</dd>
-<dt>array</dt><dd>packaged, indexed</dd>
-</dl>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">Indexed</h4>
-<div class="outline-text-4" id="text-orgheadline7">
-<p>
-elements in a collection can be indexed by binary values, numbers, 
-characters, strings.
-</p>
-
-<p>
-a arrary is indexed by positive interger numbers.
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8">Packaged</h4>
-<div class="outline-text-4" id="text-orgheadline8">
-<p>
-A bunch of data packaged in a container, such as array, tree.
-</p>
-
-<p>
-A packaged data structure can have <b>circular reference</b>, which means it 
-contains itself or two data structure reference each other as a loop.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">a</span> = <span style="color: #4f97d7;">[</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">]</span>;
-a.push<span style="color: #4f97d7;">(</span>a<span style="color: #4f97d7;">)</span>;
-console.log<span style="color: #4f97d7;">(</span>a<span style="color: #4f97d7;">)</span>;
-</pre>
-</div>
-
-<p>
-In another word, an unpackaged data structure can not have 
-<b>circular reference</b>, a string can not contain itself or another 
-strings.
-</p>
-</div>
-</div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Categories for properties</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<ul class="org-ul">
+<li>Different paths, same destination</li>
+<li>There and back again</li>
+<li>Some things never change</li>
+<li>The more things change, the more they stay the same</li>
+<li>Solve a smaller problem first</li>
+<li>Hard to prove, easy to verify</li>
+<li>The test oracle</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10">Generator</h2>
-<div class="outline-text-2" id="text-orgheadline10">
-<p>
-A generator is a function to generate a arbitrary value of given type.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">Arbitrary</h2>
-<div class="outline-text-2" id="text-orgheadline11">
-<p>
-A data represents generator builder.
-</p>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">References</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<ul class="org-ul">
+<li><a href="https://fsharpforfunandprofit.com/posts/property-based-testing-2/">https://fsharpforfunandprofit.com/posts/property-based-testing-2/</a></li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Chen Hsin-Yi</p>
-<p class="date">Created: 2016-05-07 Sat 15:34</p>
+<p class="date">Created: 2016-09-14 Wed 21:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
