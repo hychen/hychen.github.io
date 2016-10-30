@@ -121,10 +121,7 @@
       "level": "Advanced",
       "keywords": [
         "Python",
-        "PHP",
-        "Haskell",
         "MongoDB",
-        "MySql",
         "PostgreSQL"
       ]
     },
@@ -154,6 +151,14 @@
       "keywords": [
         "Lambda Calculus",
         "Type Theory"
+      ]
+    },
+    {
+      "Tech Conference Organzation",
+      "level": "Advanced",
+      "keywords": [
+        "Finacial Projection",
+        "Accounting"
       ]
     }
   ],
