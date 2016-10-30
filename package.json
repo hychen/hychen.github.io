@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "./node_modules/.bin/http-server",
-    "resume": "./node_modules/.bin/resume export -t kwan resume.html"
+    "resume": "./node_modules/.bin/resume export -t short resume.html"
   },
   "repository": {
     "type": "git",

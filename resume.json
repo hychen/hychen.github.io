@@ -25,11 +25,6 @@
         "url": "http://github.com/hychen"
       },
       {
-        "network": "Twitter",
-        "username": "hychen",
-        "url": "http://twitter/hychen"
-      },
-      {
         "network": "Linkedin",
         "username": "hychen",
         "url": "http://linkedin.com/in/hychen"
@@ -42,19 +37,26 @@
       "position": "Sr. Software Engineer",
       "website": "http://vectr.com",
       "startDate": "2015-08-01",
-      "summary": "Vectr is a real time collaboration vector image editor, built on top of JavaScript & Node.js"
+      "summary": "Vectr is a real time collaboration vector image editor, built on top of JavaScript & Node.js",
+      "highlights": [
+        "most are backend stuff."
+      ]
     },
     {
       "company": "Self Employed",
       "position": "Independent Professional",
       "startDate": "2014-01-01",
       "endDate": "2015-07-31",
+      "summary": "Gap Year",
       "highlights": [
+        "Build some prototype of start-up ideas. one of ideas is something like AWS API Gateway.",
+        "Study Flow-based Programming, Coordination Language and Models and Web Service Composition.",
+        "Win the first prize of 2014 Open Data Hackthon of Tainan City",
         "Work closely with client to build cloud infrastructure of IOT pet camera hardware."
       ]
     },
     {
-      "company": "Canonical Ltd",
+      "company": "Canonical Ltd.",
       "position": "Software Engineer",
       "website": "http://canonical.com",
       "startDate": "2010-04-01",
@@ -67,7 +69,7 @@
       ]
     },
     {
-      "company": "Jorjin Technologies Inc",
+      "company": "Jorjin Technologies Inc.",
       "position": "Software Engineer",
       "summary": "Jorjin Technologies Inc is the supplier of wireless system-in-package (SiP) modules.",
       "website": "http://www.jorjin.com.tw",
@@ -104,16 +106,11 @@
     },
     {
       "name": "Web Frontend",
-      "level": "Advanced",
+      "level": "Intermediate",
       "keywords": [
         "HTML",
         "CSS",
-        "JavaScript",
-        "TypeScript",
-        "LiveScript",
-        "CoffeeScript",
-        "AngularJS",
-        "React"
+        "JavaScript"
       ]
     },
     {
@@ -121,20 +118,28 @@
       "level": "Advanced",
       "keywords": [
         "Python",
+        "Node.js",
         "MongoDB",
         "PostgreSQL"
       ]
     },
     {
-      "name": "Automation and DevOps",
-      "level": "Advanced",
+      "name": "Automation",
+      "level": "Master",
       "keywords": [
         "Python",
-        "JavaScript",
+        "Node.js",
+        "ShellScript"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "level": "Intermediate",
+      "keywords": [
         "Chef",
         "SaltStack",
         "AWS",
-        "ShellScript"
+        "Heroku"
       ]
     },
     {
@@ -154,8 +159,8 @@
       ]
     },
     {
-      "Tech Conference Organzation",
-      "level": "Advanced",
+      "name":"Tech Conference Organzation",
+      "level": "Intermediate",
       "keywords": [
         "Finacial Projection",
         "Accounting"
@@ -177,7 +182,7 @@
       "name": "Programming",
       "keywords": [
         "Open Source",
-        "Programming Theory"
+        "Programming Language Theory"
       ]
     },
     {
@@ -187,15 +192,6 @@
         "RPG",
         "SLG"
       ]
-    }
-  ],
-  "education": [
-    {
-      "institution": "National Kaohsiung University of Applied Sciences",
-      "area": "Department of Electronic Engineering",
-      "studyType": "Bachelor",
-      "startDate": "2002-09-01",
-      "endDate": "2006-06-31"
     }
   ]
 }
