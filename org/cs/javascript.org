@@ -143,12 +143,43 @@ function saveHeapSnapshot(snapshot, datadir) {
 }
 #+END_SRC
 ** Coredump + MDB on Smart OS
+** Coredump + LLNODE on MacOX
+***  Enable MacOS core dump.
+   MacOS does not allow core dump generation by default because coredumps could be 
+   very huge. All core dumps can be found in */cores*.
+  #+BEGIN_SRC
+
+
+  ulimt -c unlimited
+  #+END_SRC
+*** Make a coredump
+    #+BEGIN_SRC sh
+    gcore {process id}
+    #+END_SRC
+*** Install llnode
+   #+BEGIN_SRC sh
+   brew install llnode
+   #+END_SRC
+*** Set memory range
+    - Use *scripts/otool2segements* if the coredump is generated in MacOS.
+    - Use *scripts/readelf2segments* if the coredump is generated in Linux.
+   #+BEGIN_SRC
+
+   #+END_SRC
+*** Run lldb 
+   #+BEGIN_SRC 
+   llbd -c core.1234
+   (lldb) plugin load /usr/local/opt/llnode/llnode.dylib
+   (lldb) v8 help
+   #+END_SRC
 ** References 
 - [[http://www.slideshare.net/yunongx/debugging-node-in-prod][Debugging node in prod]], Yunong Xiao, Netflix
 - [[https://blog.risingstack.com/finding-a-memory-leak-in-node-js/][Hunting a Ghost - Finding a Memory Leak in Node.js]]
 - [[http://apmblog.dynatrace.com/2015/11/04/understanding-garbage-collection-and-hunting-memory-leaks-in-node-js/][Understanding Garbage Collection and hunting Memory Leaks in Node.js]]
 - [[http://www.brendangregg.com/flamegraphs.html][Flame Graphs]],  Brendangregg
-- [[http://dtrace.org/blogs/dap/2012/01/05/where-does-your-node-program-spend-its-time/][Where does your Node program spend its time?]], Dave Pacheco
+- [[http://dtrace.org/blogs/dap/2012/01/05/where-does-your-node-program-spend-its-time/][Where does your Node program spend its time?]], Dave Pacheco.
+- [[http://www.brendangregg.com/blog/2016-07-13/llnode-nodejs-memory-leak-analysis.html][llnode for Node.js memory leak analysis]], Brendan Gregg.
+- [[https://developer.ibm.com/node/2016/09/27/advances-in-core-dump-debugging-for-node-js/][Advances in core-dump debugging for Node.js]], R N Chamberian.
 * 浮點數運算精度問題
 #+CAPTION: from xkcd
 [[https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png]]
