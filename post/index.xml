@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 不及格大學士後研究</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on 不及格大學士後研究</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 hychen</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
+    <atom:link href="/post/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Emacs Blogging Workflow</title>
+      <link>/post/blogging/</link>
+      <pubDate>Fri, 20 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/blogging/</guid>
+      <description>&lt;p&gt;Inspired by &lt;a href=&#34;http://www.modernemacs.com/post/org-mode-blogging/&#34; title=&#34;An Emacs Blogging Workflow&#34; target=&#34;_blank&#34;&gt;An Emacs Blogging Workflow&lt;/a&gt;, I choose Hugo + Emacs as my blogging platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34; title=&#34;Hugo&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; is a static site generator. It natively supports org-mode, builds fast, and has live reloading.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;deploy-blog&lt;/code&gt; will goto your blog content, run hugo, cleanup old html, and push the updates.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;start-blog-server&lt;/code&gt; will run hugo server if not already running, and open the webpage in your browser.&lt;/p&gt;
+
+&lt;p&gt;My blog workflow is then to startup the server (SPC a a), write some content in org-mode and see it reflected in the browser on each save, and deploy (SPC a b).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;
+(require &#39;cl)
+(require &#39;dash)
+
+(setq blog-dir &amp;quot;~/github/blog&amp;quot;
+      public-blog-dir &amp;quot;~/github/docs&amp;quot;
+      hugo-process &amp;quot;Hugo Server&amp;quot;
+      hugo-server-site &amp;quot;http://localhost:1313/&amp;quot;)
+
+(defmacro with-dir (DIR &amp;amp;rest FORMS)
+  &amp;quot;Execute FORMS in DIR.&amp;quot;
+  (let ((orig-dir (gensym)))
+    `(progn (setq ,orig-dir default-directory)
+            (cd ,DIR) ,@FORMS (cd ,orig-dir))))
+
+(defun deploy-blog ()
+  &amp;quot;Run hugo and push changes upstream.&amp;quot;
+  (interactive)
+  (with-dir public-blog-dir
+            (shell-command &amp;quot;git rm -rf .&amp;quot;)
+            (shell-command &amp;quot;git clean -fxd&amp;quot;)
+
+            (with-dir blog-dir (-&amp;gt;&amp;gt; public-blog-dir
+                                    (concat &amp;quot;hugo -d &amp;quot;)
+                                    shell-command))
+
+            (shell-command &amp;quot;git add .&amp;quot;)
+            (--&amp;gt; (current-time-string)
+                 (concat &amp;quot;git commit -m \&amp;quot;&amp;quot; it &amp;quot;\&amp;quot;&amp;quot;)
+                 (shell-command it))
+            (magit-push-current-to-upstream nil)))
+
+(defun start-blog-server ()
+  &amp;quot;Run hugo server if not already running and open its webpage.&amp;quot;
+  (interactive)
+  (with-dir blog-dir
+            (unless (get-process hugo-process)
+              (start-process hugo-process nil &amp;quot;hugo&amp;quot; &amp;quot;server&amp;quot;))
+            (browse-url hugo-server-site)))
+
+(defun end-blog-server ()
+  &amp;quot;End hugo server process if running.&amp;quot;
+  (interactive)
+  (--when-let (get-process hugo-process)
+    (delete-process it)))
+
+(spacemacs/set-leader-keys (kbd &amp;quot;ab&amp;quot;) &#39;deploy-blog)
+(spacemacs/set-leader-keys (kbd &amp;quot;aa&amp;quot;) &#39;start-blog-server)
+(spacemacs/set-leader-keys (kbd &amp;quot;ae&amp;quot;) &#39;end-blog-server)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Work More Efficiently On Mac</title>
+      <link>/post/config_mac/</link>
+      <pubDate>Fri, 20 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/config_mac/</guid>
+      <description>&lt;h2 id=&#34;managing-dotfiles-in-org-babel&#34;&gt;Managing Dotfiles In Org-Babel&lt;/h2&gt;
+
+&lt;p&gt;I used to have almost 80% configurations that I stole from other people on the internet which are never used. 
+Why? Maybe because I did not think why I need them, those things just did not be adopted in my daily workflow.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://orgmode.org/worg/org-contrib/babel/&#34; title=&#34;org-babel&#34; target=&#34;_blank&#34;&gt;org-babel&lt;/a&gt; is a way that you can embed your code block in your literature. I&#39;ve ever seen people use it to manage their Emacs 
+configuration many times, and think it might be easy to manage my dotfiles also.&lt;/p&gt;
+
+&lt;p&gt;so, here you are, this is a post remains me why I need to have these configurations, how can I be more productivity, 
+but it is also used to export all my configurations on mac.&lt;/p&gt;
+
+&lt;h2 id=&#34;get-the-missing-package-manager&#34;&gt;Get The Missing Package Manager&lt;/h2&gt;
+
+&lt;p&gt;Do you miss aplt-get, or any package manager on Linux after you switched to Mac? If you do then HomeBrew and HomeBrew Cask is what you are looking for.&lt;/p&gt;
+
+&lt;h3 id=&#34;get-brew&#34;&gt;Get Brew&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;add-more-sources&#34;&gt;Add more sources&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;System duplicate formulae&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew tap homebrew/dupes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Versioned formulae&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew tap homebrew/versions
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Homebrew Cask is an extension for Homebrew that allows you to automate the installation of Mac Apps.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew tap caskroom/cask
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cask can also be used to automatically download and install fonts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew tap caskroom/fonts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;update-formulaes&#34;&gt;Update formulaes&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;use-spacemacs&#34;&gt;Use Spacemacs&lt;/h2&gt;
+
+&lt;h3 id=&#34;get-emacs&#34;&gt;Get Emacs&lt;/h3&gt;
+
+&lt;p&gt;Can not use &lt;code&gt;org-babel&lt;/code&gt; without Emacs. I use spacemacs because the default configuration really saves my time.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --HEAD --with-natural-title-bars
+brew linkapps emacs-plus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;download-spaceemacs-cofiguration&#34;&gt;Download spaceemacs cofiguration&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;better-terminal&#34;&gt;Better Terminal&lt;/h2&gt;
+
+&lt;p&gt;Iterm2 has a lot useful &lt;a href=&#34;https://www.iterm2.com/features.html&#34; title=&#34;features&#34; target=&#34;_blank&#34;&gt;features&lt;/a&gt;, such as split panes, hotkey window.&lt;/p&gt;
+
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew cask install iterm2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;enable-hotkey-window&#34;&gt;Enable Hotkey Window&lt;/h3&gt;
+
+&lt;p&gt;Register a hotkey that brings iTerm2 to the foreground when you&#39;re in another application. A terminal is always a keypress away. This gives you an always-available terminal (like Visor, Guake, or Yakuake) at your fingertips.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Creates a new profile named as &lt;code&gt;Hotkey Window&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Open &lt;code&gt;Preference&lt;/code&gt; &gt; Keys.&lt;/li&gt;
+&lt;li&gt;Enable &lt;code&gt;Show/hide iTerm2&lt;/code&gt; with a system-wide hotkey, change Hotkey to &lt;code&gt;Command + ;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Enable &lt;code&gt;Hotkey toogles a dedicated window with profile&lt;/code&gt;, change the profile to &lt;code&gt;Hotkey Window&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;better-keyboard-configuration&#34;&gt;Better Keyboard Configuration&lt;/h2&gt;
+
+&lt;p&gt;I am a fan of &lt;strong&gt;Emacs&lt;/strong&gt; but prefer &lt;strong&gt;VIM style editing&lt;/strong&gt; (which leads me to start using spacemacs), 
+Capslock is useless and I never use it. Luckly, it seems a good place to put &lt;strong&gt;Ctrl/Escape&lt;/strong&gt; there.&lt;/p&gt;
+
+&lt;h3 id=&#34;remaps-capslock-to-ctrl&#34;&gt;Remaps Capslock To Ctrl&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go into the Keyboard preference pane. &lt;/li&gt;
+&lt;li&gt;Click &#34;Modifier Keys…&#34;, and change Caps Lock to Control.&lt;/li&gt;
+&lt;li&gt;Download the lastest version of &lt;a href=&#34;https://pqrs.org/osx/karabiner/seil.html.en&#34; title=&#34;Seli&#34; target=&#34;_blank&#34;&gt;Seli&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Open Seli and go &lt;strong&gt;other keys&lt;/strong&gt; section to Change &lt;strong&gt;Ctrl_L&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;remaps-capslock-to-escape&#34;&gt;Remaps Capslock to Escape&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the lastest version of &lt;a href=&#34;https://pqrs.org/osx/karabiner/&#34; title=&#34;Karabiner&#34; target=&#34;_blank&#34;&gt;Karabiner&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;go into Karabiner and search for this option:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;
+Control_L to Control_L
+      (+ when you type Control_L only, send Escape)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;remaps-ctrl-l-to-hypher&#34;&gt;Remaps Ctrl-L to Hypher&lt;/h3&gt;
+
+&lt;p&gt;To define Hyper as control+option+command+shift.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open Karabiner and go to Misc &amp; Uninstall &gt; Open private.xml). &lt;/li&gt;
+&lt;li&gt;Add this XML snippet directly under the &lt;root&gt; element.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
+	&amp;lt;item&amp;gt;
+    &amp;lt;name&amp;gt;Remap Left Control to Hyper&amp;lt;/name&amp;gt;
+    &amp;lt;appendix&amp;gt;OS X doesn&#39;t have a Hyper. This maps Left Control to Control + Shift + Option + Command.&amp;lt;/appendix&amp;gt;
+
+    &amp;lt;identifier&amp;gt;space_cadet.left_control_to_hyper&amp;lt;/identifier&amp;gt;
+
+    &amp;lt;autogen&amp;gt;
+        --KeyToKey--
+        KeyCode::F19,
+
+        KeyCode::COMMAND_L,
+        ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+    &amp;lt;/autogen&amp;gt;
+  &amp;lt;/item&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Save the file, then open Karabiner and press ReloadXML in the upper-right of the Change Key tab. &lt;/li&gt;
+&lt;li&gt;Search for Remap Caps and check the box.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;don-t-sleep-automatically&#34;&gt;Don&#39;t sleep automatically&lt;/h2&gt;
+
+&lt;p&gt;I truly don&#39;t understand why we need to install a third party application to do this...
+   anyway, caffeine is your best friend, no mattter it exists in realiality or just in Mac.&lt;/p&gt;
+
+&lt;p&gt;The subtle Caffeine menu bar item is built for one thing in specific: keeping your Mac from going to sleep.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew cask install caffeine
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;uninstall-application-clearly&#34;&gt;Uninstall application clearly&lt;/h2&gt;
+
+&lt;p&gt;Again, I still don&#39;t understand why we need to install a third party application to do this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew cask install appcleaner
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;use-zsh&#34;&gt;Use Zsh&lt;/h2&gt;
+
+&lt;p&gt;I moved to zsh from bash a while. oh-my-zsh is the first framwork I used. It is handy and well documented but has slow startup times, 
+Antigen is slow too. finally, I tried zplug and very happy with its speed and flexibility.&lt;/p&gt;
+
+&lt;h3 id=&#34;installation-1&#34;&gt;Installation&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+brew install zsh
+git clone https://github.com/b4b4r07/zplug ~/.zplug
+chsh -s /usr/local/bin/zsh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;initialization&#34;&gt;Initialization&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+source ~/.zplug/zplug
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;command-search-path&#34;&gt;Command Search PATH&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;default-editor&#34;&gt;Default Editor&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+export EDITOR=vim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;vim-mode&#34;&gt;VIM mode&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+zplug &amp;quot;plugins/vi-mode&amp;quot;, from:oh-my-zsh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;theme&#34;&gt;Theme&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+zplug &amp;quot;themes/pygmalion&amp;quot;, from:oh-my-zsh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;syntax-highlight&#34;&gt;Syntax Highlight&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+zplug &amp;quot;zsh-users/zsh-syntax-highlighting&amp;quot;, nice:10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;history-search&#34;&gt;History Search&lt;/h3&gt;
+
+&lt;p&gt;Type in any part of any previously entered command and press the UP and DOWN arrow keys to cycle 
+ through the matching commands. You can also use K and J in VI mode or ^P and ^N in EMACS mode for the same.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+zplug &amp;quot;zsh-users/zsh-history-substring-search&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;bind-up-and-down-arrow-keys&#34;&gt;Bind UP and DOWN arrow keys&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+zmodload zsh/terminfo
+bindkey &amp;quot;$terminfo[kcuu1]&amp;quot; history-substring-search-up
+bindkey &amp;quot;$terminfo[kcud1]&amp;quot; history-substring-search-down
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;bind-p-and-n-for-emacs-mode&#34;&gt;Bind P and N for EMACS mode&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+bindkey -M emacs &#39;^P&#39; history-substring-search-up
+bindkey -M emacs &#39;^N&#39; history-substring-search-down
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;bind-k-and-j-for-vi-mode&#34;&gt;Bind k and j for VI mode&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+bindkey -M vicmd &#39;k&#39; history-substring-search-up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;git-support&#34;&gt;Git Support&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+zplug &amp;quot;plugins/git&amp;quot;, from:oh-my-zsh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;osx-enhancement&#34;&gt;OSX Enhancement&lt;/h3&gt;
+
+&lt;p&gt;brew auto completion.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+zplug &amp;quot;plugins/brew&amp;quot;, from:oh-my-zsh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;nodejs-development-env&#34;&gt;NodeJS Development Env&lt;/h3&gt;
+
+&lt;h4 id=&#34;npm-auto-completion&#34;&gt;NPM auto completion&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+zplug &amp;quot;plugins/npm&amp;quot;, from:oh-my-zsh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;nvm-setup&#34;&gt;NVM setup&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;install-plugins-automatically&#34;&gt;Install plugins automatically&lt;/h3&gt;
+
+&lt;p&gt;zplug check return true if all plugins are installed
+Therefore, when it returns not true (thus false),
+run zplug install&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+if ! zplug check; then
+    zplug install
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;loads-zplug-plugins&#34;&gt;Loads Zplug Plugins.&lt;/h3&gt;
+&lt;!-- source and add to the PATH --&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+zplug load --verbose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;aliases-additonal-commands&#34;&gt;Aliases &amp; Additonal Commands&lt;/h3&gt;
+
+&lt;h4 id=&#34;list-all-branchs-in-tig-by-default&#34;&gt;List all branchs in tig by default.&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+which tig &amp;gt;/dev/null     &amp;amp;&amp;amp; alias tig=tig --all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;searches-files-with-names-containing-a-string&#34;&gt;Searches files with names containing a string&lt;/h4&gt;
+
+&lt;p&gt;f: searches the current directory subtree for files with names containing a
+string (ignoring case). f png would find all PNG files in the current subtree,
+as well as “PNGisMyFavorite.txt” and so forth.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+function f() { find . -iname &amp;quot;*$1*&amp;quot; ${@:2} }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;greps-the-current-directory-subtree-for-files-matching-a-pattern&#34;&gt;Greps the current directory subtree for files matching a pattern.&lt;/h4&gt;
+
+&lt;p&gt;r: recursively greps the current directory subtree for files matching a pattern.
+r HTTP would grep for files containing that exact string, while r &#39;&#34;http[^&#34;]*&#34;&#39;
+  -i would search for double-quoted strings starting with “http”, ignoring case.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+function r() { grep &amp;quot;$1&amp;quot; ${@:2} -R . }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;use-vim&#34;&gt;Use VIM&lt;/h2&gt;
+
+&lt;p&gt;Normally I use Emacs to write codes and documents, but sometimes 
+I  do quick modification on terminal by using VIM.&lt;/p&gt;
+
+&lt;h3 id=&#34;syntax-highlight-1&#34;&gt;Syntax Highlight&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+syntax on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;highlight-and-strip-eatra-white-spaces&#34;&gt;Highlight and strip eatra white spaces&lt;/h3&gt;
+
+&lt;p&gt;Highlight existing trailing whitespace and also strip trailing 
+whitespace.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@&amp;lt;!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;use-git&#34;&gt;Use Git&lt;/h2&gt;
+
+&lt;h3 id=&#34;workflow&#34;&gt;Workflow&lt;/h3&gt;
+
+&lt;p&gt;Git is a widely used source code management system.
+When I start to develop something, my workflow always looks like:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;run &lt;strong&gt;git fetch&lt;/strong&gt;, &lt;strong&gt;git rebase&lt;/strong&gt; to get other people&#39;s changes.&lt;/li&gt;
+&lt;li&gt;do some experimients. &lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git save&lt;/strong&gt; to save current codebase, so I can go back if I screw up my code later.&lt;/li&gt;
+&lt;li&gt;do some experimients. &lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git wipe&lt;/strong&gt; if I don&#39;t like the result and want to throw current modifications to the hell.&lt;/li&gt;
+&lt;li&gt;do some experimients.&lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git save&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;do some experimients.&lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git undo&lt;/strong&gt;, if I want to commit some changes.&lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git save&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git r&lt;/strong&gt; to re-organize my commit logs.&lt;/li&gt;
+&lt;li&gt;run &lt;strong&gt;git push&lt;/strong&gt; to deliver my works or save on cloud.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;installation-2&#34;&gt;Installation&lt;/h3&gt;
+
+&lt;h4 id=&#34;get-git&#34;&gt;Get Git&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
+brew install git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-tig&#34;&gt;Get Tig&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jonas/tig&#34; title=&#34;Tig&#34; target=&#34;_blank&#34;&gt;Tig&lt;/a&gt; is an ncurses-based text-mode interface for git. It functions mainly as a Git repository browser, 
+but can also assist in staging changes for commit at chunk level and act as a pager for output from 
+various Git commands.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
+brew install tig
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;global-config&#34;&gt;Global Config&lt;/h3&gt;
+
+&lt;h4 id=&#34;set-up-my-name-and-e-mail-address&#34;&gt;Set up my name and e-mail address&lt;/h4&gt;
+
+&lt;p&gt;both of which are included in every commit i make.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
+[user]
+  name = 陳信屹
+  email = ossug.hychen@gmail.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;caching-password-in-git&#34;&gt;Caching password in git&lt;/h4&gt;
+
+&lt;p&gt;Cloning Github repositories using HTTPS is better than using SSH when you want to access those repositories 
+ in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
+ password in Git.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
+[credential]
+  helper = osxkeychain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;change-git-push-behavior-to-simple&#34;&gt;Change git push behavior to simple&lt;/h4&gt;
+
+&lt;p&gt;When pushing without giving a refspec, push the current branch to its remote branch.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
+[push]
+  default = simple
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;disable-advices-which-isnt-useful-anymore&#34;&gt;Disable advices which isnt useful anymore&lt;/h4&gt;
+
+&lt;ul&gt;
+It was useful when i was a beginer, but now it is annoy to me as a 老手!
+&lt;li&gt;Disable the advice shown by Git when you attempt to push something that’s not fast forward-able&lt;/li&gt;
+&lt;li&gt;Disable “how to stage/unstage/add” hints given by git status.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
+[advice]
+  pushNonFastForward = false
+  statusHints = false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;useful-aliases&#34;&gt;Useful Aliases&lt;/h4&gt;
+
+&lt;p&gt;This saves a lot time, and I think you should do too!.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alias&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;s&lt;/td&gt;
+&lt;td&gt;View the current working tree status using the short format with branch information.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;l&lt;/td&gt;
+&lt;td&gt;View abbreviated SHA, description, and history graph of the latest 50 commits&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;c&lt;/td&gt;
+&lt;td&gt;Clone a repository including all submodules&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ci&lt;/td&gt;
+&lt;td&gt;Normal git commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ca&lt;/td&gt;
+&lt;td&gt;Commit all changes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;co&lt;/td&gt;
+&lt;td&gt;Normal git checkout&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;p&lt;/td&gt;
+&lt;td&gt;git push&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;save&lt;/td&gt;
+&lt;td&gt;Adds all changes including untracked files and creates a commit as a savepoint.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;undo&lt;/td&gt;
+&lt;td&gt;Resets the previous commit, but keeps all the changes from that commit in the working directory&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;wipe&lt;/td&gt;
+&lt;td&gt;Commit everything and then do hard reset.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;r&lt;/td&gt;
+&lt;td&gt;rebase lastest 15 commits&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fc&lt;/td&gt;
+&lt;td&gt;Find commits by source coude&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;fm&lt;/td&gt;
+&lt;td&gt;Find commits by commit message&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;contributors&lt;/td&gt;
+&lt;td&gt;List contributors with number of commits&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
+[alias]
+  s = status -sb
+  l = log --pretty=oneline -n 50 --graph --abbrev-commit
+  c = clone --recursive
+  ci = commit
+  ca = !git add -A &amp;amp;&amp;amp; git commit -av
+  co = checkout
+  p = push
+  save = !git add -A &amp;amp;&amp;amp; git commit -v -m &#39;SAVEPOINT&#39;
+	undo = reset HEAD~1 --mixed
+	wipe = !git add -A &amp;amp;&amp;amp; git commit -qm &#39;WIPE SAVEPOINT&#39; &amp;amp;&amp;amp; git reset HEAD~1 --hard
+  r = rebase -i HEAD~15
+	fc = &amp;quot;!f() { git log --pretty=format:&#39;%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d&#39; --decorate --date=short -S$1; }; f&amp;quot;
+	fm = &amp;quot;!f() { git log --pretty=format:&#39;%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d&#39; --decorate --date=short --grep=$1; }; f&amp;quot;
+	contributors = shortlog --summary --numbered
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;global-ignore&#34;&gt;Global Ignore&lt;/h2&gt;
+
+&lt;p&gt;Create the file ~/.gitignore as shown below to remove the files that are almost always ignored in 
+all git repositories. more global git ignores can found on &lt;a href=&#34;https://github.com/github/gitignore/tree/master/Global&#34; title=&#34;Github Gitignores&#34; target=&#34;_blank&#34;&gt;Github Gitignores&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# VIM.
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+Session.vim
+.netrwhist
+*~
+tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;export-all-configurations&#34;&gt;Export all configurations&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;strong&gt;Emacs&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;type &lt;strong&gt;Alt-X&lt;/strong&gt; and select &lt;strong&gt;org-babel-tangle&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;all set!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
