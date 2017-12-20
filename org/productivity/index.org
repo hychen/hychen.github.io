@@ -1,9 +1,0 @@
-#+TITLE: 生產力
-#+HTML_LINK_UP: ../index.html
-
-#+BEGIN_QUOTE
-"Get busy living or get busy dying." by  Shawshank Redemption
-#+END_QUOTE
-
-* [[./config_mac.org][Work more efficiently on a mac]]
-* [[./daily-info-collecting.org][如何處理訊息爆炸的生活]]
