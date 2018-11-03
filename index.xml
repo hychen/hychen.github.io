@@ -6,7 +6,7 @@
     <description>Recent content in 不及格大學士後研究 on 不及格大學士後研究</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2017 hychen</copyright>
+    <copyright>&amp;copy; 2018 hychen</copyright>
     <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
@@ -26,12 +26,11 @@
 
 &lt;p&gt;My blog workflow is then to startup the server (SPC a a), write some content in org-mode and see it reflected in the browser on each save, and deploy (SPC a b).&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;
-(require &#39;cl)
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(require &#39;cl)
 (require &#39;dash)
 
 (setq blog-dir &amp;quot;~/github/blog&amp;quot;
-      public-blog-dir &amp;quot;~/github/docs&amp;quot;
+      public-blog-dir &amp;quot;~/github/hychen.github.io&amp;quot;
       hugo-process &amp;quot;Hugo Server&amp;quot;
       hugo-server-site &amp;quot;http://localhost:1313/&amp;quot;)
 
@@ -102,8 +101,7 @@ but it is also used to export all my configurations on mac.&lt;/p&gt;
 
 &lt;h3 id=&#34;get-brew&#34;&gt;Get Brew&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;add-more-sources&#34;&gt;Add more sources&lt;/h3&gt;
@@ -112,38 +110,33 @@ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 &lt;li&gt;System duplicate formulae&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew tap homebrew/dupes
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew tap homebrew/dupes
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Versioned formulae&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew tap homebrew/versions
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew tap homebrew/versions
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Homebrew Cask is an extension for Homebrew that allows you to automate the installation of Mac Apps.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew tap caskroom/cask
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew tap caskroom/cask
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Cask can also be used to automatically download and install fonts.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew tap caskroom/fonts
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew tap caskroom/fonts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;update-formulaes&#34;&gt;Update formulaes&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew update
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew update
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;use-spacemacs&#34;&gt;Use Spacemacs&lt;/h2&gt;
@@ -152,16 +145,14 @@ brew update
 
 &lt;p&gt;Can not use &lt;code&gt;org-babel&lt;/code&gt; without Emacs. I use spacemacs because the default configuration really saves my time.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew tap d12frosted/emacs-plus
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew tap d12frosted/emacs-plus
 brew install emacs-plus --HEAD --with-natural-title-bars
 brew linkapps emacs-plus
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;download-spaceemacs-cofiguration&#34;&gt;Download spaceemacs cofiguration&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;better-terminal&#34;&gt;Better Terminal&lt;/h2&gt;
@@ -170,8 +161,7 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 &lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew cask install iterm2
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install iterm2
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;enable-hotkey-window&#34;&gt;Enable Hotkey Window&lt;/h3&gt;
@@ -206,8 +196,7 @@ Capslock is useless and I never use it. Luckly, it seems a good place to put &lt
 &lt;li&gt;go into Karabiner and search for this option:&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;
-Control_L to Control_L
+&lt;pre&gt;&lt;code&gt;Control_L to Control_L
       (+ when you type Control_L only, send Escape)
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -220,8 +209,7 @@ Control_L to Control_L
 &lt;li&gt;Add this XML snippet directly under the &lt;root&gt; element.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
 	&amp;lt;item&amp;gt;
     &amp;lt;name&amp;gt;Remap Left Control to Hyper&amp;lt;/name&amp;gt;
     &amp;lt;appendix&amp;gt;OS X doesn&#39;t have a Hyper. This maps Left Control to Control + Shift + Option + Command.&amp;lt;/appendix&amp;gt;
@@ -250,16 +238,14 @@ Control_L to Control_L
 
 &lt;p&gt;The subtle Caffeine menu bar item is built for one thing in specific: keeping your Mac from going to sleep.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew cask install caffeine
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install caffeine
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;uninstall-application-clearly&#34;&gt;Uninstall application clearly&lt;/h2&gt;
 
 &lt;p&gt;Again, I still don&#39;t understand why we need to install a third party application to do this.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew cask install appcleaner
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install appcleaner
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;use-zsh&#34;&gt;Use Zsh&lt;/h2&gt;
@@ -269,46 +255,39 @@ Antigen is slow too. finally, I tried zplug and very happy with its speed and fl
 
 &lt;h3 id=&#34;installation-1&#34;&gt;Installation&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-brew install zsh
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install zsh
 git clone https://github.com/b4b4r07/zplug ~/.zplug
 chsh -s /usr/local/bin/zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;initialization&#34;&gt;Initialization&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-source ~/.zplug/zplug
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;source ~/.zplug/zplug
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;command-search-path&#34;&gt;Command Search PATH&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;default-editor&#34;&gt;Default Editor&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-export EDITOR=vim
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export EDITOR=vim
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;vim-mode&#34;&gt;VIM mode&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-zplug &amp;quot;plugins/vi-mode&amp;quot;, from:oh-my-zsh
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;zplug &amp;quot;plugins/vi-mode&amp;quot;, from:oh-my-zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;theme&#34;&gt;Theme&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-zplug &amp;quot;themes/pygmalion&amp;quot;, from:oh-my-zsh
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;zplug &amp;quot;themes/pygmalion&amp;quot;, from:oh-my-zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;syntax-highlight&#34;&gt;Syntax Highlight&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-zplug &amp;quot;zsh-users/zsh-syntax-highlighting&amp;quot;, nice:10
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;zplug &amp;quot;zsh-users/zsh-syntax-highlighting&amp;quot;, nice:10
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;history-search&#34;&gt;History Search&lt;/h3&gt;
@@ -316,57 +295,49 @@ zplug &amp;quot;zsh-users/zsh-syntax-highlighting&amp;quot;, nice:10
 &lt;p&gt;Type in any part of any previously entered command and press the UP and DOWN arrow keys to cycle 
  through the matching commands. You can also use K and J in VI mode or ^P and ^N in EMACS mode for the same.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-zplug &amp;quot;zsh-users/zsh-history-substring-search&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;zplug &amp;quot;zsh-users/zsh-history-substring-search&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;bind-up-and-down-arrow-keys&#34;&gt;Bind UP and DOWN arrow keys&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-zmodload zsh/terminfo
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;zmodload zsh/terminfo
 bindkey &amp;quot;$terminfo[kcuu1]&amp;quot; history-substring-search-up
 bindkey &amp;quot;$terminfo[kcud1]&amp;quot; history-substring-search-down
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;bind-p-and-n-for-emacs-mode&#34;&gt;Bind P and N for EMACS mode&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-bindkey -M emacs &#39;^P&#39; history-substring-search-up
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bindkey -M emacs &#39;^P&#39; history-substring-search-up
 bindkey -M emacs &#39;^N&#39; history-substring-search-down
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;bind-k-and-j-for-vi-mode&#34;&gt;Bind k and j for VI mode&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-bindkey -M vicmd &#39;k&#39; history-substring-search-up
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bindkey -M vicmd &#39;k&#39; history-substring-search-up
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;git-support&#34;&gt;Git Support&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-zplug &amp;quot;plugins/git&amp;quot;, from:oh-my-zsh
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;zplug &amp;quot;plugins/git&amp;quot;, from:oh-my-zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;osx-enhancement&#34;&gt;OSX Enhancement&lt;/h3&gt;
 
 &lt;p&gt;brew auto completion.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-zplug &amp;quot;plugins/brew&amp;quot;, from:oh-my-zsh
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;zplug &amp;quot;plugins/brew&amp;quot;, from:oh-my-zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;nodejs-development-env&#34;&gt;NodeJS Development Env&lt;/h3&gt;
 
 &lt;h4 id=&#34;npm-auto-completion&#34;&gt;NPM auto completion&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-zplug &amp;quot;plugins/npm&amp;quot;, from:oh-my-zsh
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;zplug &amp;quot;plugins/npm&amp;quot;, from:oh-my-zsh
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;nvm-setup&#34;&gt;NVM setup&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-export NVM_DIR=~/.nvm
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -376,8 +347,7 @@ source $(brew --prefix nvm)/nvm.sh
 Therefore, when it returns not true (thus false),
 run zplug install&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-if ! zplug check; then
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;if ! zplug check; then
     zplug install
 fi
 &lt;/code&gt;&lt;/pre&gt;
@@ -385,16 +355,14 @@ fi
 &lt;h3 id=&#34;loads-zplug-plugins&#34;&gt;Loads Zplug Plugins.&lt;/h3&gt;
 &lt;!-- source and add to the PATH --&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-zplug load --verbose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;zplug load --verbose
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;aliases-additonal-commands&#34;&gt;Aliases &amp; Additonal Commands&lt;/h3&gt;
 
 &lt;h4 id=&#34;list-all-branchs-in-tig-by-default&#34;&gt;List all branchs in tig by default.&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-which tig &amp;gt;/dev/null     &amp;amp;&amp;amp; alias tig=tig --all
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;which tig &amp;gt;/dev/null     &amp;amp;&amp;amp; alias tig=tig --all
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;searches-files-with-names-containing-a-string&#34;&gt;Searches files with names containing a string&lt;/h4&gt;
@@ -403,8 +371,7 @@ which tig &amp;gt;/dev/null     &amp;amp;&amp;amp; alias tig=tig --all
 string (ignoring case). f png would find all PNG files in the current subtree,
 as well as “PNGisMyFavorite.txt” and so forth.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-function f() { find . -iname &amp;quot;*$1*&amp;quot; ${@:2} }
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;function f() { find . -iname &amp;quot;*$1*&amp;quot; ${@:2} }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;greps-the-current-directory-subtree-for-files-matching-a-pattern&#34;&gt;Greps the current directory subtree for files matching a pattern.&lt;/h4&gt;
@@ -413,8 +380,7 @@ function f() { find . -iname &amp;quot;*$1*&amp;quot; ${@:2} }
 r HTTP would grep for files containing that exact string, while r &#39;&#34;http[^&#34;]*&#34;&#39;
   -i would search for double-quoted strings starting with “http”, ignoring case.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-function r() { grep &amp;quot;$1&amp;quot; ${@:2} -R . }
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;function r() { grep &amp;quot;$1&amp;quot; ${@:2} -R . }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;use-vim&#34;&gt;Use VIM&lt;/h2&gt;
@@ -424,8 +390,7 @@ I  do quick modification on terminal by using VIM.&lt;/p&gt;
 
 &lt;h3 id=&#34;syntax-highlight-1&#34;&gt;Syntax Highlight&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-syntax on
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;syntax on
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;highlight-and-strip-eatra-white-spaces&#34;&gt;Highlight and strip eatra white spaces&lt;/h3&gt;
@@ -433,8 +398,7 @@ syntax on
 &lt;p&gt;Highlight existing trailing whitespace and also strip trailing 
 whitespace.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-highlight ExtraWhitespace ctermbg=red guibg=red
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@&amp;lt;!$/
@@ -468,8 +432,7 @@ When I start to develop something, my workflow always looks like:&lt;/p&gt;
 
 &lt;h4 id=&#34;get-git&#34;&gt;Get Git&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
-brew install git
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;brew install git
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;get-tig&#34;&gt;Get Tig&lt;/h3&gt;
@@ -478,8 +441,7 @@ brew install git
 but can also assist in staging changes for commit at chunk level and act as a pager for output from 
 various Git commands.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
-brew install tig
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;brew install tig
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;global-config&#34;&gt;Global Config&lt;/h3&gt;
@@ -488,8 +450,7 @@ brew install tig
 
 &lt;p&gt;both of which are included in every commit i make.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
-[user]
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[user]
   name = 陳信屹
   email = ossug.hychen@gmail.com
 &lt;/code&gt;&lt;/pre&gt;
@@ -500,8 +461,7 @@ brew install tig
  in multiple deivces. The only annoy thing is you need to type password everytime and this caches your GitHub 
  password in Git.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
-[credential]
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[credential]
   helper = osxkeychain
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -509,8 +469,7 @@ brew install tig
 
 &lt;p&gt;When pushing without giving a refspec, push the current branch to its remote branch.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
-[push]
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[push]
   default = simple
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -522,8 +481,7 @@ It was useful when i was a beginer, but now it is annoy to me as a 老手!
 &lt;li&gt;Disable “how to stage/unstage/add” hints given by git status.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
-[advice]
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[advice]
   pushNonFastForward = false
   statusHints = false
 &lt;/code&gt;&lt;/pre&gt;
@@ -612,8 +570,7 @@ It was useful when i was a beginer, but now it is annoy to me as a 老手!
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;
-[alias]
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[alias]
   s = status -sb
   l = log --pretty=oneline -n 50 --graph --abbrev-commit
   c = clone --recursive
@@ -635,8 +592,7 @@ It was useful when i was a beginer, but now it is annoy to me as a 老手!
 &lt;p&gt;Create the file ~/.gitignore as shown below to remove the files that are almost always ignored in 
 all git repositories. more global git ignores can found on &lt;a href=&#34;https://github.com/github/gitignore/tree/master/Global&#34; title=&#34;Github Gitignores&#34; target=&#34;_blank&#34;&gt;Github Gitignores&lt;/a&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-# Folder view configuration files
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Folder view configuration files
 .DS_Store
 Desktop.ini
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 不及格大學士後研究</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on 不及格大學士後研究</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 hychen</copyright>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>configuration</title>
+      <link>/tags/configuration/</link>
+      <pubDate>Fri, 20 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spacemac</title>
+      <link>/tags/spacemac/</link>
+      <pubDate>Fri, 20 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/spacemac/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
